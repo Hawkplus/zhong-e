@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>中俄科普 · 概念与提示词库 | 残差网络</title>
+  <meta name="description" content="一个静态的中俄双语科普站点：用 88 秒短片讲清一个科学概念，并提供中文、俄语解释与完整的生成提示词。首期：残差网络 ResNet。" />
+  <meta name="theme-color" content="#0a1c2b" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="中俄科普 · 把复杂的科学，讲成 88 秒" />
+  <meta property="og:description" content="中俄双语科普视频库：短片 + 概念解释 + 可复现的生成提示词。首期：残差网络 ResNet。" />
+  <meta property="og:image" content="assets/img/og-cover.jpg" />
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/css/site.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">跳到主要内容</a>
+
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html" aria-label="中俄科普首页">
+        <span class="brand-mark" aria-hidden="true">中俄</span>
+        <span class="brand-text">
+          <strong>中俄科普</strong>
+          <small>概念与提示词库 · Наука</small>
+        </span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="打开菜单" data-nav-toggle>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="主导航">
+        <a href="index.html" class="is-active" aria-current="page">首页</a>
+        <a href="videos/resnet.html">视频库</a>
+        <a href="prompts.html">提示词库</a>
+        <a href="about.html">关于</a>
+      </nav>
+
+      <a class="header-cta" href="videos/resnet.html">
+        观看本期
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5-11-6.5z" fill="currentColor"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- 主视觉 -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="shell">
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <p class="eyebrow">静态科普视频库 · 中俄双语</p>
+            <h1 id="hero-title">把复杂的科学，<br />讲成 <span class="accent">88 秒</span>。</h1>
+            <p class="hero-ru" lang="ru">Сложная наука — за 88 секунд.</p>
+            <p class="hero-lead">
+              每部短片只讲清一个概念：先用一分半看完动画，再读中文与俄语解释，最后拿走生成它的完整提示词。
+              <span class="ru" lang="ru">Один фильм — одна ясная идея: посмотрите анимацию, прочитайте объяснение на китайском и русском и заберите готовый промпт.</span>
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="videos/resnet.html">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5-11-6.5z" fill="currentColor"/></svg>
+                观看本期视频
+              </a>
+              <a class="btn btn-ghost" href="prompts.html">浏览提示词库</a>
+            </div>
+          </div>
+
+          <div class="hero-media">
+            <a class="poster" href="videos/resnet.html" aria-label="观看视频：残差网络，88 秒">
+              <img src="assets/img/resnet-cover.jpg" width="1280" height="720" alt="残差网络短片封面：深空背景上写着「残差网络 RESIDUAL NETWORKS」" />
+              <span class="play-badge play-badge--corner" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5-11-6.5z" fill="currentColor"/></svg>
+              </span>
+            </a>
+            <div class="hero-media-caption">
+              <span><strong>本期 · 残差网络</strong> / Остаточные сети</span>
+              <span>01 · 88s</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-stats" aria-label="站点数据">
+          <div class="stat"><b>01</b><span>已上线视频</span></div>
+          <div class="stat"><b>11</b><span>单集章节</span></div>
+          <div class="stat"><b>88s</b><span>单集时长</span></div>
+          <div class="stat"><b>中 / 俄</b><span>双语对照</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 01 概念速览 -->
+    <section class="section" aria-labelledby="concepts-title">
+      <div class="shell">
+        <div class="section-head">
+          <div class="section-head-main">
+            <span class="section-index">01 / CONCEPTS</span>
+            <h2 id="concepts-title">先看三个概念<span class="ru-title" lang="ru">Три идеи перед просмотром</span></h2>
+          </div>
+          <p class="section-head-note">
+            残差网络常被简化成「加深就能更强」。这三张卡片说的是它真正的三个支点。
+            <span class="ru" lang="ru">ResNet часто сводят к «просто глубже». На деле всё держится на трёх идеях.</span>
+          </p>
+        </div>
+
+        <div class="concept-grid">
+          <article class="concept-card" style="--card-accent:#df6f3b">
+            <span class="concept-num">01</span>
+            <h3>退化现象</h3>
+            <span class="ru-title" lang="ru">Деградация</span>
+            <p>更深的普通网络，训练误差反而可能更高。这不是过拟合，而是优化本身变难了。</p>
+            <p lang="ru">У более глубоких обычных сетей ошибка на обучающей выборке иногда выше. Это не переобучение, а трудность оптимизации.</p>
+          </article>
+
+          <article class="concept-card" style="--card-accent:#0d9db2">
+            <span class="concept-num">02</span>
+            <h3>残差连接</h3>
+            <span class="ru-title" lang="ru">Остаточное соединение</span>
+            <p>输入 x 直接绕到输出端，网络只学「要改哪里」：z = x + F(x)。</p>
+            <p lang="ru">Вход x идёт в обход слоёв, а сеть учит только поправку F(x): z = x + F(x).</p>
+          </article>
+
+          <article class="concept-card" style="--card-accent:#5b4bc4">
+            <span class="concept-num">03</span>
+            <h3>梯度通路</h3>
+            <span class="ru-title" lang="ru">Путь градиента</span>
+            <p>反向传播时，捷径给梯度一条更短的路，深层网络因此更容易训练。</p>
+            <p lang="ru">При обратном распространении обходное соединение даёт градиенту более короткий путь, и глубокую сеть проще обучать.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 提示词 -->
+    <section class="section section--white" aria-labelledby="prompt-title">
+      <div class="shell">
+        <div class="section-head">
+          <div class="section-head-main">
+            <span class="section-index">02 / PROMPT</span>
+            <h2 id="prompt-title">这部片子的提示词<span class="ru-title" lang="ru">Промпт, по которому собрана анимация</span></h2>
+          </div>
+          <p class="section-head-note">
+            提示词不是文案，而是一份可复现的制作说明：时长、分镜、配色、科学护栏、编码参数与验收清单。
+            <span class="ru" lang="ru">Промпт — это воспроизводимое ТЗ, а не текст для озвучки.</span>
+          </p>
+        </div>
+
+        <div class="prompt-panel">
+          <div class="prompt-panel-head">
+            <span class="dot" aria-hidden="true"></span>
+            resnet-90s-prompt.md · 摘要
+            <span class="spacer"></span>
+            <button class="copy-btn" type="button" data-copy="#prompt-snippet">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M5 15V5a2 2 0 0 1 2-2h9" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+              <span data-copy-label>复制摘要</span>
+            </button>
+          </div>
+          <pre id="prompt-snippet" tabindex="0"><code># 任务：制作《残差网络》90 秒无配音科普动画
+
+请直接制作并渲染出完整成片，不要只返回脚本、方案或分镜表。
+
+**主题**：《残差网络：让更深的网络学得动》
+**英文副标题**：Residual Networks — Learning the Difference
+**受众**：没有深度学习背景的普通观众
+**核心问题**：网络越深，为什么反而更难训练？残差连接到底解决了什么？
+
+## 一、硬性输出要求
+
+1. 成片恰好 90.000 秒，绝不能超过；1920×1080、16:9、30fps，共 2700 帧。
+2. 全程无配音、无旁白、无 TTS、无人声，MP4 不含音轨。
+3. 底部常驻中英双语字幕：中文在上、英文在下。
+4. 全部画面程序化生成：不使用外部图片、素材库、AI 生图。
+5. 每一帧都由代码按时间 t 计算出来，同一个 t 必须得到同一帧。</code></pre>
+          <div class="prompt-panel-foot">
+            <span>完整版含 15 拍时间线、配色语义、科学护栏与交付清单</span>
+            <a href="prompts.html">查看完整提示词 →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 视频库 -->
+    <section class="section" aria-labelledby="library-title">
+      <div class="shell">
+        <div class="section-head">
+          <div class="section-head-main">
+            <span class="section-index">03 / VIDEO LIBRARY</span>
+            <h2 id="library-title">视频库<span class="ru-title" lang="ru">Видеотека</span></h2>
+          </div>
+          <p class="section-head-note">
+            每个条目都配一个概念页与一份提示词；新片按同一套结构追加。
+            <span class="ru" lang="ru">Каждый выпуск — фильм, статья и промпт. Новые добавляются по той же схеме.</span>
+          </p>
+        </div>
+
+        <div class="library-grid">
+          <a class="video-card" href="videos/resnet.html">
+            <div class="video-card-media">
+              <img src="assets/img/resnet-cover.jpg" width="1280" height="720" alt="残差网络短片封面" loading="lazy" />
+              <span class="duration-badge">88 秒</span>
+              <span class="play-badge play-badge--corner" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5-11-6.5z" fill="currentColor"/></svg>
+              </span>
+            </div>
+            <div class="video-card-body">
+              <div class="meta-line">
+                <span class="tag">视频 01</span>
+                <span>2026.11</span>
+                <span>·</span>
+                <span>88 秒</span>
+              </div>
+              <h3>残差网络：为什么网络越深，反而更难训练？</h3>
+              <span class="ru-title" lang="ru">Остаточные сети: почему глубокие сети сложнее обучать?</span>
+              <p>一条捷径改变网络的输出方式：z = x + F(x)。11 个章节讲清它为什么有效、边界在哪里。</p>
+              <div class="card-foot">
+                <span>观看视频</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+          </a>
+
+          <aside class="library-note">
+            <span class="kicker" style="color:#6fd7e2">本片关键公式</span>
+            <p class="library-formula">z = x + F(x)</p>
+            <p>网络不去直接拟合完整映射 H(x)，而是学习相对输入的修正量 F(x) = H(x) − x。修正量接近零时，输出就接近输入。</p>
+            <p lang="ru" style="color:#93b4c8;font-size:12.5px">Сеть учит не полное отображение H(x), а поправку F(x) = H(x) − x.</p>
+
+            <svg class="note-diagram" viewBox="0 0 320 96" role="img" aria-label="残差块示意：输入 x 经捷径与 F(x) 分支相加，得到输出 z">
+              <defs>
+                <marker id="arrow-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                  <path d="M0 0 L10 5 L0 10 z" fill="#3fc3d3"/>
+                </marker>
+                <marker id="arrow-coral" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                  <path d="M0 0 L10 5 L0 10 z" fill="#ef8a63"/>
+                </marker>
+                <marker id="arrow-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                  <path d="M0 0 L10 5 L0 10 z" fill="#e8bd52"/>
+                </marker>
+              </defs>
+              <path d="M23 34 V12 H224 V33" fill="none" stroke="#3fc3d3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-teal)"/>
+              <text x="152" y="10" fill="#79adbd" font-size="9" text-anchor="middle" letter-spacing=".06em">SHORTCUT</text>
+              <rect x="2" y="34" width="42" height="28" rx="6" fill="rgba(13,157,178,.14)" stroke="#3fc3d3" stroke-width="1.4"/>
+              <text x="23" y="53" fill="#9fe4ec" font-size="13" text-anchor="middle">x</text>
+              <path d="M44 48 H96" fill="none" stroke="#3fc3d3" stroke-width="1.5" marker-end="url(#arrow-teal)"/>
+              <rect x="96" y="34" width="64" height="28" rx="6" fill="rgba(223,111,59,.16)" stroke="#ef8a63" stroke-width="1.4"/>
+              <text x="128" y="53" fill="#f4b79f" font-size="12" text-anchor="middle">F(x)</text>
+              <path d="M160 48 H206" fill="none" stroke="#ef8a63" stroke-width="1.5" marker-end="url(#arrow-coral)"/>
+              <circle cx="224" cy="48" r="15" fill="rgba(214,154,31,.18)" stroke="#e8bd52" stroke-width="1.5"/>
+              <text x="224" y="54" fill="#f3d48a" font-size="17" text-anchor="middle">+</text>
+              <path d="M239 48 H296" fill="none" stroke="#e8bd52" stroke-width="1.5" marker-end="url(#arrow-amber)"/>
+              <text x="305" y="53" fill="#f3d48a" font-size="14" text-anchor="middle">z</text>
+            </svg>
+
+            <a class="link-arrow" style="color:#7fc6e8" href="videos/resnet.html#principle">阅读完整原理
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </aside>
+        </div>
+
+        <div class="upcoming" aria-labelledby="upcoming-title">
+          <div class="upcoming-head">
+            <span id="upcoming-title">后续选题 · 筹备中</span>
+            <span lang="ru">Следующие темы</span>
+          </div>
+          <div class="upcoming-row">
+            <span class="num">02</span>
+            <div>
+              <h4>卷积神经网络：计算机如何识别图像</h4>
+              <span class="ru" lang="ru">Свёрточные нейронные сети: как компьютер видит изображения</span>
+            </div>
+            <span class="status">筹备中</span>
+          </div>
+          <div class="upcoming-row">
+            <span class="num">03</span>
+            <div>
+              <h4>泛化能力：模型为什么会「背题」</h4>
+              <span class="ru" lang="ru">Обобщающая способность: почему модель запоминает, а не понимает</span>
+            </div>
+            <span class="status">筹备中</span>
+          </div>
+          <div class="upcoming-row">
+            <span class="num">04</span>
+            <div>
+              <h4>拉曼光谱：用光读出分子的指纹</h4>
+              <span class="ru" lang="ru">Рамановская спектроскопия: «отпечаток» молекулы в свете</span>
+            </div>
+            <span class="status">筹备中</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-main">
+      <div class="footer-brand">
+        <a class="brand" href="index.html">
+          <span class="brand-mark" aria-hidden="true">中俄</span>
+          <span class="brand-text">
+            <strong>中俄科普</strong>
+            <small>概念与提示词库 · Наука</small>
+          </span>
+        </a>
+        <p>
+          一个静态科普站：用短片讲概念，用双语文本拆概念，用提示词复现概念。
+          <span class="ru" lang="ru">Статический сайт о науке: фильм, объяснение и промпт — всё в одном месте.</span>
+        </p>
+      </div>
+      <div class="footer-links">
+        <div>
+          <h4>浏览</h4>
+          <ul>
+            <li><a href="videos/resnet.html">残差网络</a></li>
+            <li><a href="prompts.html">提示词库</a></li>
+            <li><a href="about.html">关于项目</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>资源</h4>
+          <ul>
+            <li><a href="assets/prompts/resnet-90s-prompt.md" download>提示词原文 .md</a></li>
+            <li><a href="assets/videos/resnet-88s.mp4" download>视频文件 .mp4</a></li>
+            <li><a href="__REPO_URL__" target="_blank" rel="noopener noreferrer">GitHub 仓库</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="shell footer-bottom">
+      <span>© <span data-year>2026</span> 中俄科普 · 内容用于科普学习，不构成专业结论</span>
+      <span>纯静态站点 · GitHub Pages</span>
+    </div>
+  </footer>
+
+  <script src="assets/js/site.js"></script>
+</body>
+</html>

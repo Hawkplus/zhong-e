@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>提示词库 · 中俄科普</title>
+  <meta name="description" content="可复现的科普动画生成提示词：残差网络 90 秒无配音版全文，以及 Kurzgesagt 风科普动画通用模板。含时间线、配色语义、科学护栏与验收清单。" />
+  <meta name="theme-color" content="#0a1c2b" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="提示词库 · 中俄科普" />
+  <meta property="og:description" content="把「做一个科普动画」写成一份可执行的说明：两份完整提示词与结构拆解。" />
+  <meta property="og:image" content="assets/img/og-cover.jpg" />
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/css/site.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">跳到主要内容</a>
+
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html" aria-label="中俄科普首页">
+        <span class="brand-mark" aria-hidden="true">中俄</span>
+        <span class="brand-text">
+          <strong>中俄科普</strong>
+          <small>概念与提示词库 · Наука</small>
+        </span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="打开菜单" data-nav-toggle>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="主导航">
+        <a href="index.html">首页</a>
+        <a href="videos/resnet.html">视频库</a>
+        <a href="prompts.html" class="is-active" aria-current="page">提示词库</a>
+        <a href="about.html">关于</a>
+      </nav>
+
+      <a class="header-cta" href="videos/resnet.html">
+        观看本期
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5-11-6.5z" fill="currentColor"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="page-hero">
+      <div class="shell">
+        <nav class="breadcrumb" aria-label="面包屑">
+          <a href="index.html">首页</a>
+          <span class="sep">/</span>
+          <span aria-current="page">提示词库</span>
+        </nav>
+        <p class="eyebrow">提示词库 · PROMPT LIBRARY</p>
+        <h1>把「做一个科普动画」，写成一份可执行的说明。</h1>
+        <p class="page-ru" lang="ru">Промпт как воспроизводимое техническое задание.</p>
+        <p class="page-lead">
+          这里的提示词不是宣传文案，而是制作说明：它规定时长、分镜、配色语义、科学护栏、编码参数与验收清单，并要求直接交付成片。两份全文都可以直接复制、修改、复用。
+        </p>
+      </div>
+    </section>
+
+    <div class="shell" style="padding:52px 0 80px">
+      <!-- 结构拆解 -->
+      <section aria-labelledby="structure-title">
+        <div class="section-head">
+          <div class="section-head-main">
+            <span class="section-index">01 / STRUCTURE</span>
+            <h2 id="structure-title" style="font-size:clamp(24px,2.8vw,30px)">一份好提示词的六个部分<span class="ru-title" lang="ru">Шесть блоков рабочего промпта</span></h2>
+          </div>
+          <p class="section-head-note">
+            缺哪一块，执行方就会替你「自由发挥」——而自由发挥的部分，通常在验收时最贵。
+          </p>
+        </div>
+
+        <div class="structure-grid">
+          <article class="structure-item">
+            <span class="n">01</span>
+            <h4>硬性输出</h4>
+            <span class="ru" lang="ru">Жёсткие требования</span>
+            <p>时长精确到千分位、分辨率、帧率、编码、音轨有无、字幕位置与字号。这些是验收口径，不是修辞。</p>
+          </article>
+          <article class="structure-item">
+            <span class="n">02</span>
+            <h4>时间线</h4>
+            <span class="ru" lang="ru">Тайминг</span>
+            <p>把全片拆成固定的拍，一拍只讲一件事，并给出该拍的中英字幕。拍序锁定，执行方不能自行增删。</p>
+          </article>
+          <article class="structure-item">
+            <span class="n">03</span>
+            <h4>视觉语言</h4>
+            <span class="ru" lang="ru">Визуальный язык</span>
+            <p>底色、图元、圆角、光晕，以及每种颜色的语义。颜色一旦有语义，观众就能靠颜色读懂结构。</p>
+          </article>
+          <article class="structure-item">
+            <span class="n">04</span>
+            <h4>科学护栏</h4>
+            <span class="ru" lang="ru">Научные ограничения</span>
+            <p>不绝对化、示意图标「示意」、比喻标注边界、不编造数字。科普片最容易出错的地方都在这里。</p>
+          </article>
+          <article class="structure-item">
+            <span class="n">05</span>
+            <h4>技术实现</h4>
+            <span class="ru" lang="ru">Реализация</span>
+            <p>要求 render(t) 纯函数逐帧确定性渲染、程序化生成、禁止外部素材，并给出编码参数。</p>
+          </article>
+          <article class="structure-item">
+            <span class="n">06</span>
+            <h4>交付前自检</h4>
+            <span class="ru" lang="ru">Приёмка</span>
+            <p>逐项打勾的清单：时长、帧数、字幕溢出、关键帧抽检。没过的项不许交付。</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- 提示词全文 -->
+      <section aria-labelledby="full-title" style="margin-top:64px">
+        <div class="section-head">
+          <div class="section-head-main">
+            <span class="section-index">02 / FULL TEXT</span>
+            <h2 id="full-title" style="font-size:clamp(24px,2.8vw,30px)">两份全文<span class="ru-title" lang="ru">Два промпта целиком</span></h2>
+          </div>
+          <p class="section-head-note">
+            保留原始设定，未按成片回改；这样你能看到「要求」和「成片」之间的差距是怎么产生的。
+          </p>
+        </div>
+
+        <!-- 实例 -->
+        <article class="prompt-card">
+          <div class="prompt-card-head">
+            <div>
+              <h3>《残差网络》90 秒无配音科普动画</h3>
+              <p class="ru-title" lang="ru">Промпт для фильма об остаточных сетях · 9.3 KB · 147 行</p>
+            </div>
+            <div class="head-tools">
+              <button class="copy-btn copy-btn--light" type="button" data-copy="#prompt-resnet">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M5 15V5a2 2 0 0 1 2-2h9" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+                <span data-copy-label>复制全文</span>
+              </button>
+              <a class="download-btn" href="assets/prompts/resnet-90s-prompt.md" download>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0 4-4m-4 4-4-4M5 19h14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                下载 .md
+              </a>
+            </div>
+          </div>
+          <div class="prompt-card-body">
+            <p>
+              这份提示词用于生成本站首期短片：15 拍 × 6 秒、1920×1080、无配音、底部长驻中英双语字幕，要求全部画面程序化生成，并列出 9 条科学准确性护栏。实际成片为 88 秒剪辑版，因此本页把它作为「原始指令样本」原样保留。
+            </p>
+            <details class="prompt-details">
+              <summary>展开全文（147 行）</summary>
+              <pre class="prompt-code" id="prompt-resnet" tabindex="0"><code># 任务：制作《残差网络》90 秒无配音科普动画
+
+请直接制作并渲染出完整成片，不要只返回脚本、方案或分镜表。
+
+**主题**：《残差网络：让更深的网络学得动》
+**英文副标题**：Residual Networks — Learning the Difference
+**受众**：没有深度学习背景的普通观众
+**核心问题**：网络越深，为什么反而更难训练？残差连接到底解决了什么？
+
+## 一、硬性输出要求
+
+1. 成片**恰好 90.000 秒**，绝不能超过；1920×1080、16:9、30fps，共 2700 帧；交付可正常播放的 H.264 MP4（yuv420p）。
+2. **全程无配音、无旁白、无 TTS、无人声**，MP4 **不含音轨**。信息必须由动画与字幕自洽表达，不靠听觉补足。
+3. 底部常驻**中英双语字幕**：中文在上、英文在下，同步出现。字幕是解释性语句，不是标题大字卡，不要把字幕做成画面中央的 PPT。
+4. 字幕必须用字体排版后合成进画面，**不允许让图像模型绘制中文**。中文约 44px、英文约 32px，白色字 + 柔和黑色描边 + 半透明深色底；底部安全边距至少 54px，左右至少 96px；任何字幕不得溢出、不得压到画面主体。
+5. 全部画面**程序化生成**：不使用外部图片、素材库、AI 生图、生成式视频模型。每一帧都由代码按时间 t 计算出来。
+6. 在当前工作区创建独立目录 `ResNet_90s_WorkBuddy/`，不要覆盖任何已有文件。
+7. 若某项依赖在本机不可用，改用本机可用的程序化 2D 渲染方式完成；**不得假装已经生成视频**，遇到真实阻塞要准确说明卡在哪一步。
+8. 如果你的运行环境不能执行代码或写文件，请直接告诉我，而不是只输出文案就当完成任务。
+
+## 二、锁定的 15×6 秒时间线（不得改动）
+
+以下 15 段，每段严格 6 秒，总长 90 秒。
+
+00–06秒｜开场提问：原创猫照片卡送入逐层加深的网络，金色问号浮起。
+中：神经网络越深，就一定越好吗？
+英：Are deeper neural networks always better?
+
+06–12秒｜深度带来特征：阶梯状特征卡依次出现——边缘、纹理、形状、抽象。
+中：更多层，可以逐步组合出更复杂的特征。
+英：More layers can build increasingly complex features.
+
+12–18秒｜优化变难：计算阶段增多，参数旋钮密集，协调线缆缠结。
+中：但层数增加，训练也可能变得更困难。
+英：But adding layers can also make training harder.
+
+18–24秒｜退化现象：浅层与更深的普通网络并排对比，训练误差仪表变化，仪表需标注“示意”。
+中：有时，更深的普通网络，连训练误差都更高。
+英：Sometimes, deeper plain networks have higher training error.
+
+24–30秒｜捷径出现：青绿旁路绕开珊瑚色变换级，两条路径汇入金色加号节点。
+中：如果保留原有信息，再学习如何修改呢？
+英：What if we keep the input and learn how to modify it?
+
+30–36秒｜改稿隐喻：原稿 + 珊瑚色修改卡 → 修订稿，不必从白纸重写。
+中：就像修改原稿，不必每次都从白纸开始。
+英：Like editing a draft instead of starting from scratch.
+
+36–42秒｜真实残差块：x 与 F(x) 两条路径并行，逐元素相加，画面出现公式 z = x + F(x)。
+中：残差块，把输入与学到的修正量相加。
+英：A residual block adds the input to a learned correction.
+
+42–48秒｜什么是残差：输入与目标 H(x) 对比，变化的单元被抽成珊瑚色 F(x)，再叠回原输入。
+中：这个修正量，就叫“残差”。
+英：That learned correction is called the residual.
+
+48–54秒｜保留信息：F(x) ≈ 0，两条路径仍然激活，结果 z ≈ x。
+中：修正量接近零时，相加结果就接近原输入。
+英：When the correction is near zero, the sum stays near the input.
+
+54–60秒｜堆叠：一个残差块 → 三个副本 → 拉远成五块一排，每块都自带捷径。
+中：把这样的模块堆起来，就构成了残差网络。
+英：Stack these blocks to build a residual network: ResNet.
+
+60–66秒｜反向传播：明确切换到 TRAINING 模式，紫色梯度箭头同时走分支与捷径。
+中：训练时，捷径也为梯度提供了更直接的通路。
+英：During training, shortcuts give gradients a more direct path.
+
+66–72秒｜为什么有用：参数旋钮从缠结变得协调，梯度扫过整条链路。
+中：这有助于优化，让更深的网络更容易训练。
+英：This helps optimization, making deeper networks easier to train.
+
+72–78秒｜形状匹配：同形状时逐元素相加；形状分离；捷径上出现投影模块；再次相加。
+中：两路特征形状不同，就先变换到能够相加。
+英：If feature shapes differ, transform them before adding.
+
+78–84秒｜应用与边界：分类、检测、分割三个小场景依次出现，随后是设计、数据、训练三方面约束。
+中：它广泛用于视觉任务，但效果仍取决于设计与训练。
+英：It is widely used in vision, but results still depend on design and training.
+
+84–90秒｜总结：z = x + F(x) 主角块拉远到五块网络，最后 1.25 秒画面保持静止。
+中：保留原有信息，再学习改变——这就是残差连接。
+英：Keep the input and learn the change—that is a residual connection.
+
+## 三、视觉语言与色彩语义
+
+- 深海军蓝 `#081A2E` 一类：背景、面板、留白。
+- **青绿**：输入、捷径、前向信息；捷径永远画在珊瑚色分支旁边。
+- **珊瑚橙**：残差变换分支与修正量；修正量可以很大，也可以接近零。
+- **金黄**：相加节点与求和结果，兼作最终强调色。
+- **紫色**：训练模式、梯度、参数协调。
+- **米白**：纸张与对照区，给“改稿”隐喻一点温度，不引入第六种语义色。
+
+原创元素全部自己做：一只叫 MOMO 的猫（示例）、特征卡、残差块图形、加号节点、星尘背景、信息图 UI。不使用任何现成 IP、商标、真实视频素材，不照抄具体某支片子。
+
+## 四、科学准确性护栏（必须遵守）
+
+1. 深度提升表达能力，但优化可能同时变难——不要把“更深 = 更好”当结论。
+2. 退化现象指的是“更深的普通网络训练误差反而更高”，不是单纯过拟合；示意图表必须标注“示意”。
+3. 梯度部分只做定性描述：捷径提供更直接的通路，不等于“梯度永不消失”。
+4. 残差分支学的是 `F(x)`，相加是逐元素相加，模块输出记作 `z`。
+5. `H(x)` 是模块想学的映射，`F(x) = H(x) − x` 只作为概念差呈现。
+6. 形状不匹配时用投影类模块匹配形状，`1×1 卷积` 只作为示例提到。
+7. `F(x) ≈ 0` 时保留信息，但不等于自动得到完美的恒等映射。
+8. 训练和推理都会计算两条路径，捷径不是推理时“跳过层”的开关。
+9. 不虚构任何准确率、加速比、参数量、层数对比的具体数字。
+
+## 五、动画与节奏
+
+- 每 6 秒一个叙事单元，单元内部必须有连续运动与因果变化；禁止静态幻灯片轮播、纯字幕视频、模板素材堆叠。
+- 段落之间画面交叉淡化约 0.24 秒；字幕在段落末尾 0.13 秒淡出，不得提前消失。
+- 结尾从 88.75 秒起画面静止，保持到 90.00 秒。
+- 缓入缓出、轻微视差、克制的弹性形变；用视觉因果推动叙事，不要靠字幕硬讲。
+
+## 六、技术实现
+
+- 用 `render(t)` 的纯函数式渲染：同一个 t 必须得到同一帧；30fps 逐帧确定性输出。
+- 推荐做法：Python + Cairo/Pillow 直接输出 RGB 帧管道给 ffmpeg，或 HTML Canvas + 无头浏览器逐帧截图；**不要把 2700 张 PNG 落盘再拼**。
+- 编码参数：`-c:v libx264 -pix_fmt yuv420p -crf 18 -r 30`，且不输出音频流。
+- 出片后用 `ffprobe` 校验时长、分辨率、帧率、像素格式，再报告完成。
+
+## 七、交付前自检（逐项确认）
+
+- [ ] 时长 90.000 秒（误差 ≤0.05s），共 2700 帧，无音轨
+- [ ] 1920×1080、30fps、yuv420p，可用播放器正常播放
+- [ ] 15 段中英字幕与时间线完全对应，无溢出、无重叠、无错别字
+- [ ] 抽检 0s / 28s / 40s / 64s / 89s 五帧，画面元素与分镜一致
+- [ ] `z = x + F(x)` 在 36–42 秒段落出现，字形正确、不被遮挡
+- [ ] 全片无外部图片、无 AI 生图、无现成素材
+
+## 八、交付物
+
+1. `ResNet_90s_WorkBuddy/ResNet_90s.mp4`
+2. 中英双语 SRT 字幕
+3. 可复现的渲染源码
+4. `DESIGN.md`（时间线 + 配色 + 科学护栏）
+5. 4 张关键帧 PNG（约 28s / 40s / 64s / 89s）
+6. 不超过 5 行的制作说明
+
+## 九、事实参考（仅用于核对，不必在画面里堆链接）
+
+- He, Zhang, Ren, Sun. *Deep Residual Learning for Image Recognition*, arXiv:1512.03385
+- 不要求引用具体准确率数字；如需提及，必须能在原论文中找到对应表述。
+
+---
+
+现在开工。先用不超过 10 行复述你对时间线、无配音约束和科学护栏的理解，然后直接开始渲染，不要停下来等我确认。
+</code></pre>
+            </details>
+          </div>
+        </article>
+
+        <!-- 模板 -->
+        <article class="prompt-card">
+          <div class="prompt-card-head">
+            <div>
+              <h3>Kurzgesagt 风科普动画 · 通用提示词</h3>
+              <p class="ru-title" lang="ru">Универсальный шаблон · 7.8 KB · 128 行</p>
+            </div>
+            <div class="head-tools">
+              <button class="copy-btn copy-btn--light" type="button" data-copy="#prompt-template">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M5 15V5a2 2 0 0 1 2-2h9" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+                <span data-copy-label>复制全文</span>
+              </button>
+              <a class="download-btn" href="assets/prompts/kurzgesagt-prompt-template.md" download>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0 4-4m-4 4-4-4M5 19h14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                下载 .md
+              </a>
+            </div>
+          </div>
+          <div class="prompt-card-body">
+            <p>
+              把【】里的内容替换成你的题材即可复用：17 拍结构、深空平涂画风、配色语义、字幕规范与 7 条科学护栏。文件末尾还记录了制作过程中踩过的坑，例如 UTF-8 编码、HUD 元素、抽帧位置与响度。
+            </p>
+            <details class="prompt-details">
+              <summary>展开全文（128 行）</summary>
+              <pre class="prompt-code" id="prompt-template" tabindex="0"><code># Kurzgesagt 风科普动画 · 通用提示词
+
+&gt; 用法：把这份文件整段发给执行方，替换【】中的内容即可。它要求直接产出成片，
+&gt; 不是分镜表、不是方案书。文中的数值都是可复现的验收口径，不是修辞。
+
+---
+
+## 一、任务
+
+做一条【90–110】秒、**无旁白**、中英双语字幕的科普动画：
+
+- 主题：【残差网络 / 为什么深了反而难训】
+- 核心反常识点：【加深本应更强，但更深的普通网络连训练误差都更高】
+- 受众：【没有深度学习背景的普通观众】
+- 画风：参照 **Kurzgesagt – In a Nutshell** 的「深空平涂插画」路线——深色星空底、平涂高饱和色块、粗圆角、没有仪表盘式 UI。
+
+## 二、硬性输出
+
+1. **102 秒**（17 拍 × 6 秒，整秒对齐）；1920×1080、30fps、共 3060 帧；H.264 / yuv420p / bt709。
+   - 若必须压到 90 秒：改成 15 拍 × 6 秒，砍掉片头与收尾，不要靠压缩单拍时长。
+2. **无配音、无旁白、无 TTS，也不加配乐与音效**：成片不含音频流（ffmpeg 侧 -an）。
+3. 字幕**烧进画面**：中文 50px、英文 32px；白色 + 深色描边 + 柔和投影；
+   底部安全边距 ≥ 54px，左右 ≥ 96px；只压一层半透明渐变压暗，**不要圆角深色胶囊卡片**。
+4. 所有画面**程序化生成**：代码按 `render(t)` 逐帧确定性出图，同一 t 必得同一帧。
+   禁止外部图片、素材库、AI 生图、生成式视频。
+5. 独立目录输出，不覆盖任何已有文件。**做不到就说卡在哪一步，不许假装已经生成。**
+
+## 三、结构（17 拍，每拍 6 秒，不得改动拍序）
+
+| 拍 | 时间 | 内容 |
+|---|---|---|
+| 00 | 00–06 | **片头标题卡**：片名大字 + 英文副题 + 一句承诺（"一条捷径，让更深的网络学得动"）+ 一个母题剪影；底下字幕抛出核心问题 |
+| 01–15 | 06–96 | 十五拍正文，每拍一个中心观点，见下表 |
+| 16 | 96–102 | **收尾卡**：说清「这条片子想做什么」——一句判断式主张 + 一句可带走的结论 + 公式回扣 |
+
+正文十五拍的模板（按题材替换，一拍只讲一件事）：
+
+| # | 作用 | 残差网络示例 |
+|---|---|---|
+| 01 | 抛出问题 | 越深就一定越好吗 |
+| 02 | 给出现象/机制的第一步 | 更多层能组合更复杂的特征 |
+| 03 | 转折：代价 | 但层数增加，训练更难 |
+| 04 | 反常识证据 | 更深的普通网络，训练误差反而更高（标注"示意"） |
+| 05 | 提出关键操作 | 保留输入，只学修改 |
+| 06 | 生活类比 | 改稿而不是重写 |
+| 07 | 正式定义 | 残差块 = x + F(x) |
+| 08 | 拆解关键概念 | 残差就是"想学的映射减去输入" |
+| 09 | 边界条件 | F(x)≈0 时输出≈输入 |
+| 10 | 规模化 | 把模块堆成网络 |
+| 11 | 训练视角 | 捷径给梯度更直接的通路 |
+| 12 | 为什么有效 | 优化更容易，但仍不保证任意深度可训 |
+| 13 | 工程细节 | 形状不匹配时先投影再相加 |
+| 14 | 应用与限制 | 用途广，但效果取决于设计与训练 |
+| 15 | 收束 | 保留原有信息，再学习改变 |
+
+**片头片尾是必须项**，不是可选装饰：没有片头，观众不知道自己在看什么；没有收尾，
+片子只讲了"是什么"，没讲"为什么要看它"。
+
+## 四、画风规范
+
+- **底色**：深空蓝渐层（约 `#0B0F25 → #161B3C`），160 颗星（随机相位闪烁，疏密不均），
+  2–3 团极低对比的星云晕。
+- **禁止**：常驻 logo、进度条、章节标签、页码、发丝分隔线、点阵网格、四角定位括号、
+  3D 背板、内高光——这些是"仪表盘感"的来源，Kurzgesagt 画面里没有 UI。
+- **图元**：平涂色块 + 3px 同色描边，圆角大（≥ 内容高度的 8%）；光晕克制（面积大、透明度低）。
+- **配色语义**（全片一致，不许漂移）：
+  - 青绿 `#4ECDC4` = 输入 / 捷径 / 前向信息
+  - 珊瑚 `#FF6B6B` = 变换分支 / 修正量
+  - 金黄 `#FFD166` = 相加节点 / 结果 / 强调
+  - 紫 `#C77DFF` = 训练 / 梯度
+  - 奶油白 `#FFFDF7` = 正文与纸面
+- **字号层级**（1080p）：片名 120–130 / 标题 56–64 / 正文 40–46 / 说明 26–30 / **最小 22**。
+  低于 22px 的说明文字在手机上是糊的，宁可不写。
+- **动效**：每拍内部要有连续因果变化（元素由上一状态变到下一状态），禁止静态幻灯片；
+  拍与拍之间 0.12 秒交叉淡化；最后一拍结尾 1–1.25 秒定格。
+
+## 五、声音：不带音轨
+
+- 成片**只有一个视频流，没有音频流**（ffmpeg 侧即 `-an`）。
+- 不加旁白、不加 TTS、不加配乐、不加音效——静音环境（地铁、办公室、投屏）里也要能完整接收信息。
+- 因此**字幕是唯一的信息通道**：每句都要独立成立，不能靠语气、停顿、音效暗示补足。
+- 若确需配乐版，另出一版并保留静音母版，不要把带音轨的版本当默认交付。
+
+## 六、科学护栏（每一条都要在画面或字幕里守住）
+
+1. 结论不许绝对化：说"有助于""更容易"，不说"必然""保证"。
+2. 示意图表必须标「示意」，不能伪造真实实验曲线或准确率数字。
+3. 比喻要标注为比喻，且不承担机制解释。
+4. 公式的每个符号都要有画面锚点，不能只出现符号不解释。
+5. 反常识点要给出边界：例如"捷径不是推理时跳层"，避免观众形成错误直觉。
+6. 任何数字（层数、参数量、加速比）若无来源，一律不写。
+7. 收尾不复述全文，只给一句可带走的判断。
+
+## 七、交付前自检（逐项打勾，未过不许交付）
+
+- [ ] 时长 102.000s ±0.05，帧数 3060，30fps，1920×1080，yuv420p
+- [ ] 一个视频流 + 一个音频流（AAC 44.1k），**没有人声**
+- [ ] 响度 −19.5 LUFS ±1，真峰 ≤ −1 dBTP
+- [ ] 17 条字幕与画面一一对应，无溢出、无错字、无乱码
+- [ ] 片头有片名与英文副题，收尾有"这条片子想做什么"
+- [ ] 抽检片头 / 正中 / 收尾三帧，文案与设计稿一致
+- [ ] 全片无外部图片、无 AI 生图
+- [ ] 交付包齐全：成片、静音母版、SRT、封面（含 540×304 缩略测试图）、发布文案、交付说明
+
+## 八、交付物清单
+
+```
+成片.mp4              含音轨，无人声
+silent.mp4            同帧静音母版（投屏用）
+字幕.srt              与成片逐条对应
+cover/                16:9 封面 + 缩略测试图
+publish.md            标题 / 正文 / 话题 / 评论区首评
+DELIVERY.md           实测数据 + 与基线的偏差 + 已知限制
+src/                  可复现源码（画面 / 音床 / 封面）
+keyframes/            片头、关键节点、收尾的静帧
+```
+
+## 九、踩过的坑（照做能省一轮返工）
+
+1. **别用 Windows PowerShell 改源码文件**：`Set-Content -Encoding utf8` 会把 UTF-8 中文件
+   按 ANSI 重写，中文全变乱码且不可逆。改文件一律用编辑器工具或 Python 读写。
+2. **去掉 HUD 比调色更能改变"气质"**：同一套构图，去掉 logo/进度条/章节条之后立刻从
+   "数据看板"变成"插画"。
+3. **最小字号先定死再排版**：先按 22px 下限设计，比做完再放大省事。
+4. **抽帧不要在整 6 秒处抽**：那是交叉淡化点，两张画面各占一半，会误判成"错位"。
+   抽 3.5s、9.5s、15.5s 这种拍中时刻。
+5. **收尾卡要有主张**：只写"谢谢观看"等于没有收尾；要写清观众带走什么。
+6. **响度别照抄流媒体基线**：−25.5 LUFS 是留给平台二次归一化的，本地/网页直接播会偏轻。
+</code></pre>
+            </details>
+          </div>
+        </article>
+      </section>
+
+      <!-- 使用建议 -->
+      <section aria-labelledby="tips-title" style="margin-top:56px">
+        <div class="section-head">
+          <div class="section-head-main">
+            <span class="section-index">03 / NOTES</span>
+            <h2 id="tips-title" style="font-size:clamp(24px,2.8vw,30px)">复用之前，先改这四处<span class="ru-title" lang="ru">Что менять при повторном использовании</span></h2>
+          </div>
+        </div>
+        <div class="callout">
+          <span class="callout-title">使用建议</span>
+          <strong>一、改时长与画幅。</strong>16:9、30fps、无音轨是最容易出问题的三项，先在提示词里定死。<br />
+          <strong>二、改写时间线，不要只换主题。</strong>每一拍都要对应一个能画出来的动作；「讲得更深入」不是分镜。<br />
+          <strong>三、保留科学护栏。</strong>不绝对化、示意图标注、比喻有边界——这三条能挡掉大部分返工。<br />
+          <strong>四、自检清单逐项打勾。</strong>时长误差、字幕溢出、关键帧抽检都要实际检查，不能凭感觉验收。
+        </div>
+      </section>
+
+      <div class="post-nav">
+        <a class="btn btn-outline" href="index.html">← 返回首页</a>
+        <a class="btn btn-blue" href="videos/resnet.html">观看本期视频 →</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-main">
+      <div class="footer-brand">
+        <a class="brand" href="index.html">
+          <span class="brand-mark" aria-hidden="true">中俄</span>
+          <span class="brand-text">
+            <strong>中俄科普</strong>
+            <small>概念与提示词库 · Наука</small>
+          </span>
+        </a>
+        <p>
+          一个静态科普站：用短片讲概念，用双语文本拆概念，用提示词复现概念。
+          <span class="ru" lang="ru">Статический сайт о науке: фильм, объяснение и промпт — всё в одном месте.</span>
+        </p>
+      </div>
+      <div class="footer-links">
+        <div>
+          <h4>浏览</h4>
+          <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="videos/resnet.html">残差网络</a></li>
+            <li><a href="about.html">关于项目</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>资源</h4>
+          <ul>
+            <li><a href="assets/prompts/resnet-90s-prompt.md" download>提示词原文 .md</a></li>
+            <li><a href="assets/prompts/kurzgesagt-prompt-template.md" download>通用模板 .md</a></li>
+            <li><a href="__REPO_URL__" target="_blank" rel="noopener noreferrer">GitHub 仓库</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="shell footer-bottom">
+      <span>© <span data-year>2026</span> 中俄科普 · 内容用于科普学习，不构成专业结论</span>
+      <span>纯静态站点 · GitHub Pages</span>
+    </div>
+  </footer>
+
+  <script src="assets/js/site.js"></script>
+</body>
+</html>

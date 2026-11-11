@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>残差网络：为什么网络越深，反而更难训练？| 中俄科普</title>
+  <meta name="description" content="88 秒中英字幕短片 + 中俄双语概念解释：残差网络 ResNet 的退化现象、残差连接、梯度通路与科学边界。附完整生成提示词。" />
+  <meta name="theme-color" content="#0a1c2b" />
+  <meta property="og:type" content="video.other" />
+  <meta property="og:title" content="残差网络：为什么网络越深，反而更难训练？" />
+  <meta property="og:description" content="88 秒动画 + 中俄双语解释：z = x + F(x) 为什么让深层网络学得动。" />
+  <meta property="og:image" content="../assets/img/og-cover.jpg" />
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../assets/css/site.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">跳到主要内容</a>
+
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="../index.html" aria-label="中俄科普首页">
+        <span class="brand-mark" aria-hidden="true">中俄</span>
+        <span class="brand-text">
+          <strong>中俄科普</strong>
+          <small>概念与提示词库 · Наука</small>
+        </span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="打开菜单" data-nav-toggle>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="主导航">
+        <a href="../index.html">首页</a>
+        <a href="resnet.html" class="is-active" aria-current="page">视频库</a>
+        <a href="../prompts.html">提示词库</a>
+        <a href="../about.html">关于</a>
+      </nav>
+
+      <a class="header-cta" href="../prompts.html">
+        完整提示词
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="page-hero">
+      <div class="shell">
+        <nav class="breadcrumb" aria-label="面包屑">
+          <a href="../index.html">首页</a>
+          <span class="sep">/</span>
+          <a href="../index.html#library-title">视频库</a>
+          <span class="sep">/</span>
+          <span aria-current="page">残差网络</span>
+        </nav>
+
+        <p class="eyebrow">视频 01 · 人工智能系列</p>
+        <h1>残差网络：为什么网络越深，反而更难训练？</h1>
+        <p class="page-ru" lang="ru">Остаточные сети: почему глубокие сети сложнее обучать?</p>
+        <p class="page-lead">
+          一条捷径改变网络的输出方式：z = x + F(x)。短片用 11 个章节讲清它为什么有效、边界在哪里；下面是完整的中俄双语解释。
+        </p>
+
+        <div class="meta-bar">
+          <span class="meta-item"><b>88 秒</b> 时长</span>
+          <span class="meta-item"><b>11</b> 章节</span>
+          <span class="meta-item"><b>1280×720</b> · 30fps</span>
+          <span class="meta-item"><b>中文 / 英文</b> 字幕</span>
+          <span class="meta-item"><b>2026.11</b> 发布</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="shell article-layout">
+      <article class="article-main">
+        <!-- 视频 -->
+        <section aria-labelledby="video-title">
+          <h2 id="video-title" class="sr-only">短片播放器</h2>
+          <div class="video-shell">
+            <video id="lesson-video" controls preload="metadata" playsinline poster="../assets/img/resnet-cover.jpg" aria-label="残差网络科普短片，88 秒">
+              <source src="../assets/videos/resnet-88s.mp4" type="video/mp4" />
+              您的浏览器不支持 HTML5 视频，请<a href="../assets/videos/resnet-88s.mp4">下载视频文件</a>观看。
+            </video>
+            <div class="video-caption">
+              <span>mp4 · H.264 · 含音轨 · <span id="video-progress">0:00 / 1:28</span></span>
+              <span><a href="../assets/videos/resnet-88s.mp4" target="_blank" rel="noopener noreferrer">单独打开视频 ↗</a></span>
+            </div>
+          </div>
+        </section>
+
+        <!-- 章节 -->
+        <section class="chapter-block" aria-labelledby="chapters-title">
+          <h2 id="chapters-title">章节 <span class="ru-mini" lang="ru">11 глав · нажмите, чтобы перейти</span></h2>
+          <div class="chapter-grid">
+            <button class="chapter" type="button" data-chapter="0">
+              <img src="../assets/img/chapter-01.jpg" width="320" height="180" alt="" loading="lazy" />
+              <span class="c-text"><span class="c-time">0:00</span><span class="c-title">开场 · 残差网络</span></span>
+              <span class="c-arrow" aria-hidden="true">▶</span>
+            </button>
+            <button class="chapter" type="button" data-chapter="8">
+              <img src="../assets/img/chapter-09.jpg" width="320" height="180" alt="" loading="lazy" />
+              <span class="c-text"><span class="c-time">0:08</span><span class="c-title">深度的收益 · 复杂特征</span></span>
+              <span class="c-arrow" aria-hidden="true">▶</span>
+            </button>
+            <button class="chapter" type="button" data-chapter="16">
+              <img src="../assets/img/chapter-17.jpg" width="320" height="180" alt="" loading="lazy" />
+              <span class="c-text"><span class="c-time">0:16</span><span class="c-title">代价 · 训练变难</span></span>
+              <span class="c-arrow" aria-hidden="true">▶</span>
+            </button>
+            <button class="chapter" type="button" data-chapter="24">
+              <img src="../assets/img/chapter-25.jpg" width="320" height="180" alt="" loading="lazy" />
+              <span class="c-text"><span class="c-time">0:24</span><span class="c-title">捷径 · 保留输入</span></span>
+              <span class="c-arrow" aria-hidden="true">▶</span>
+            </button>
+            <button class="chapter" type="button" data-chapter="32">
+              <img src="../assets/img/chapter-33.jpg" width="320" height="180" alt="" loading="lazy" />
+              <span class="c-text"><span class="c-time">0:32</span><span class="c-title">残差块 · 输入 + 修正</span></span>
+              <span class="c-arrow" aria-hidden="true">▶</span>
+            </button>
+            <button class="chapter" type="button" data-chapter="40">
+              <img src="../assets/img/chapter-41.jpg" width="320" height="180" alt="" loading="lazy" />
+              <span class="c-text"><span class="c-time">0:40</span><span class="c-title">什么是「残差」</span></span>
+              <span class="c-arrow" aria-hidden="true">▶</span>
+            </button>
+            <button class="chapter" type="button" data-chapter="48">
+              <img src="../assets/img/chapter-49.jpg" width="320" height="180" alt="" loading="lazy" />
+              <span class="c-text"><span class="c-time">0:48</span><span class="c-title">堆叠 · 构成残差网络</span></span>
+              <span class="c-arrow" aria-hidden="true">▶</span>
+            </button>
+            <button class="chapter" type="button" data-chapter="56">
+              <img src="../assets/img/chapter-57.jpg" width="320" height="180" alt="" loading="lazy" />
+              <span class="c-text"><span class="c-time">0:56</span><span class="c-title">反向传播 · 更直接的梯度</span></span>
+              <span class="c-arrow" aria-hidden="true">▶</span>
+            </button>
+            <button class="chapter" type="button" data-chapter="64">
+              <img src="../assets/img/chapter-65.jpg" width="320" height="180" alt="" loading="lazy" />
+              <span class="c-text"><span class="c-time">1:04</span><span class="c-title">优化 · 从缠结到协调</span></span>
+              <span class="c-arrow" aria-hidden="true">▶</span>
+            </button>
+            <button class="chapter" type="button" data-chapter="72">
+              <img src="../assets/img/chapter-73.jpg" width="320" height="180" alt="" loading="lazy" />
+              <span class="c-text"><span class="c-time">1:12</span><span class="c-title">应用与边界 · 视觉任务</span></span>
+              <span class="c-arrow" aria-hidden="true">▶</span>
+            </button>
+            <button class="chapter" type="button" data-chapter="80">
+              <img src="../assets/img/chapter-81.jpg" width="320" height="180" alt="" loading="lazy" />
+              <span class="c-text"><span class="c-time">1:20</span><span class="c-title">收束 · 保留再改变</span></span>
+              <span class="c-arrow" aria-hidden="true">▶</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- 文章 -->
+        <div class="prose">
+          <section id="definition">
+            <h2>它是什么<span class="ru-mini" lang="ru">Что это такое</span></h2>
+            <p>
+              <strong>残差网络（ResNet）</strong>是一类深度神经网络结构。它把每个模块的输入 <b>x</b> 直接加到模块的输出上，得到
+              <b>z = x + F(x)</b>。这里的 <b>F(x)</b> 是模块学到的修正量，也就是「残差」。网络不再直接学习完整的映射 H(x)，而是学习它相对输入的改动量：F(x) = H(x) − x。
+            </p>
+            <div class="formula" aria-label="z 等于 x 加 F(x)">
+              <span class="sym">z</span><span>=</span><span class="sym">x</span><span>+</span><span class="sym">F(x)</span>
+            </div>
+            <p class="formula-note">z：模块输出　·　x：模块输入　·　F(x)：残差分支学到的修正量；相加为逐元素相加。</p>
+            <div class="ru-box" lang="ru">
+              <span class="label">По-русски</span>
+              Остаточная сеть (ResNet) — архитектура глубокой нейронной сети, в которой вход блока x складывается с результатом преобразования: z = x + F(x). Величина F(x) — выученная поправка, или остаток. Сеть учит не полное отображение H(x), а разность F(x) = H(x) − x.
+            </div>
+          </section>
+
+          <section id="why">
+            <h2>为什么重要<span class="ru-mini" lang="ru">Почему это важно</span></h2>
+            <p>
+              在 2015 年之前，把网络简单加深并不会稳定变好。更深的普通网络常常出现<strong>退化</strong>：训练误差本身反而更高，说明问题不在拟合能力，而在优化。残差连接把学习目标改成「相对输入的修正量」，让接近恒等映射的情况变得容易表达——只要把 F(x) 压到接近零。
+            </p>
+            <p>
+              这带来两个直接好处：一是深层网络可以被训练；二是梯度在反向传播时多了一条更短的路径，优化更稳定。ResNet 在 ImageNet 上的结果让「上百层」成为常规配置，也影响了后来大量的视觉与序列模型。
+            </p>
+            <div class="ru-box" lang="ru">
+              <span class="label">По-русски</span>
+              До 2015 года простое увеличение глубины не давало устойчивого выигрыша: у более глубоких обычных сетей ошибка на обучающей выборке оказывалась выше. Это явление называют деградацией — проблема не в переобучении, а в оптимизации. Остаточное соединение меняет цель обучения: сети проще свести F(x) к нулю, чем заново выучить тождественное преобразование. Кроме того, обходной путь даёт градиенту более короткую дорогу, и в результате стали возможны сети в сотни слоёв.
+            </div>
+          </section>
+
+          <section id="principle">
+            <h2>它怎么工作<span class="ru-mini" lang="ru">Как это работает</span></h2>
+            <p>
+              一个残差块有两条路：一条是<strong>残差分支</strong>，通常是两层卷积加非线性，输出 F(x)；另一条是<strong>捷径</strong>（shortcut），把输入 x 原样送到相加节点。两条路在末尾逐元素相加，得到 z = x + F(x)。
+            </p>
+
+            <figure class="figure">
+              <img src="../assets/img/resnet-shortcut.jpg" width="1280" height="720" alt="示意图：输入 x 经过两层变换得到 F(x)，同时通过上方的捷径直接到达金色相加节点" loading="lazy" />
+              <figcaption>短接路径把输入 x 直接送到相加节点，残差分支只负责学习修正量 F(x)。画面取自短片 00:24。</figcaption>
+            </figure>
+
+            <p>
+              当某些层的最优变换接近恒等映射时，网络不必用多层去精确复现输入，只要让 F(x) 接近 0。这比学习一个恒等变换容易得多，也更稳定。反过来说，如果该模块确实需要改变输入，F(x) 就会学到一个明显的修正量。
+            </p>
+
+            <figure class="figure">
+              <img src="../assets/img/resnet-residual.jpg" width="1280" height="720" alt="示意图：输入 x、目标映射 H(x) 与差值 F(x) 并排展示" loading="lazy" />
+              <figcaption>输入 x、目标映射 H(x) 与残差 F(x)：F(x) 是两者之差，最后再叠回输入。画面取自短片 00:40。</figcaption>
+            </figure>
+
+            <p>
+              如果两路形状不一致（通道数或空间尺寸不同），需要先用投影把 x 变换到与 F(x) 相同的形状，例如 1×1 卷积，然后才能相加。这一步只是形状匹配，不是「另一条学习分支」。
+            </p>
+            <p>
+              训练和推理时，两条路径都会计算。捷径不是推理阶段跳过某些层的开关——它始终参与前向计算，也把梯度带回前面的层。
+            </p>
+            <div class="ru-box" lang="ru">
+              <span class="label">По-русски</span>
+              Блок содержит две ветви: основную, которая вычисляет F(x), и обходную, которая передаёт x напрямую к узлу сложения. Результат: z = x + F(x). Если размерности не совпадают, вход приводят к нужной форме проекцией, например свёрткой 1×1. Обе ветви работают и при обучении, и при выводе — это не переключатель «пропустить слои».
+            </div>
+          </section>
+
+          <section id="boundaries">
+            <h2>边界与常见误解<span class="ru-mini" lang="ru">Границы и заблуждения</span></h2>
+            <div class="callout">
+              <span class="callout-title">请先看这一节</span>
+              短片里反复标注「示意」，因为这里的每一句结论都有边界。把下面几条记牢，比记住公式更有用。
+            </div>
+            <ul class="point-list">
+              <li><strong>更深 ≠ 一定更好。</strong>深度提升表达能力，也同时增加优化难度；效果取决于设计与训练。</li>
+              <li><strong>退化不是过拟合。</strong>过拟合是训练误差低、测试误差高；退化是训练误差本身就变高。</li>
+              <li><strong>F(x) ≈ 0 不等于「什么都没学」。</strong>它表示该模块选择保留输入，这是恒等映射附近的一种解。</li>
+              <li><strong>捷径不是推理时的「跳过层」。</strong>两条路径都参与前向与反向计算，始终共同决定输出。</li>
+              <li><strong>「梯度不会消失」是过度承诺。</strong>捷径提供更直接的通路、改善优化，但不保证任意深度都能训练。</li>
+              <li><strong>示意图不是实验数据。</strong>短片中的仪表与曲线只用于说明趋势，不对应任何真实测量。</li>
+            </ul>
+            <p lang="ru" style="margin-top:16px">
+              Глубина не гарантирует качество. Деградация — это рост ошибки на обучающей выборке, а не переобучение. F(x) ≈ 0 означает сохранение входа, а не «сеть ничего не выучила». Обходное соединение работает и при обучении, и при выводе.
+            </p>
+          </section>
+
+          <section id="prompt">
+            <h2>生成它的提示词<span class="ru-mini" lang="ru">Промпт, по которому сделан фильм</span></h2>
+            <p>
+              本片由一份结构化提示词生成：它锁定了 15 拍时间线、配色语义、科学护栏和编码参数，并要求执行方直接交付成片，而不是方案或分镜表。这份提示词本身也是一件可以复用的「科普生产工具」。
+            </p>
+            <div class="callout callout--teal">
+              <span class="callout-title">版本说明</span>
+              提示词原始设定是 <strong>90 秒、无配音、底部长驻中英字幕</strong>；本页成片是 88 秒剪辑版（1280×720、含音轨），章节节奏与原始 15 拍基本对应。两版都以「z = x + F(x)」为核心。
+            </div>
+            <div class="feature-actions" style="margin-top:18px">
+              <a class="btn btn-blue" href="../prompts.html">查看完整提示词</a>
+              <a class="btn btn-outline" href="../assets/prompts/resnet-90s-prompt.md" download>下载 .md 原文</a>
+            </div>
+          </section>
+
+          <section id="credits">
+            <h2>制作与参考<span class="ru-mini" lang="ru">Источники</span></h2>
+            <p>
+              视频、封面与插图由项目作者使用 AI 工具生成、剪辑与校对，封面与示意图取自动画关键帧。内容用于科普学习，不构成专业结论；涉及的数据与结论以原始论文和教材为准。
+            </p>
+            <p>
+              原始论文：He, Zhang, Ren, Sun. <em>Deep Residual Learning for Image Recognition</em>. arXiv:1512.03385, 2015.
+            </p>
+          </section>
+
+          <div class="post-nav">
+            <a class="btn btn-outline" href="../index.html">← 返回视频库</a>
+            <a class="btn btn-blue" href="../prompts.html">查看提示词库 →</a>
+          </div>
+        </div>
+      </article>
+
+      <aside class="article-aside" aria-label="页面信息">
+        <section class="aside-card">
+          <h3>本片信息<span class="ru-mini" lang="ru">О фильме</span></h3>
+          <ul class="info-list">
+            <li><span class="k">时长</span><span class="v">88 秒</span></li>
+            <li><span class="k">章节</span><span class="v">11</span></li>
+            <li><span class="k">画面</span><span class="v">1280 × 720</span></li>
+            <li><span class="k">帧率</span><span class="v">30 fps</span></li>
+            <li><span class="k">音轨</span><span class="v">含 AAC 音轨</span></li>
+            <li><span class="k">字幕</span><span class="v">中文 / 英文</span></li>
+            <li><span class="k">发布</span><span class="v">2026.11</span></li>
+          </ul>
+        </section>
+
+        <section class="aside-card">
+          <h3>本页目录<span class="ru-mini" lang="ru">Содержание</span></h3>
+          <ul class="toc">
+            <li><a href="#definition" data-toc-link>它是什么</a></li>
+            <li><a href="#why" data-toc-link>为什么重要</a></li>
+            <li><a href="#principle" data-toc-link>它怎么工作</a></li>
+            <li><a href="#boundaries" data-toc-link>边界与误解</a></li>
+            <li><a href="#prompt" data-toc-link>生成提示词</a></li>
+            <li><a href="#credits" data-toc-link>制作与参考</a></li>
+          </ul>
+        </section>
+
+        <section class="aside-card">
+          <h3>相关概念<span class="ru-mini" lang="ru">Связанные понятия</span></h3>
+          <div class="tag-cloud">
+            <span>残差连接</span>
+            <span>退化现象</span>
+            <span>恒等映射</span>
+            <span>跳跃连接</span>
+            <span>梯度</span>
+            <span>ImageNet</span>
+          </div>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-main">
+      <div class="footer-brand">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true">中俄</span>
+          <span class="brand-text">
+            <strong>中俄科普</strong>
+            <small>概念与提示词库 · Наука</small>
+          </span>
+        </a>
+        <p>
+          一个静态科普站：用短片讲概念，用双语文本拆概念，用提示词复现概念。
+          <span class="ru" lang="ru">Статический сайт о науке: фильм, объяснение и промпт — всё в одном месте.</span>
+        </p>
+      </div>
+      <div class="footer-links">
+        <div>
+          <h4>浏览</h4>
+          <ul>
+            <li><a href="../index.html">首页</a></li>
+            <li><a href="../prompts.html">提示词库</a></li>
+            <li><a href="../about.html">关于项目</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>资源</h4>
+          <ul>
+            <li><a href="../assets/prompts/resnet-90s-prompt.md" download>提示词原文 .md</a></li>
+            <li><a href="../assets/videos/resnet-88s.mp4" download>视频文件 .mp4</a></li>
+            <li><a href="__REPO_URL__" target="_blank" rel="noopener noreferrer">GitHub 仓库</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="shell footer-bottom">
+      <span>© <span data-year>2026</span> 中俄科普 · 内容用于科普学习，不构成专业结论</span>
+      <span>纯静态站点 · GitHub Pages</span>
+    </div>
+  </footer>
+
+  <script src="../assets/js/site.js"></script>
+</body>
+</html>

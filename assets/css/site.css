@@ -977,6 +977,8 @@ table.data td b { color: var(--ink); font-weight: 600; }
 }
 
 /* 27.5 Error page ------------------------------------------------------- */
+.anchor { display: block; height: 0; scroll-margin-top: 96px; }
+
 .error-page {
   display: grid; place-items: center; gap: 8px;
   min-height: calc(100vh - var(--header-h) - 200px);

@@ -57,7 +57,7 @@
           <span aria-current="page">关于项目</span>
         </nav>
         <p class="page-kicker">About · 项目说明</p>
-        <h1>把科学讲清楚，也用两种语言讲清楚。</h1>
+        <h1 data-blur-text>把科学讲清楚，也用两种语言讲清楚。</h1>
         <p class="page-kk" lang="kk">Ғылымды анық түсіндіру — екі тілде.</p>
         <p class="page-lead">中哈科普是一个纯静态的中哈双语科普站：每部短片配中文与哈萨克语解释，以及可复现的制作提示词。没有后台，没有数据库，没有构建步骤。</p>
       </div>
@@ -66,14 +66,14 @@
     <div class="shell about-page">
       <div class="about-grid">
         <div class="about-main prose">
-          <section id="what">
+          <section id="what" data-reveal>
             <h2>项目是什么<span class="kk" lang="kk">Бұл жоба не?</span></h2>
             <p>科普视频看完很容易「好像懂了」，关掉页面就忘了。这里把同一件事拆成三层：先用 <strong>88 秒动画</strong>建立直觉，再用<strong>中文</strong>把概念、原理和边界写清楚，最后用<strong>哈萨克语</strong>做对照，方便中文或哈萨克语读者互相校准。</p>
             <p>每部片子还附一份<strong>生成提示词</strong>。它不是宣传文案，而是一份制作说明：时间线、配色语义、科学护栏、编码参数、验收清单。公开提示词，意味着别人可以照着做一部新的，也可以指出我们哪里没说清。</p>
             <p>站点本身是纯静态 HTML。双击任何页面都能离线打开；发布到 GitHub Pages 后，每部新片只需要增加一个页面和一条首页条目。</p>
           </section>
 
-          <section id="language">
+          <section id="language" data-reveal>
             <h2>关于中哈双语<span class="kk" lang="kk">Екі тіл туралы</span></h2>
             <p>视频本身的字幕是<strong>中文 / 英文</strong>；本站额外提供<strong>中文 / 哈萨克语</strong>的概念对照。哈萨克语部分以准确传达概念为目标，尽量不用生硬的直译；它仍是一份教学初稿，术语与语气都欢迎指正。</p>
             <div class="kk-box" lang="kk">
@@ -83,14 +83,14 @@
             <p>之所以把两种语言放在同一页而不是做语言切换，是因为这个项目的读者常常同时使用两种语言：中文读者可以借哈萨克语核对术语，哈萨克语读者可以借中文理解语境。</p>
           </section>
 
-          <section id="content">
+          <section id="content" data-reveal>
             <h2>内容与制作<span class="kk" lang="kk">Мазмұны мен өндірісі</span></h2>
             <p>视频、封面与插图由项目作者使用 AI 工具生成、剪辑与校对；概念文本参考原始论文与公开教材后重写。内容用于科普学习，不构成专业结论或建议。</p>
             <p>首期参考：He, Zhang, Ren, Sun. <em>Deep Residual Learning for Image Recognition</em>. arXiv:1512.03385, 2015.</p>
             <p>发现事实错误、术语误译或排版问题，欢迎在 GitHub 仓库提交 Issue；转载或复用内容请注明出处。</p>
           </section>
 
-          <section id="add">
+          <section id="add" data-reveal>
             <h2>如何新增一部视频<span class="kk" lang="kk">Жаңа фильмді қалай қосу</span></h2>
             <p>整个流程只有四步，不需要安装任何工具：</p>
             <ol class="steps">
@@ -114,7 +114,7 @@
             <p><strong>路径提示：</strong><code>videos/</code> 下的页面引用素材时使用 <code>../assets/</code>；首页与 <code>concepts.html</code> 使用 <code>assets/</code>。封面图保持 1280×720 左右即可，过大的原图会拖慢首屏。</p>
           </section>
 
-          <section id="tech">
+          <section id="tech" data-reveal>
             <h2>技术说明<span class="kk" lang="kk">Техникалық жағы</span></h2>
             <p>全站只有 HTML、CSS 和一小段原生 JavaScript。没有框架、没有外部字体、没有分析脚本，也没有 Cookie。视频使用浏览器原生 <code>&lt;video&gt;</code> 播放；复制、章节跳转、收藏和点击粒子都是渐进增强，禁用 JavaScript 后正文与播放仍然可用。</p>
             <p>页面使用系统字体栈（Inter / Noto Sans SC / 微软雅黑 / PingFang），因此在离线和不同系统上都不会出现字体请求失败导致的闪烁。整个站点可以拷贝到 U 盘里直接打开。</p>
@@ -148,7 +148,7 @@ zhong-ha/
 └─ README.md</pre>
           </section>
 
-          <section id="credits">
+          <section id="credits" data-reveal>
             <h2>版权与参考<span class="kk" lang="kk">Құқықтар мен дереккөздер</span></h2>
             <p>视频、封面与插图由项目作者使用 AI 工具生成、剪辑与校对；概念文本参考原始论文与公开教材后重写。内容用于科普学习，不构成专业结论或建议。</p>
             <p>首期参考：He, Zhang, Ren, Sun. <em>Deep Residual Learning for Image Recognition</em>. arXiv:1512.03385, 2015.</p>
@@ -157,7 +157,7 @@ zhong-ha/
         </div>
 
         <aside class="about-aside" aria-label="项目信息与快速入口">
-          <section class="side-card">
+          <section class="side-card" data-reveal data-spotlight>
             <h2 class="side-title">项目信息<span class="kk" lang="kk">Жоба туралы</span></h2>
             <ul class="about-facts">
               <li><span class="k">类型</span><span class="v">静态科普站</span></li>
@@ -170,7 +170,7 @@ zhong-ha/
             </ul>
           </section>
 
-          <section class="side-card">
+          <section class="side-card" data-reveal data-spotlight>
             <h2 class="side-title">快速入口<span class="kk" lang="kk">Жылдам сілтемелер</span></h2>
             <ul class="path-list">
               <li><a href="videos/resnet.html">残差网络 · 视频与概念</a></li>
@@ -180,7 +180,7 @@ zhong-ha/
             </ul>
           </section>
 
-          <section class="side-card">
+          <section class="side-card" data-reveal data-spotlight>
             <h2 class="side-title">设计原则<span class="kk" lang="kk">Дизайн қағидалары</span></h2>
             <ul class="path-list">
               <li><a href="#what"><span class="path-num">01</span>信息优先，装饰克制</a></li>
@@ -248,5 +248,6 @@ zhong-ha/
 
   <script src="assets/js/data.js"></script>
   <script src="assets/js/site.js"></script>
+  <script src="assets/js/motion.js"></script>
 </body>
 </html>

@@ -6,7 +6,7 @@
 
 首期内容：《残差网络：为什么网络越深，反而更难训练？》——88 秒中英字幕动画 + 中文/哈萨克语概念页 + 90 秒版完整制作提示词。
 
-![中哈科普首页](docs/preview-redesign.jpg)
+![中哈科普首页](docs/preview-motion.jpg)
 
 ## 在线访问
 
@@ -29,7 +29,7 @@
 - **字体**：中文优先 Noto Sans SC / Microsoft YaHei，哈萨克语与西文优先 Inter / Noto Sans；全站使用系统字体栈，无外部字体请求。
 - **版式**：最大内容宽度 1240px，8px 间距体系，卡片圆角 12–18px，按钮圆角 8–12px，正文 14.5–16px，区域标题 26–31px。
 - **组件**：统一的按钮、分类卡片、视频精选卡、概念卡、双语知识块、数据条目与代码区；不在每张卡片上堆叠标签和装饰。
-- **动效**：Hero 进入动画、SVG 捷径流动、卡片悬停、导航选中、复制反馈，以及自研 **Click Spark** 点击粒子（品牌蓝 / 青绿 / 少量白）。所有动效遵循 `prefers-reduced-motion`。
+- **动效**：参考 React Bits 的交互思路，用零依赖原生 JS 重写——Hero 交互点阵（Canvas）、标题逐字模糊入场（BlurText）、统计数字滚动（CountUp）、滚动揭示（AnimatedContent）、卡片光斑（SpotlightCard）、短标签解码（DecryptedText）、Canvas 火花（ClickSpark）、阅读进度与回到顶部。所有动效遵循 `prefers-reduced-motion`，禁用 JS 时内容仍完整可见。
 
 ## 数据
 
@@ -54,7 +54,8 @@
 │   └── resnet.html
 ├── assets/
 │   ├── css/site.css        # Design System + 响应式
-│   ├── js/site.js          # 交互 / Click Spark / 复制 / 章节
+│   ├── js/site.js          # 导航 / 复制 / 章节 / 收藏
+│   ├── js/motion.js        # BlurText / CountUp / 点阵 / 光斑 / 火花 / 进度
 │   ├── js/data.js          # 真实内容数据
 │   ├── img/                # 封面、关键帧、分享图、favicon
 │   ├── videos/             # resnet-88s.mp4

@@ -198,12 +198,9 @@ button { font: inherit; color: inherit; }
     radial-gradient(620px 360px at 4% 0%, rgba(40, 182, 176, .07), transparent 60%),
     linear-gradient(180deg, #F8FAFC 0%, var(--bg) 100%);
 }
-.hero::before {
-  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .5;
-  background-image: radial-gradient(rgba(21, 59, 89, .14) 1px, transparent 1px);
-  background-size: 26px 26px;
-  -webkit-mask-image: linear-gradient(110deg, #000 0%, transparent 46%);
-  mask-image: linear-gradient(110deg, #000 0%, transparent 46%);
+.hero-dots {
+  position: absolute; inset: 0; z-index: 0;
+  width: 100%; height: 100%; pointer-events: none;
 }
 .hero .shell { position: relative; z-index: 1; }
 .hero-grid {
@@ -804,13 +801,10 @@ table.data td b { color: var(--ink); font-weight: 600; }
 .footer-bottom .mono { font-family: var(--font-mono); font-size: 10px; letter-spacing: .06em; }
 
 /* 25. Spark / toast ------------------------------------------------------ */
-.click-spark {
-  position: fixed; z-index: 9998; pointer-events: none;
-  border-radius: 999px; background: var(--spark-color, var(--blue));
-  will-change: transform, opacity;
-  animation: sparkFly .62s cubic-bezier(.16, .84, .28, 1) forwards;
+.spark-layer {
+  position: fixed; inset: 0; z-index: 9998;
+  width: 100%; height: 100%; pointer-events: none;
 }
-.click-spark--line { height: 9px; width: 2px; border-radius: 2px; }
 .toast {
   position: fixed; left: 50%; bottom: 26px; z-index: 9999;
   transform: translate(-50%, 12px); opacity: 0; pointer-events: none;
@@ -826,11 +820,6 @@ table.data td b { color: var(--ink); font-weight: 600; }
 @keyframes nodePulse { 0%, 100% { opacity: .7; } 50% { opacity: 1; } }
 @keyframes twinkle { 0%, 100% { opacity: .25; } 50% { opacity: .9; } }
 @keyframes pulseDot { 0% { box-shadow: 0 0 0 0 rgba(40, 182, 176, .45); } 70% { box-shadow: 0 0 0 7px rgba(40, 182, 176, 0); } 100% { box-shadow: 0 0 0 0 rgba(40, 182, 176, 0); } }
-@keyframes sparkFly {
-  0% { opacity: 0; transform: translate(-50%, -50%) scale(.35); }
-  18% { opacity: 1; }
-  100% { opacity: 0; transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(.12) rotate(var(--rot)); }
-}
 @keyframes heroIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 .hero-copy > * { animation: heroIn .7s var(--ease) both; }
 .hero-copy > *:nth-child(2) { animation-delay: .05s; }
@@ -840,6 +829,79 @@ table.data td b { color: var(--ink); font-weight: 600; }
 .hero-copy > *:nth-child(6) { animation-delay: .22s; }
 .hero-copy > *:nth-child(7) { animation-delay: .26s; }
 .hero-visual { animation: heroIn .8s .12s var(--ease) both; }
+
+/* 26.5 Editorial motion enhancements ------------------------------------ */
+/* BlurText：逐字模糊入场 */
+.bt-inner { display: inline; }
+.bt-seg {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(9px);
+  transform: translateY(.26em);
+  will-change: transform, filter, opacity;
+}
+.bt.is-in .bt-seg {
+  animation: btIn .72s var(--ease) forwards;
+  animation-delay: calc(var(--i, 0) * 32ms);
+}
+@keyframes btIn { to { opacity: 1; filter: blur(0); transform: none; } }
+.bt.bt-done .bt-seg { opacity: 1; filter: none; transform: none; animation: none; }
+.hero-copy > h1[data-blur-text] { animation: none; }
+.page-hero h1[data-blur-text] { animation: none; }
+
+/* 数字滚动时保持宽度稳定 */
+.metric-num { font-variant-numeric: tabular-nums; }
+
+/* AnimatedContent：滚动揭示（仅 JS 对首屏外元素启用） */
+[data-reveal].is-armed {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .65s var(--ease), transform .65s var(--ease);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+[data-reveal].is-visible { opacity: 1; transform: none; }
+
+/* SpotlightCard：鼠标跟随的柔和光斑 */
+[data-spotlight] { position: relative; }
+[data-spotlight] > * { position: relative; z-index: 1; }
+[data-spotlight]::after {
+  content: "";
+  position: absolute; inset: 0; z-index: 0;
+  border-radius: inherit;
+  background: radial-gradient(340px circle at var(--mx, 50%) var(--my, 0%),
+              rgba(40, 120, 200, .075), transparent 68%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s var(--ease);
+}
+[data-spotlight]:hover::after { opacity: 1; }
+
+/* 阅读进度 */
+.read-progress {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  height: 2px; pointer-events: none;
+}
+.read-progress i {
+  display: block; width: 100%; height: 100%;
+  transform: scaleX(0); transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--blue), var(--teal));
+}
+
+/* 回到顶部 */
+.to-top {
+  position: fixed; right: 24px; bottom: 24px; z-index: 90;
+  display: grid; place-items: center; width: 42px; height: 42px;
+  border: 1px solid var(--line-strong); border-radius: 10px;
+  background: rgba(255, 255, 255, .92); color: var(--blue-dark);
+  box-shadow: var(--shadow-sm); cursor: pointer;
+  opacity: 0; visibility: hidden; transform: translateY(8px);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  transition: opacity .2s var(--ease), transform .2s var(--ease), visibility .2s;
+}
+.to-top svg { width: 16px; height: 16px; }
+.to-top:hover { border-color: var(--blue); color: var(--blue); transform: translateY(0); }
+.to-top.is-visible { opacity: 1; visibility: visible; transform: none; }
 
 /* 27. Responsive --------------------------------------------------------- */
 @media (max-width: 1120px) {
@@ -1003,9 +1065,15 @@ table.data td b { color: var(--ink); font-weight: 600; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
   .hero-copy > *, .hero-visual { animation: none; }
+  .bt-seg { opacity: 1 !important; filter: none !important; transform: none !important; animation: none !important; }
+  [data-reveal].is-armed { opacity: 1; transform: none; transition: none; }
+  [data-spotlight]::after { display: none; }
+  .to-top { transition: none; }
 }
 @media print {
-  .site-header, .site-footer, .hero-visual, .player-card, .watch-aside, .chapters, .click-spark, .toast, .prompt-banner-action { display: none !important; }
+  .site-header, .site-footer, .hero-visual, .hero-dots, .player-card, .watch-aside, .chapters, .spark-layer, .read-progress, .to-top, .toast, .prompt-banner-action { display: none !important; }
+  .bt-seg { opacity: 1 !important; filter: none !important; transform: none !important; animation: none !important; }
+  [data-reveal].is-armed { opacity: 1 !important; transform: none !important; }
   body { background: #fff; }
   .watch-grid, .about-grid { display: block; }
   .shell { width: 100%; }

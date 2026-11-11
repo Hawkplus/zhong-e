@@ -1,8 +1,8 @@
 /* 中哈科普 · 站点交互
    - 移动端导航 / 吸顶状态
    - 数据驱动的统计与分类数量
-   - Click Spark 点击粒子
    - 复制、收藏、章节跳转、Toast
+   - 视觉动效（点阵 / 模糊入场 / 数字滚动 / 光斑 / 火花）见 motion.js
    无依赖，禁用 JS 时页面内容仍完整可读。 */
 (function () {
   'use strict';
@@ -215,51 +215,6 @@
     });
   }
 
-  /* ---------- Click Spark ---------- */
-  function initSpark() {
-    if (reduceMotion) return;
-    var COLORS = ['#2878C8', '#28B6B0', '#5FA9E0'];
-
-    document.addEventListener('click', function (event) {
-      var target = event.target.closest('[data-spark]');
-      if (!target) return;
-      if (target.disabled || target.getAttribute('aria-disabled') === 'true') return;
-
-      var x, y;
-      if (event.detail > 0 && event.clientX) {
-        x = event.clientX; y = event.clientY;
-      } else {
-        var rect = target.getBoundingClientRect();
-        x = rect.left + rect.width / 2;
-        y = rect.top + rect.height / 2;
-      }
-
-      var dark = target.matches('.btn-primary, .play-orb, .prompt-banner .btn, .feature-media');
-      var colors = dark ? COLORS.concat('#FFFFFF') : COLORS;
-      var count = 13;
-
-      for (var i = 0; i < count; i++) {
-        var particle = document.createElement('span');
-        var isLine = i % 3 === 0;
-        var size = isLine ? 2 : 2 + Math.random() * 2.2;
-        var angle = (Math.PI * 2 * i) / count + (Math.random() - .5) * .42;
-        var distance = (isLine ? 18 : 24) + Math.random() * 26;
-
-        particle.className = 'click-spark' + (isLine ? ' click-spark--line' : '');
-        particle.style.left = x + 'px';
-        particle.style.top = y + 'px';
-        particle.style.width = size + 'px';
-        particle.style.height = (isLine ? 9 : size) + 'px';
-        particle.style.setProperty('--dx', (Math.cos(angle) * distance).toFixed(1) + 'px');
-        particle.style.setProperty('--dy', (Math.sin(angle) * distance).toFixed(1) + 'px');
-        particle.style.setProperty('--rot', (Math.random() * 240 - 120).toFixed(0) + 'deg');
-        particle.style.setProperty('--spark-color', colors[Math.floor(Math.random() * colors.length)]);
-        particle.addEventListener('animationend', function () { this.remove(); });
-        document.body.appendChild(particle);
-      }
-    });
-  }
-
   /* ---------- 年份 ---------- */
   function initYear() {
     $$('[data-year]').forEach(function (el) { el.textContent = String(new Date().getFullYear()); });
@@ -272,7 +227,6 @@
     initCopy();
     initChapters();
     initFavorite();
-    initSpark();
     initYear();
   });
 })();

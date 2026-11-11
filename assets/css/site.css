@@ -1219,3 +1219,19 @@ html.lang-kk .error-page .error-desc { margin-top: 8px; }
   .shell { width: 100%; }
   .stage-card, .principle-card, .definition-band { break-inside: avoid; }
 }
+
+/* Visual refresh: aurora lighting and elevated interactive surfaces. */
+.hero { background: radial-gradient(ellipse at 10% 15%, #e0f8f4, transparent 55%), radial-gradient(ellipse at 90% 70%, #dce7ff, transparent 60%), #f8fafc; isolation:isolate; }
+.hero::before { content:""; position:absolute; inset:0; z-index:-1; background:radial-gradient(ellipse at 60% 25%, #b3eee580, transparent 55%); animation:aurora-drift 12s ease-in-out infinite alternate; pointer-events:none; }
+@keyframes aurora-drift { to { transform:translateY(35px); opacity:.4; } }
+.visual-stage { box-shadow:0 30px 80px #153b5933, 0 0 50px #28b6b022; border:1px solid #7ddbd766; }
+.category-card, .concept-card { border-radius:20px; transition:transform .25s ease, box-shadow .25s ease; }
+a.category-card:hover, a.concept-card:hover { transform:translateY(-6px); box-shadow:0 20px 45px #153b5915; }
+.btn-primary { box-shadow:0 8px 24px #2878c830; }
+:focus-visible { outline:3px solid #17847d; outline-offset:5px; }
+.concept-search { display:grid; gap:10px; margin:0 0 32px; }
+.concept-search input { width:100%; box-sizing:border-box; padding:16px 20px; border:1px solid #a9c7d5; border-radius:14px; background:#fff; color:#153b59; font:inherit; }
+.concept-search p { margin:0; color:#476478; }
+.resume-control { display:block; margin:16px 0; padding:12px 20px; border:1px solid #2878c8; border-radius:12px; background:#edf7ff; color:#153b59; cursor:pointer; font:inherit; }
+[hidden] { display:none !important; }
+@media (prefers-reduced-motion:reduce) { .hero::before { animation:none; } .category-card, .concept-card { transition:none; } }

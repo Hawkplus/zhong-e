@@ -245,3 +245,75 @@
     initYear();
   });
 })();
+
+/* Search and explicit playback resume, with graceful storage fallback. */
+(function () {
+  'use strict';
+  document.addEventListener('DOMContentLoaded', function () {
+    function tr(zh, kk) { return window.SITE_LANG === 'kk' ? kk : zh; }
+    var list = document.querySelector('.concept-list');
+    if (list) {
+      var form = document.createElement('div');
+      form.className = 'concept-search';
+      var label = document.createElement('label');
+      label.htmlFor = 'concept-search';
+      var input = document.createElement('input');
+      input.id = 'concept-search';
+      input.type = 'search';
+      var status = document.createElement('p');
+      status.setAttribute('role', 'status');
+      form.append(label, input, status);
+      list.before(form);
+      var entries = Array.from(list.querySelectorAll('.concept-entry'));
+      function filter() {
+        var query = input.value.trim().toLocaleLowerCase();
+        var count = 0;
+        entries.forEach(function (entry) {
+          entry.hidden = !entry.textContent.toLocaleLowerCase().includes(query);
+          if (!entry.hidden) count++;
+        });
+        label.textContent = tr('搜索概念', 'Ұғымдарды іздеу');
+        input.placeholder = tr('输入中文、哈萨克语或英文关键词', 'Қазақша, қытайша немесе ағылшынша іздеу');
+        status.textContent = count ? tr('找到 ' + count + ' 个概念', count + ' ұғым табылды') : tr('没有匹配的概念，请更换关键词。', 'Ұғым табылмады. Басқа сөзді қолданыңыз.');
+      }
+      input.addEventListener('input', filter);
+      window.addEventListener('langchange', filter);
+      window.addEventListener('hashchange', function () { input.value = ''; filter(); });
+      filter();
+    }
+    var video = document.querySelector('#lesson-video');
+    if (!video) return;
+    var key = 'zhongha:progress:resnet';
+    var saved = 0;
+    try { saved = Number(localStorage.getItem(key)); } catch (error) {}
+    var button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'resume-control';
+    button.hidden = true;
+    video.after(button);
+    function renderResume() {
+      button.textContent = tr('继续上次观看 · ', 'Көруді жалғастыру · ') + Math.floor(saved) + 's';
+      button.hidden = !(Number.isFinite(saved) && saved > 2 && Number.isFinite(video.duration) && saved < video.duration - 2);
+    }
+    video.addEventListener('loadedmetadata', renderResume);
+    window.addEventListener('langchange', renderResume);
+    renderResume();
+    button.addEventListener('click', function () {
+      video.currentTime = saved;
+      button.hidden = true;
+      video.play().catch(function () {});
+    });
+    var lastSaved = -1;
+    video.addEventListener('timeupdate', function () {
+      var seconds = Math.floor(video.currentTime);
+      if (seconds === lastSaved || video.paused) return;
+      lastSaved = seconds;
+      try { localStorage.setItem(key, String(seconds)); } catch (error) {}
+    });
+    video.addEventListener('ended', function () {
+      saved = 0;
+      button.hidden = true;
+      try { localStorage.removeItem(key); } catch (error) {}
+    });
+  });
+})();

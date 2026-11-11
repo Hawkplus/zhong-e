@@ -1272,3 +1272,20 @@ a.category-card:hover, a.concept-card:hover { transform:translateY(-6px); box-sh
 .hero { background:radial-gradient(ellipse at 12% 15%, #d7f7ed, transparent 55%), radial-gradient(ellipse at 90% 65%, #c5d9ff, transparent 68%), #f4f9fc; }
 .visual-stage { box-shadow:0 24px 56px #153b5940, 0 0 48px #2aa8ab26; }
 .practice-jump { margin-bottom:20px; }
+/* Focused reading and touch targets from the interface review. */
+.practice { max-width: 860px; margin-inline: auto; }
+.practice legend { font-size: clamp(17px, 2vw, 20px); line-height: 1.6; }
+.practice-options button { min-height: 52px; line-height: 1.6; }
+.practice-feedback { max-width: 65ch; line-height: 1.8; }
+.practice progress { border: 0; border-radius: 8px; overflow: hidden; background: #dce9eb; }
+.practice progress::-webkit-progress-bar { background: #dce9eb; border-radius: 8px; }
+.practice progress::-webkit-progress-value { background: #17847d; border-radius: 8px; }
+.practice progress::-moz-progress-bar { background: #17847d; }
+.practice-step, .metric-num { font-variant-numeric: tabular-nums; }
+.practice h2, .practice legend, .section-title { text-wrap: balance; overflow-wrap: anywhere; }
+button, .btn { touch-action: manipulation; }
+.practice-review { padding-block: 12px; }
+@media (max-width: 600px) {
+  .practice { padding: 22px 18px; border-radius: 18px; }
+  .practice-options button { padding: 14px; }
+}

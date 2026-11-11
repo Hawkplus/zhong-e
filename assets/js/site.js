@@ -357,6 +357,8 @@
       var input = document.createElement('input');
       input.id = 'concept-search';
       input.type = 'search';
+      input.name = 'concept';
+      input.autocomplete = 'off';
       var status = document.createElement('p');
       status.setAttribute('role', 'status');
       form.append(label, input, status);

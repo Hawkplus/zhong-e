@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>页面不存在 · 中哈科普</title>
   <meta name="robots" content="noindex" />
-  <meta name="theme-color" content="#0a1c2b" />
-  <!-- GitHub Pages 项目站点根路径；仓库改名时同步修改这三处 /zhong-ha/ 前缀 -->
+  <meta name="theme-color" content="#153B59" />
+  <!-- GitHub Pages 项目站点根路径 -->
   <link rel="icon" href="/zhong-ha/assets/img/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="/zhong-ha/assets/css/site.css" />
 </head>
@@ -14,38 +14,51 @@
   <header class="site-header">
     <div class="shell header-inner">
       <a class="brand" href="/zhong-ha/" aria-label="中哈科普首页">
-        <span class="brand-mark" aria-hidden="true">中哈</span>
-        <span class="brand-text">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M12 5.5v13M7.5 8.5h9v7h-9z" stroke="#fff" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+            <circle cx="18.6" cy="6.2" r="1.7" fill="#28B6B0"/>
+          </svg>
+        </span>
+        <span class="brand-copy">
           <strong>中哈科普</strong>
-          <small>概念与提示词库 · Ғылым</small>
+          <small lang="kk">Ғылым туралы білім</small>
         </span>
       </a>
-      <nav class="site-nav" aria-label="主导航">
-        <a href="/zhong-ha/">首页</a>
-        <a href="/zhong-ha/videos/resnet.html">视频库</a>
-        <a href="/zhong-ha/prompts.html">提示词库</a>
-        <a href="/zhong-ha/about.html">关于</a>
+      <nav class="site-nav" id="site-nav" aria-label="主导航">
+        <a class="nav-link" href="/zhong-ha/">首页</a>
+        <a class="nav-link" href="/zhong-ha/index.html#library">视频库</a>
+        <a class="nav-link" href="/zhong-ha/concepts.html">概念库</a>
+        <a class="nav-link" href="/zhong-ha/prompts.html">提示词库</a>
+        <a class="nav-link" href="/zhong-ha/about.html">关于项目</a>
       </nav>
+
+      <span class="lang-badge" aria-label="中文与哈萨克语">中文 · ҚАЗ</span>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="打开菜单" data-nav-toggle>
+        <span></span>
+      </button>
     </div>
   </header>
 
   <main class="shell">
-    <div class="error-wrap">
+    <div class="error-page">
       <span class="error-code">404</span>
+      <span class="error-kicker">NOT FOUND · PAGE MISSING</span>
       <h1>这一页还没被画出来。</h1>
-      <p class="page-kk" lang="kk">Мұндай бет әзірге жоқ.</p>
-      <p>链接可能已经移动，或者地址拼错了。先回到首页，或者直接看本期视频。</p>
+      <p class="page-kk" lang="kk">Бұл бет әзірге жоқ.</p>
+      <p class="error-desc">链接可能已经移动，或者地址拼错了。先回到首页，或者直接看本期《残差网络》。</p>
       <div class="error-actions">
-        <a class="btn btn-blue" href="/zhong-ha/">返回首页</a>
-        <a class="btn btn-outline" href="/zhong-ha/videos/resnet.html">观看残差网络</a>
+        <a class="btn btn-primary" href="/zhong-ha/" data-spark>返回首页</a>
+        <a class="btn btn-secondary" href="/zhong-ha/videos/resnet.html" data-spark>观看残差网络</a>
+        <a class="btn btn-secondary" href="/zhong-ha/concepts.html">浏览概念库</a>
       </div>
     </div>
   </main>
 
   <footer class="site-footer">
     <div class="shell footer-bottom">
-      <span>© <span data-year>2026</span> 中哈科普</span>
-      <span>纯静态站点 · GitHub Pages</span>
+      <span>© <span data-year>2026</span> 中哈科普 · 内容用于科普学习</span>
+      <span class="mono">STATIC · GITHUB PAGES · 中文 / ҚАЗАҚША</span>
     </div>
   </footer>
 

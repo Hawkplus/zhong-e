@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>概念库 · 中哈科普</title>
+  <meta name="description" content="中哈双语概念库：退化现象、残差连接、梯度通路。用中文与哈萨克语解释残差网络 ResNet 的核心概念、条件与边界。" />
+  <meta name="theme-color" content="#153B59" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="概念库 · 中哈科普" />
+  <meta property="og:description" content="三个概念，读懂残差网络：退化现象、残差连接与梯度通路。" />
+  <meta property="og:image" content="https://hawkplus.github.io/zhong-ha/assets/img/og-cover.jpg" />
+  <meta property="og:url" content="https://hawkplus.github.io/zhong-ha/concepts.html" />
+  <link rel="canonical" href="https://hawkplus.github.io/zhong-ha/concepts.html" />
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/css/site.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">跳到主要内容</a>
+
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html" aria-label="中哈科普首页">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M12 5.5v13M7.5 8.5h9v7h-9z" stroke="#fff" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+            <circle cx="18.6" cy="6.2" r="1.7" fill="#28B6B0"/>
+          </svg>
+        </span>
+        <span class="brand-copy">
+          <strong>中哈科普</strong>
+          <small lang="kk">Ғылым туралы білім</small>
+        </span>
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="主导航">
+        <a class="nav-link" href="index.html">首页</a>
+        <a class="nav-link" href="index.html#library">视频库</a>
+        <a class="nav-link is-active" href="concepts.html" aria-current="page">概念库</a>
+        <a class="nav-link" href="prompts.html">提示词库</a>
+        <a class="nav-link" href="about.html">关于项目</a>
+      </nav>
+
+      <span class="lang-badge" aria-label="中文与哈萨克语">中文 · ҚАЗ</span>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="打开菜单" data-nav-toggle>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="page-hero">
+      <div class="shell">
+        <nav class="breadcrumb" aria-label="面包屑">
+          <a href="index.html">首页</a>
+          <span class="sep">/</span>
+          <span aria-current="page">概念库</span>
+        </nav>
+        <p class="page-kicker">Concept Library · 双语知识</p>
+        <h1>概念库</h1>
+        <p class="page-kk" lang="kk">Ұғымдар кітапханасы</p>
+        <p class="page-lead">三个概念，读懂残差网络为什么有效、在什么条件下有效，以及它不能承诺什么。中文保持简洁，哈萨克语给出完整解释。</p>
+      </div>
+    </section>
+
+    <div class="shell concepts-page">
+      <div class="concept-list">
+        <article class="concept-entry" id="degradation">
+          <div class="entry-index">01</div>
+          <div class="entry-main">
+            <p class="entry-kicker">人工智能与计算机科学 · 深度学习</p>
+            <div class="entry-head">
+              <h2>退化现象</h2>
+              <span class="kk" lang="kk">Деградация</span>
+            </div>
+            <div class="entry-cols">
+              <div class="lang-block">
+                <span class="lang-label">中文</span>
+                <p>在更深的普通网络上，训练误差可能反而更高。这不是过拟合——过拟合是训练误差很低、测试误差很高；退化则是训练误差本身就变高，说明优化变难。ResNet 论文把这一现象作为要解决的核心问题。</p>
+              </div>
+              <div class="lang-block">
+                <span class="lang-label">Қазақша</span>
+                <p lang="kk">Тереңірек кәдімгі желілерде оқыту қателігі керісінше жоғары болуы мүмкін. Бұл артық бейімделу емес: артық бейімделуде оқыту қателігі төмен, ал тест қателігі жоғары болады; деградацияда оқыту қателігінің өзі өседі, яғни оңтайландыру қиындайды. ResNet мақаласы осы құбылысты шешуді негізгі міндет етіп қояды.</p>
+              </div>
+            </div>
+            <div class="entry-foot">
+              <a class="entry-link" href="videos/resnet.html#stage-1">在视频中查看：为什么需要残差网络
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="concept-entry" id="residual">
+          <div class="entry-index">02</div>
+          <div class="entry-main">
+            <p class="entry-kicker">核心机制 · 残差学习</p>
+            <div class="entry-head">
+              <h2>残差连接</h2>
+              <span class="kk" lang="kk">Қалдық байланыс</span>
+            </div>
+            <div class="entry-cols">
+              <div class="lang-block">
+                <span class="lang-label">中文</span>
+                <p>残差块把输入 x 直接送到输出端，只让网络学习修正量 F(x)，输出 z = x + F(x)。网络不再直接拟合完整映射 H(x)，而是学习 F(x) = H(x) − x。当最优映射接近恒等映射时，只要把 F(x) 压到接近零，而不必用多层去复现输入。</p>
+              </div>
+              <div class="lang-block">
+                <span class="lang-label">Қазақша</span>
+                <p lang="kk">Қалдық блок кіріс x-ті шығысқа тікелей жеткізіп, желіге тек F(x) түзетуін үйренеді: z = x + F(x). Желі толық H(x) бейнелеуін тікелей бейімдемейді, F(x) = H(x) − x айырмасын үйренеді. Оңтайлы бейнелеу тепе-теңдікке жақын болса, F(x)-ті нөлге жақындату жеткілікті, кірісті бірнеше қабатпен қайта шығарудың қажеті жоқ.</p>
+              </div>
+            </div>
+            <div class="entry-foot">
+              <span class="formula-chip" aria-label="z 等于 x 加 F(x)">z = x + F(x)</span>
+              <a class="entry-link" href="videos/resnet.html#stage-2">在视频中查看：残差连接的核心机制
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="concept-entry" id="gradient">
+          <div class="entry-index">03</div>
+          <div class="entry-main">
+            <p class="entry-kicker">训练视角 · 优化</p>
+            <div class="entry-head">
+              <h2>梯度通路</h2>
+              <span class="kk" lang="kk">Градиент жолы</span>
+            </div>
+            <div class="entry-cols">
+              <div class="lang-block">
+                <span class="lang-label">中文</span>
+                <p>反向传播时，捷径为梯度提供一条更短的通路，让深层网络更容易优化。但这不是「梯度永不消失」的保证：它改善的是可训练性，不保证任意深度都能训练，也不保证精度一定提高。</p>
+              </div>
+              <div class="lang-block">
+                <span class="lang-label">Қазақша</span>
+                <p lang="kk">Кері таралу кезінде айналма жол градиентке қысқарақ жол береді, сондықтан терең желіні оңтайландыру жеңілдейді. Бірақ бұл «градиент ешқашан жоғалмайды» деген кепілдік емес: ол оқытылушылықты жақсартады, кез келген тереңдіктің оқытылатынына немесе дәлдіктің міндетті түрде өсетініне кепілдік бермейді.</p>
+              </div>
+            </div>
+            <div class="entry-foot">
+              <a class="entry-link" href="videos/resnet.html#stage-3">在视频中查看：残差网络如何改善训练
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <p class="concepts-note">概念库会随每部视频持续扩充。当前内容围绕首期《残差网络》，更多主题正在筹备中。发现术语或翻译问题，欢迎在 GitHub 仓库提交 Issue。</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-main">
+      <div class="footer-brand">
+        <a class="brand brand--footer" href="index.html" aria-label="中哈科普首页">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 5.5v13M7.5 8.5h9v7h-9z" stroke="#fff" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+            <circle cx="18.6" cy="6.2" r="1.7" fill="#28B6B0"/>
+            </svg>
+          </span>
+          <span class="brand-copy">
+            <strong>中哈科普</strong>
+            <small lang="kk">Ғылым туралы білім</small>
+          </span>
+        </a>
+        <p>科学与语言并行的科普档案。每一部短片，都配中文与哈萨克语解释，以及可复现的制作提示词。
+          <span class="kk" lang="kk">Ғылым мен тіл қатар жүретін ғылыми мұрағат.</span>
+        </p>
+      </div>
+      <div class="footer-cols">
+        <div>
+          <h3>浏览</h3>
+          <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="index.html#library">视频库</a></li>
+            <li><a href="concepts.html">概念库</a></li>
+            <li><a href="prompts.html">提示词库</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>资源</h3>
+          <ul>
+            <li><a href="assets/prompts/resnet-90s-prompt.md" download>提示词原文 .md</a></li>
+            <li><a href="assets/prompts/kurzgesagt-prompt-template.md" download>通用模板 .md</a></li>
+            <li><a href="assets/videos/resnet-88s.mp4" download>视频文件 .mp4</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>项目</h3>
+          <ul>
+            <li><a href="about.html">关于项目</a></li>
+            <li><a href="about.html#add">新增视频</a></li>
+            <li><a href="https://github.com/Hawkplus/zhong-ha" target="_blank" rel="noopener noreferrer">GitHub 仓库</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="shell footer-bottom">
+      <span>© <span data-year>2026</span> 中哈科普 · 内容用于科普学习，不构成专业结论</span>
+      <span class="mono">STATIC · GITHUB PAGES · 中文 / ҚАЗАҚША</span>
+    </div>
+  </footer>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/site.js"></script>
+</body>
+</html>

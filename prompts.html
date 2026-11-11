@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>提示词库 · 中哈科普</title>
-  <meta name="description" content="可复现的科普动画生成提示词：残差网络 90 秒无配音版全文，以及 Kurzgesagt 风科普动画通用模板。含时间线、配色语义、科学护栏与验收清单。" />
-  <meta name="theme-color" content="#0a1c2b" />
+  <title>视频制作提示词库 · 中哈科普</title>
+  <meta name="description" content="中哈科普提示词库：收录《残差网络》90 秒无配音科普动画的完整提示词，以及 Kurzgesagt 风科普动画通用模板。支持一键复制与 Markdown 下载。" />
+  <meta name="theme-color" content="#153B59" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="提示词库 · 中哈科普" />
-  <meta property="og:description" content="把「做一个科普动画」写成一份可执行的说明：两份完整提示词与结构拆解。" />
+  <meta property="og:title" content="视频制作提示词库 · 中哈科普" />
+  <meta property="og:description" content="探索每部科学动画背后的完整制作逻辑、视觉规范与生成指令。" />
   <meta property="og:image" content="https://hawkplus.github.io/zhong-ha/assets/img/og-cover.jpg" />
+  <meta property="og:url" content="https://hawkplus.github.io/zhong-ha/prompts.html" />
+  <link rel="canonical" href="https://hawkplus.github.io/zhong-ha/prompts.html" />
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="assets/css/site.css" />
-  <link rel="canonical" href="https://hawkplus.github.io/zhong-ha/prompts.html" />
-  <meta property="og:url" content="https://hawkplus.github.io/zhong-ha/prompts.html" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">跳到主要内容</a>
@@ -21,28 +21,30 @@
   <header class="site-header">
     <div class="shell header-inner">
       <a class="brand" href="index.html" aria-label="中哈科普首页">
-        <span class="brand-mark" aria-hidden="true">中哈</span>
-        <span class="brand-text">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M12 5.5v13M7.5 8.5h9v7h-9z" stroke="#fff" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+            <circle cx="18.6" cy="6.2" r="1.7" fill="#28B6B0"/>
+          </svg>
+        </span>
+        <span class="brand-copy">
           <strong>中哈科普</strong>
-          <small>概念与提示词库 · Ғылым</small>
+          <small lang="kk">Ғылым туралы білім</small>
         </span>
       </a>
 
+      <nav class="site-nav" id="site-nav" aria-label="主导航">
+        <a class="nav-link" href="index.html">首页</a>
+        <a class="nav-link" href="index.html#library">视频库</a>
+        <a class="nav-link" href="concepts.html">概念库</a>
+        <a class="nav-link is-active" href="prompts.html" aria-current="page">提示词库</a>
+        <a class="nav-link" href="about.html">关于项目</a>
+      </nav>
+
+      <span class="lang-badge" aria-label="中文与哈萨克语">中文 · ҚАЗ</span>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="打开菜单" data-nav-toggle>
         <span></span>
       </button>
-
-      <nav class="site-nav" id="site-nav" aria-label="主导航">
-        <a href="index.html">首页</a>
-        <a href="index.html#library">视频库</a>
-        <a href="prompts.html" class="is-active" aria-current="page">提示词库</a>
-        <a href="about.html">关于</a>
-      </nav>
-
-      <a class="header-cta" href="videos/resnet.html">
-        观看本期
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5-11-6.5z" fill="currentColor"/></svg>
-      </a>
     </div>
   </header>
 
@@ -54,105 +56,58 @@
           <span class="sep">/</span>
           <span aria-current="page">提示词库</span>
         </nav>
-        <p class="eyebrow">提示词库 · PROMPT LIBRARY</p>
-        <h1>把「做一个科普动画」，写成一份可执行的说明。</h1>
-        <p class="page-kk" lang="kk">Промпт — қайталауға болатын техникалық тапсырма ретінде.</p>
-        <p class="page-lead">
-          这里的提示词不是宣传文案，而是制作说明：它规定时长、分镜、配色语义、科学护栏、编码参数与验收清单，并要求直接交付成片。两份全文都可以直接复制、修改、复用。
-        </p>
+        <p class="page-kicker">Prompt Library · 创作资源</p>
+        <h1>视频制作提示词库</h1>
+        <p class="page-kk" lang="kk">Бейне жасауға арналған промпттар кітапханасы</p>
+        <p class="page-lead">探索每部科学动画背后的完整制作逻辑、视觉规范与生成指令。提示词不是文案，而是一份可复现的制作说明：时长、分镜、配色语义、科学护栏、编码参数与验收清单。</p>
       </div>
     </section>
 
-    <div class="shell" style="padding:52px 0 80px">
-      <!-- 结构拆解 -->
-      <section aria-labelledby="structure-title">
-        <div class="section-head">
-          <div class="section-head-main">
-            <span class="section-index">01 / STRUCTURE</span>
-            <h2 id="structure-title" style="font-size:clamp(24px,2.8vw,30px)">一份好提示词的六个部分<span class="kk-title" lang="kk">Жұмыс промптының алты блогы</span></h2>
+    <div class="shell prompts-page">
+      <div class="prompt-overview" aria-label="提示词库信息">
+        <div class="overview-item"><span class="k">Resources</span><span class="v">2 份提示词</span></div>
+        <div class="overview-item"><span class="k">Format</span><span class="v">Markdown · 可下载</span></div>
+        <div class="overview-item"><span class="k">Copy</span><span class="v">一键复制全文</span></div>
+        <div class="overview-item"><span class="k">Updated</span><span class="v">2026.11 · v1.0</span></div>
+      </div>
+
+      <article class="prompt-card">
+        <header class="prompt-head">
+          <span class="prompt-number">01</span>
+          <div class="prompt-title-wrap">
+            <h2>《残差网络》90 秒无配音科普动画</h2>
+            <p class="kk" lang="kk">Қалдық желілер туралы 90 секундтық анимация промпты</p>
           </div>
-          <p class="section-head-note">
-            缺哪一块，执行方就会替你「自由发挥」——而自由发挥的部分，通常在验收时最贵。
-          </p>
+          <div class="prompt-badges">
+            <span class="badge">实例</span>
+            <span class="badge badge--muted">v1.0</span>
+          </div>
+        </header>
+
+        <div class="prompt-specs">
+          <div class="spec"><span class="k">用途</span><span class="v">90 秒无配音科普动画</span></div>
+          <div class="spec"><span class="k">适用模型 / 工具</span><span class="v">支持代码渲染的 AI Agent / 多模态模型</span></div>
+          <div class="spec"><span class="k">版本</span><span class="v">v1.0 · 2026.11</span></div>
+          <div class="spec"><span class="k">文件</span><span class="v">9.3 KB · 147 行</span></div>
         </div>
 
-        <div class="structure-grid">
-          <article class="structure-item">
-            <span class="n">01</span>
-            <h4>硬性输出</h4>
-            <span class="kk" lang="kk">Қатаң талаптар</span>
-            <p>时长精确到千分位、分辨率、帧率、编码、音轨有无、字幕位置与字号。这些是验收口径，不是修辞。</p>
-          </article>
-          <article class="structure-item">
-            <span class="n">02</span>
-            <h4>时间线</h4>
-            <span class="kk" lang="kk">Тайминг</span>
-            <p>把全片拆成固定的拍，一拍只讲一件事，并给出该拍的中英字幕。拍序锁定，执行方不能自行增删。</p>
-          </article>
-          <article class="structure-item">
-            <span class="n">03</span>
-            <h4>视觉语言</h4>
-            <span class="kk" lang="kk">Визуалды тіл</span>
-            <p>底色、图元、圆角、光晕，以及每种颜色的语义。颜色一旦有语义，观众就能靠颜色读懂结构。</p>
-          </article>
-          <article class="structure-item">
-            <span class="n">04</span>
-            <h4>科学护栏</h4>
-            <span class="kk" lang="kk">Ғылыми шектеулер</span>
-            <p>不绝对化、示意图标「示意」、比喻标注边界、不编造数字。科普片最容易出错的地方都在这里。</p>
-          </article>
-          <article class="structure-item">
-            <span class="n">05</span>
-            <h4>技术实现</h4>
-            <span class="kk" lang="kk">Іске асыру</span>
-            <p>要求 render(t) 纯函数逐帧确定性渲染、程序化生成、禁止外部素材，并给出编码参数。</p>
-          </article>
-          <article class="structure-item">
-            <span class="n">06</span>
-            <h4>交付前自检</h4>
-            <span class="kk" lang="kk">Қабылдау</span>
-            <p>逐项打勾的清单：时长、帧数、字幕溢出、关键帧抽检。没过的项不许交付。</p>
-          </article>
-        </div>
-      </section>
-
-      <!-- 提示词全文 -->
-      <section aria-labelledby="full-title" style="margin-top:64px">
-        <div class="section-head">
-          <div class="section-head-main">
-            <span class="section-index">02 / FULL TEXT</span>
-            <h2 id="full-title" style="font-size:clamp(24px,2.8vw,30px)">两份全文<span class="kk-title" lang="kk">Екі промпт толығымен</span></h2>
+        <div class="prompt-body">
+          <p>这份提示词用于生成本站首期短片：15 拍 × 6 秒、1920×1080、无配音、底部长驻中英双语字幕，要求全部画面程序化生成，并列出 9 条科学准确性护栏。实际成片为 88 秒剪辑版，因此本页将它作为「原始指令样本」原样保留。</p>
+          <div class="prompt-actions">
+            <button class="btn btn-primary btn-sm" type="button" data-copy-target="#prompt-resnet" data-spark>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M5 15V5a2 2 0 0 1 2-2h9" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+              <span data-copy-label>复制全文</span>
+            </button>
+            <a class="btn btn-secondary btn-sm" href="assets/prompts/resnet-90s-prompt.md" download data-spark>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0 4-4m-4 4-4-4M5 19h14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              下载 Markdown
+            </a>
           </div>
-          <p class="section-head-note">
-            保留原始设定，未按成片回改；这样你能看到「要求」和「成片」之间的差距是怎么产生的。
-          </p>
-        </div>
-
-        <!-- 实例 -->
-        <article class="prompt-card">
-          <div class="prompt-card-head">
-            <div>
-              <h3>《残差网络》90 秒无配音科普动画</h3>
-              <p class="kk-title" lang="kk">Қалдық желілер туралы фильм промпты · 9.3 KB · 147 жол</p>
-            </div>
-            <div class="head-tools">
-              <button class="copy-btn copy-btn--light" type="button" data-copy="#prompt-resnet">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M5 15V5a2 2 0 0 1 2-2h9" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
-                <span data-copy-label>复制全文</span>
-              </button>
-              <a class="download-btn" href="assets/prompts/resnet-90s-prompt.md" download>
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0 4-4m-4 4-4-4M5 19h14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                下载 .md
-              </a>
-            </div>
-          </div>
-          <div class="prompt-card-body">
-            <p>
-              这份提示词用于生成本站首期短片：15 拍 × 6 秒、1920×1080、无配音、底部长驻中英双语字幕，要求全部画面程序化生成，并列出 9 条科学准确性护栏。实际成片为 88 秒剪辑版，因此本页把它作为「原始指令样本」原样保留。
-            </p>
-            <details class="prompt-details">
-              <summary>展开全文（147 行）</summary>
-              <pre class="prompt-code" id="prompt-resnet" tabindex="0"><code># 任务：制作《残差网络》90 秒无配音科普动画
+          <details class="prompt-details">
+            <summary>展开完整提示词（147 行）
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <pre class="prompt-code" id="prompt-resnet" tabindex="0"><code># 任务：制作《残差网络》90 秒无配音科普动画
 
 请直接制作并渲染出完整成片，不要只返回脚本、方案或分镜表。
 
@@ -300,35 +255,47 @@
 
 现在开工。先用不超过 10 行复述你对时间线、无配音约束和科学护栏的理解，然后直接开始渲染，不要停下来等我确认。
 </code></pre>
-            </details>
-          </div>
-        </article>
+          </details>
+        </div>
+      </article>
 
-        <!-- 模板 -->
-        <article class="prompt-card">
-          <div class="prompt-card-head">
-            <div>
-              <h3>Kurzgesagt 风科普动画 · 通用提示词</h3>
-              <p class="kk-title" lang="kk">Әмбебап үлгі · 7.8 KB · 128 жол</p>
-            </div>
-            <div class="head-tools">
-              <button class="copy-btn copy-btn--light" type="button" data-copy="#prompt-template">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M5 15V5a2 2 0 0 1 2-2h9" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
-                <span data-copy-label>复制全文</span>
-              </button>
-              <a class="download-btn" href="assets/prompts/kurzgesagt-prompt-template.md" download>
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0 4-4m-4 4-4-4M5 19h14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                下载 .md
-              </a>
-            </div>
+      <article class="prompt-card">
+        <header class="prompt-head">
+          <span class="prompt-number">02</span>
+          <div class="prompt-title-wrap">
+            <h2>Kurzgesagt 风科普动画 · 通用提示词</h2>
+            <p class="kk" lang="kk">Kurzgesagt стиліндегі ғылыми анимацияның әмбебап үлгісі</p>
           </div>
-          <div class="prompt-card-body">
-            <p>
-              把【】里的内容替换成你的题材即可复用：17 拍结构、深空平涂画风、配色语义、字幕规范与 7 条科学护栏。文件末尾还记录了制作过程中踩过的坑，例如 UTF-8 编码、HUD 元素、抽帧位置与响度。
-            </p>
-            <details class="prompt-details">
-              <summary>展开全文（128 行）</summary>
-              <pre class="prompt-code" id="prompt-template" tabindex="0"><code># Kurzgesagt 风科普动画 · 通用提示词
+          <div class="prompt-badges">
+            <span class="badge">模板</span>
+            <span class="badge badge--muted">v1.0</span>
+          </div>
+        </header>
+
+        <div class="prompt-specs">
+          <div class="spec"><span class="k">用途</span><span class="v">17 拍通用科普动画模板</span></div>
+          <div class="spec"><span class="k">适用模型 / 工具</span><span class="v">视频生成 / 程序化渲染工作流</span></div>
+          <div class="spec"><span class="k">版本</span><span class="v">v1.0 · 2026.11</span></div>
+          <div class="spec"><span class="k">文件</span><span class="v">7.8 KB · 128 行</span></div>
+        </div>
+
+        <div class="prompt-body">
+          <p>把【】里的内容替换成你的题材即可复用：17 拍结构、深空平涂画风、配色语义、字幕规范与 7 条科学护栏。文件末尾还记录了制作过程中踩过的坑，例如 UTF-8 编码、HUD 元素、抽帧位置与响度。</p>
+          <div class="prompt-actions">
+            <button class="btn btn-primary btn-sm" type="button" data-copy-target="#prompt-template" data-spark>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M5 15V5a2 2 0 0 1 2-2h9" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+              <span data-copy-label>复制全文</span>
+            </button>
+            <a class="btn btn-secondary btn-sm" href="assets/prompts/kurzgesagt-prompt-template.md" download data-spark>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0 4-4m-4-4-4-4M5 19h14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              下载 Markdown
+            </a>
+          </div>
+          <details class="prompt-details">
+            <summary>展开完整提示词（128 行）
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <pre class="prompt-code" id="prompt-template" tabindex="0"><code># Kurzgesagt 风科普动画 · 通用提示词
 
 &gt; 用法：把这份文件整段发给执行方，替换【】中的内容即可。它要求直接产出成片，
 &gt; 不是分镜表、不是方案书。文中的数值都是可复现的验收口径，不是修辞。
@@ -457,31 +424,17 @@ keyframes/            片头、关键节点、收尾的静帧
 5. **收尾卡要有主张**：只写"谢谢观看"等于没有收尾；要写清观众带走什么。
 6. **响度别照抄流媒体基线**：−25.5 LUFS 是留给平台二次归一化的，本地/网页直接播会偏轻。
 </code></pre>
-            </details>
-          </div>
-        </article>
-      </section>
-
-      <!-- 使用建议 -->
-      <section aria-labelledby="tips-title" style="margin-top:56px">
-        <div class="section-head">
-          <div class="section-head-main">
-            <span class="section-index">03 / NOTES</span>
-            <h2 id="tips-title" style="font-size:clamp(24px,2.8vw,30px)">复用之前，先改这四处<span class="kk-title" lang="kk">Қайта қолданғанда нені өзгерту керек</span></h2>
-          </div>
+          </details>
         </div>
-        <div class="callout">
-          <span class="callout-title">使用建议</span>
-          <strong>一、改时长与画幅。</strong>16:9、30fps、无音轨是最容易出问题的三项，先在提示词里定死。<br />
-          <strong>二、改写时间线，不要只换主题。</strong>每一拍都要对应一个能画出来的动作；「讲得更深入」不是分镜。<br />
-          <strong>三、保留科学护栏。</strong>不绝对化、示意图标注、比喻有边界——这三条能挡掉大部分返工。<br />
-          <strong>四、自检清单逐项打勾。</strong>时长误差、字幕溢出、关键帧抽检都要实际检查，不能凭感觉验收。
-        </div>
-      </section>
+      </article>
 
-      <div class="post-nav">
-        <a class="btn btn-outline" href="index.html">← 返回首页</a>
-        <a class="btn btn-blue" href="videos/resnet.html">观看本期视频 →</a>
+      <div class="prompt-notes">
+        <h3>复用提示</h3>
+        <ul>
+          <li>提示词里的时长、分辨率、音轨与字幕位置是验收口径，不是修辞；复用前先改这三项。</li>
+          <li>改写时间线，不要只换主题。每一拍都要对应一个能画出来的动作，「讲得更深入」不是分镜。</li>
+          <li>保留科学护栏：不绝对化、示意图标注「示意」、比喻有边界，能挡掉大部分返工。</li>
+        </ul>
       </div>
     </div>
   </main>
@@ -489,32 +442,45 @@ keyframes/            片头、关键节点、收尾的静帧
   <footer class="site-footer">
     <div class="shell footer-main">
       <div class="footer-brand">
-        <a class="brand" href="index.html">
-          <span class="brand-mark" aria-hidden="true">中哈</span>
-          <span class="brand-text">
+        <a class="brand brand--footer" href="index.html" aria-label="中哈科普首页">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 5.5v13M7.5 8.5h9v7h-9z" stroke="#fff" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+            <circle cx="18.6" cy="6.2" r="1.7" fill="#28B6B0"/>
+            </svg>
+          </span>
+          <span class="brand-copy">
             <strong>中哈科普</strong>
-            <small>概念与提示词库 · Ғылым</small>
+            <small lang="kk">Ғылым туралы білім</small>
           </span>
         </a>
-        <p>
-          一个静态科普站：用短片讲概念，用双语文本拆概念，用提示词复现概念。
-          <span class="kk" lang="kk">Ғылым туралы статикалық сайт: фильм, түсіндірме және промпт — бәрі бір жерде.</span>
+        <p>科学与语言并行的科普档案。每一部短片，都配中文与哈萨克语解释，以及可复现的制作提示词。
+          <span class="kk" lang="kk">Ғылым мен тіл қатар жүретін ғылыми мұрағат.</span>
         </p>
       </div>
-      <div class="footer-links">
+      <div class="footer-cols">
         <div>
-          <h4>浏览</h4>
+          <h3>浏览</h3>
           <ul>
             <li><a href="index.html">首页</a></li>
-            <li><a href="videos/resnet.html">残差网络</a></li>
-            <li><a href="about.html">关于项目</a></li>
+            <li><a href="index.html#library">视频库</a></li>
+            <li><a href="concepts.html">概念库</a></li>
+            <li><a href="prompts.html">提示词库</a></li>
           </ul>
         </div>
         <div>
-          <h4>资源</h4>
+          <h3>资源</h3>
           <ul>
             <li><a href="assets/prompts/resnet-90s-prompt.md" download>提示词原文 .md</a></li>
             <li><a href="assets/prompts/kurzgesagt-prompt-template.md" download>通用模板 .md</a></li>
+            <li><a href="assets/videos/resnet-88s.mp4" download>视频文件 .mp4</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>项目</h3>
+          <ul>
+            <li><a href="about.html">关于项目</a></li>
+            <li><a href="about.html#add">新增视频</a></li>
             <li><a href="https://github.com/Hawkplus/zhong-ha" target="_blank" rel="noopener noreferrer">GitHub 仓库</a></li>
           </ul>
         </div>
@@ -522,10 +488,11 @@ keyframes/            片头、关键节点、收尾的静帧
     </div>
     <div class="shell footer-bottom">
       <span>© <span data-year>2026</span> 中哈科普 · 内容用于科普学习，不构成专业结论</span>
-      <span>纯静态站点 · GitHub Pages</span>
+      <span class="mono">STATIC · GITHUB PAGES · 中文 / ҚАЗАҚША</span>
     </div>
   </footer>
 
+  <script src="assets/js/data.js"></script>
   <script src="assets/js/site.js"></script>
 </body>
 </html>

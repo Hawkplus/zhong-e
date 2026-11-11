@@ -249,6 +249,103 @@
 /* Search and explicit playback resume, with graceful storage fallback. */
 (function () {
   'use strict';
+  function initPractice(list, tr) {
+    var questions = [
+      {
+        prompt: ['更深的普通网络出现退化时，哪项指标可能反而升高？', 'Терең кәдімгі желіде деградация болса, қай көрсеткіш артуы мүмкін?'],
+        answer: 'degradation',
+        explanation: ['训练误差可能升高，因为更深的网络更难优化。', 'Терең желіні оңтайландыру қиындағандықтан, оқыту қатесі артуы мүмкін.'],
+        options: [['验证集准确率', 'Тексеру жиынындағы дәлдік'], ['训练误差', 'Оқыту қатесі'], ['输入分辨率', 'Кіріс ажыратымдылығы']],
+        correct: 1
+      },
+      {
+        prompt: ['残差块如何组合输入 x 和修正量 F(x)？', 'Қалдық блок x кірісі мен F(x) түзетуін қалай біріктіреді?'],
+        answer: 'residual',
+        explanation: ['捷径保留 x，残差分支提供 F(x)，两个分支相加。', 'Айналма жол x мәнін сақтайды, ал қалдық тармақ F(x) мәнін береді. Екеуі қосылады.'],
+        options: [['x × F(x)', 'x × F(x)'], ['F(x) − x', 'F(x) − x'], ['x + F(x)', 'x + F(x)']],
+        correct: 2
+      },
+      {
+        prompt: ['反向传播时，捷径为梯度提供了什么？', 'Кері таралу кезінде айналма байланыс градиентке не береді?'],
+        answer: 'gradient',
+        explanation: ['梯度可以通过捷径传回较早的层。', 'Градиент айналма жол арқылы алдыңғы қабаттарға өте алады.'],
+        options: [['更直接的传播路径', 'Тікелей таралу жолы'], ['更多训练样本', 'Көбірек оқыту үлгісі'], ['更大的输入图片', 'Үлкенірек кіріс суреті']],
+        correct: 0
+      }
+    ];
+    var section = document.createElement('section');
+    section.className = 'practice';
+    section.id = 'practice';
+    section.innerHTML = '<h2 id="practice-title"></h2><p class="practice-step"></p><progress max="3" value="0" aria-labelledby="practice-title"></progress><fieldset><legend></legend><div class="practice-options"></div></fieldset><p role="status" class="practice-feedback"></p><a class="practice-review" hidden></a><button class="btn btn-primary" type="button" hidden></button>';
+    section.setAttribute('aria-labelledby', 'practice-title');
+    list.after(section);
+    var title = section.querySelector('h2');
+    var field = section.querySelector('fieldset');
+    var legend = section.querySelector('legend');
+    var options = section.querySelector('.practice-options');
+    var feedback = section.querySelector('.practice-feedback');
+    var review = section.querySelector('.practice-review');
+    var next = section.querySelector('.btn');
+    var position = 0;
+    var score = 0;
+    var choice = null;
+
+    function render() {
+      var question = questions[position];
+      title.textContent = tr('残差网络小测', 'Қалдық желілер бойынша тест');
+      section.querySelector('.practice-step').textContent = question
+        ? tr('第 ' + (position + 1) + ' 题，共 3 题', (position + 1) + ' / 3 сұрақ')
+        : tr('答对 ' + score + ' / 3 题', score + ' / 3 дұрыс жауап');
+      section.querySelector('progress').value = position + Number(choice !== null);
+      field.hidden = !question;
+      review.hidden = choice === null;
+      next.hidden = Boolean(question && choice === null);
+      feedback.textContent = '';
+      if (!question) {
+        next.textContent = tr('再练一次', 'Қайталау');
+        return;
+      }
+      legend.textContent = tr.apply(null, question.prompt);
+      options.replaceChildren();
+      question.options.forEach(function (pair, index) {
+        var button = document.createElement('button');
+        button.type = 'button';
+        button.textContent = tr.apply(null, pair);
+        button.disabled = choice !== null;
+        if (choice !== null && index === question.correct) button.classList.add('is-correct');
+        if (choice === index && index !== question.correct) button.classList.add('is-incorrect');
+        button.addEventListener('click', function () {
+          choice = index;
+          score += Number(index === question.correct);
+          render();
+          next.focus();
+        });
+        options.append(button);
+      });
+      if (choice !== null) {
+        feedback.textContent = (choice === question.correct ? tr('答对了。', 'Дұрыс. ') : tr('再看看这个概念。', 'Осы ұғымды қайталаңыз. ')) + tr.apply(null, question.explanation);
+        review.href = '#' + question.answer;
+        review.textContent = tr('回看概念', 'Ұғымды қайталау');
+        next.textContent = position === questions.length - 1 ? tr('查看成绩', 'Нәтижені көру') : tr('下一题', 'Келесі сұрақ');
+      }
+    }
+
+    next.addEventListener('click', function () {
+      if (position === questions.length) {
+        position = 0;
+        score = 0;
+      } else {
+        position++;
+      }
+      choice = null;
+      render();
+      (field.hidden ? next : options.firstElementChild).focus();
+    });
+    window.addEventListener('langchange', render);
+    render();
+    if (location.hash === '#practice') section.scrollIntoView();
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     function tr(zh, kk) { return window.SITE_LANG === 'kk' ? kk : zh; }
     var list = document.querySelector('.concept-list');
@@ -281,6 +378,7 @@
       window.addEventListener('hashchange', function () { input.value = ''; filter(); });
       filter();
     }
+    if (list) initPractice(list, tr);
     var video = document.querySelector('#lesson-video');
     if (!video) return;
     var key = 'zhongha:progress:resnet';

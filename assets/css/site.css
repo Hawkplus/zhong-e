@@ -1235,3 +1235,40 @@ a.category-card:hover, a.concept-card:hover { transform:translateY(-6px); box-sh
 .resume-control { display:block; margin:16px 0; padding:12px 20px; border:1px solid #2878c8; border-radius:12px; background:#edf7ff; color:#153b59; cursor:pointer; font:inherit; }
 [hidden] { display:none !important; }
 @media (prefers-reduced-motion:reduce) { .hero::before { animation:none; } .category-card, .concept-card { transition:none; } }
+/* Learning practice */
+.practice {
+  scroll-margin-top: 100px;
+  margin-block: 44px;
+  padding: clamp(22px, 5vw, 48px);
+  border: 1px solid #bededb;
+  border-radius: 26px;
+  background: radial-gradient(ellipse at top right, #d6f5ee, transparent 65%), #f5fafc;
+  color: #153b59;
+}
+.practice h2 { font-size: clamp(24px, 4vw, 36px); }
+.practice-step { margin-top: 8px; color: #405e72; }
+.practice progress { display:block; width:100%; height:10px; margin: 12px 0 24px; accent-color:#17847d; }
+.practice fieldset { border:0; padding:0; min-inline-size:0; }
+.practice legend { font-weight:700; margin-bottom:16px; }
+.practice-options { display:grid; gap:10px; }
+.practice-options button {
+  text-align:start;
+  color:inherit;
+  background:#fff;
+  border:1px solid #b8cdd9;
+  border-radius:12px;
+  padding:13px 16px;
+  font:inherit;
+}
+.practice-options button:enabled { cursor:pointer; }
+.practice-options button:enabled:hover { border-color:#17847d; background:#ecfcf7; }
+.practice-options .is-correct { background:#dcf8ec; border-color:#17847d; }
+.practice-options .is-incorrect { background:#fff0eb; border-color:#aa4a37; }
+.practice-feedback:not(:empty) { margin-block:14px; }
+.practice-review { display:inline-block; margin-inline-end:16px; text-decoration:underline; }
+.practice .btn { margin-top:12px; }
+.concept-search { background:#f0f8fa; border:1px solid #cde0e7; border-radius:20px; padding:clamp(16px, 3vw, 26px); }
+.concept-search label { font-weight:700; color:#153b59; }
+.hero { background:radial-gradient(ellipse at 12% 15%, #d7f7ed, transparent 55%), radial-gradient(ellipse at 90% 65%, #c5d9ff, transparent 68%), #f4f9fc; }
+.visual-stage { box-shadow:0 24px 56px #153b5940, 0 0 48px #2aa8ab26; }
+.practice-jump { margin-bottom:20px; }

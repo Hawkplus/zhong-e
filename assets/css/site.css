@@ -1219,3 +1219,79 @@ html.lang-kk .error-page .error-desc { margin-top: 8px; }
   .shell { width: 100%; }
   .stage-card, .principle-card, .definition-band { break-inside: avoid; }
 }
+
+/* Visual refresh: aurora lighting and elevated interactive surfaces. */
+.hero { background: radial-gradient(ellipse at 10% 15%, #e0f8f4, transparent 55%), radial-gradient(ellipse at 90% 70%, #dce7ff, transparent 60%), #f8fafc; isolation:isolate; }
+.hero::before { content:""; position:absolute; inset:0; z-index:-1; background:radial-gradient(ellipse at 60% 25%, #b3eee580, transparent 55%); animation:aurora-drift 12s ease-in-out infinite alternate; pointer-events:none; }
+@keyframes aurora-drift { to { transform:translateY(35px); opacity:.4; } }
+.visual-stage { box-shadow:0 30px 80px #153b5933, 0 0 50px #28b6b022; border:1px solid #7ddbd766; }
+.category-card, .concept-card { border-radius:20px; transition:transform .25s ease, box-shadow .25s ease; }
+a.category-card:hover, a.concept-card:hover { transform:translateY(-6px); box-shadow:0 20px 45px #153b5915; }
+.btn-primary { box-shadow:0 8px 24px #2878c830; }
+:focus-visible { outline:3px solid #17847d; outline-offset:5px; }
+.concept-search { display:grid; gap:10px; margin:0 0 32px; }
+.concept-search input { width:100%; box-sizing:border-box; padding:16px 20px; border:1px solid #a9c7d5; border-radius:14px; background:#fff; color:#153b59; font:inherit; }
+.concept-search p { margin:0; color:#476478; }
+.resume-control { display:block; margin:16px 0; padding:12px 20px; border:1px solid #2878c8; border-radius:12px; background:#edf7ff; color:#153b59; cursor:pointer; font:inherit; }
+[hidden] { display:none !important; }
+@media (prefers-reduced-motion:reduce) { .hero::before { animation:none; } .category-card, .concept-card { transition:none; } }
+/* Learning practice */
+.practice {
+  scroll-margin-top: 100px;
+  margin-block: 44px;
+  padding: clamp(22px, 5vw, 48px);
+  border: 1px solid #bededb;
+  border-radius: 26px;
+  background: radial-gradient(ellipse at top right, #d6f5ee, transparent 65%), #f5fafc;
+  color: #153b59;
+}
+.practice h2 { font-size: clamp(24px, 4vw, 36px); }
+.practice-step { margin-top: 8px; color: #405e72; }
+.practice progress { display:block; width:100%; height:10px; margin: 12px 0 24px; accent-color:#17847d; }
+.practice fieldset { border:0; padding:0; min-inline-size:0; }
+.practice legend { font-weight:700; margin-bottom:16px; }
+.practice-options { display:grid; gap:10px; }
+.practice-options button {
+  text-align:start;
+  color:inherit;
+  background:#fff;
+  border:1px solid #b8cdd9;
+  border-radius:12px;
+  padding:13px 16px;
+  font:inherit;
+}
+.practice-options button:enabled { cursor:pointer; }
+.practice-options button:enabled:hover { border-color:#17847d; background:#ecfcf7; }
+.practice-options .is-correct { background:#dcf8ec; border-color:#17847d; }
+.practice-options .is-incorrect { background:#fff0eb; border-color:#aa4a37; }
+.practice-feedback:not(:empty) { margin-block:14px; }
+.practice-review { display:inline-block; margin-inline-end:16px; text-decoration:underline; }
+.practice .btn { margin-top:12px; }
+.concept-search { background:#f0f8fa; border:1px solid #cde0e7; border-radius:20px; padding:clamp(16px, 3vw, 26px); }
+.concept-search label { font-weight:700; color:#153b59; }
+.hero { background:radial-gradient(ellipse at 12% 15%, #d7f7ed, transparent 55%), radial-gradient(ellipse at 90% 65%, #c5d9ff, transparent 68%), #f4f9fc; }
+.visual-stage { box-shadow:0 24px 56px #153b5940, 0 0 48px #2aa8ab26; }
+.practice-jump { margin-bottom:20px; }
+/* Focused reading and touch targets from the interface review. */
+.practice { max-width: 860px; margin-inline: auto; }
+.practice legend { font-size: clamp(17px, 2vw, 20px); line-height: 1.6; }
+.practice-options button { min-height: 52px; line-height: 1.6; }
+.practice-feedback { max-width: 65ch; line-height: 1.8; }
+.practice progress { border: 0; border-radius: 8px; overflow: hidden; background: #dce9eb; }
+.practice progress::-webkit-progress-bar { background: #dce9eb; border-radius: 8px; }
+.practice progress::-webkit-progress-value { background: #17847d; border-radius: 8px; }
+.practice progress::-moz-progress-bar { background: #17847d; }
+.practice-step, .metric-num { font-variant-numeric: tabular-nums; }
+.practice h2, .practice legend, .section-title { text-wrap: balance; overflow-wrap: anywhere; }
+button, .btn { touch-action: manipulation; }
+.practice-review { padding-block: 12px; }
+@media (max-width: 600px) {
+  .practice { padding: 22px 18px; border-radius: 18px; }
+  .practice-options button { padding: 14px; }
+}
+.practice-best { display:inline-block; margin:12px 0; padding:7px 12px; border-radius:8px; color:#136459; background:#daf1e9; font-size:14px; }
+.practice-results { display:grid; gap:12px; }
+.practice-results a { display:grid; gap:8px; padding:18px; border:1px solid #bdd6dd; border-radius:12px; background:#fff; color:#153b59; }
+.practice-results a:hover { border-color:#17847d; }
+.practice-results span { font-size:14px; line-height:1.8; color:#405e72; }
+.practice-results strong { line-height:1.6; }

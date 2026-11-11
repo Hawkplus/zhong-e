@@ -1289,3 +1289,9 @@ button, .btn { touch-action: manipulation; }
   .practice { padding: 22px 18px; border-radius: 18px; }
   .practice-options button { padding: 14px; }
 }
+.practice-best { display:inline-block; margin:12px 0; padding:7px 12px; border-radius:8px; color:#136459; background:#daf1e9; font-size:14px; }
+.practice-results { display:grid; gap:12px; }
+.practice-results a { display:grid; gap:8px; padding:18px; border:1px solid #bdd6dd; border-radius:12px; background:#fff; color:#153b59; }
+.practice-results a:hover { border-color:#17847d; }
+.practice-results span { font-size:14px; line-height:1.8; color:#405e72; }
+.practice-results strong { line-height:1.6; }

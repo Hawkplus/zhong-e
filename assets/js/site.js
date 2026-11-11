@@ -289,9 +289,26 @@
     var position = 0;
     var score = 0;
     var choice = null;
+    var mistakes = [];
+    var best = null;
+    var storageKey = 'zhongha:quiz:resnet:best';
+    try {
+      var storedBest = localStorage.getItem(storageKey);
+      var parsedBest = Number(storedBest);
+      if (storedBest !== null && Number.isInteger(parsedBest) && parsedBest >= 0 && parsedBest <= questions.length) best = parsedBest;
+    } catch (error) {}
+    var summary = document.createElement('p');
+    summary.className = 'practice-best';
+    title.after(summary);
+    var results = document.createElement('div');
+    results.className = 'practice-results';
+    next.before(results);
 
     function render() {
       var question = questions[position];
+      summary.hidden = best === null;
+      summary.textContent = tr('本机最佳成绩 ', 'Осы құрылғыдағы үздік нәтиже ') + best + ' / ' + questions.length;
+      results.replaceChildren();
       title.textContent = tr('残差网络小测', 'Қалдық желілер бойынша тест');
       section.querySelector('.practice-step').textContent = question
         ? tr('第 ' + (position + 1) + ' 题，共 3 题', (position + 1) + ' / 3 сұрақ')
@@ -302,6 +319,19 @@
       next.hidden = Boolean(question && choice === null);
       feedback.textContent = '';
       if (!question) {
+        feedback.textContent = mistakes.length
+          ? tr('回顾下面的错题，再试一次。', 'Қате жауаптарды қайталап, қайта көріңіз.')
+          : tr('全部答对！你已完成本轮练习。', 'Барлығы дұрыс! Жаттығу аяқталды.');
+        mistakes.forEach(function (missed) {
+          var item = document.createElement('a');
+          item.href = '#' + missed.answer;
+          var heading = document.createElement('strong');
+          heading.textContent = tr.apply(null, missed.prompt);
+          var explanation = document.createElement('span');
+          explanation.textContent = tr.apply(null, missed.explanation);
+          item.append(heading, explanation);
+          results.append(item);
+        });
         next.textContent = tr('再练一次', 'Қайталау');
         return;
       }
@@ -315,7 +345,9 @@
         if (choice !== null && index === question.correct) button.classList.add('is-correct');
         if (choice === index && index !== question.correct) button.classList.add('is-incorrect');
         button.addEventListener('click', function () {
+          if (choice !== null) return;
           choice = index;
+          if (index !== question.correct) mistakes.push(question);
           score += Number(index === question.correct);
           render();
           next.focus();
@@ -334,8 +366,17 @@
       if (position === questions.length) {
         position = 0;
         score = 0;
+        mistakes = [];
       } else {
         position++;
+        if (position === questions.length) {
+          try {
+            var latest = Number(localStorage.getItem(storageKey));
+            if (Number.isInteger(latest) && latest >= 0 && latest <= questions.length) best = Math.max(best || 0, latest);
+          } catch (error) {}
+          best = Math.max(best || 0, score);
+          try { localStorage.setItem(storageKey, String(best)); } catch (error) {}
+        }
       }
       choice = null;
       render();

@@ -11,6 +11,11 @@
   var toastTimer = null;
   var toastEl = null;
 
+  /* 界面语言（由 lang.js / 内联脚本维护） */
+  function tr(zh, kk) {
+    return window.SITE_LANG === 'kk' ? kk : zh;
+  }
+
   /* ---------- 基础工具 ---------- */
   function $(selector, scope) { return (scope || document).querySelector(selector); }
   function $$(selector, scope) { return Array.prototype.slice.call((scope || document).querySelectorAll(selector)); }
@@ -94,14 +99,18 @@
       if (value !== undefined && value !== null) el.textContent = String(value);
     });
 
-    $$('[data-cat-count]').forEach(function (el) {
-      var key = el.getAttribute('data-cat-count');
-      var item = data.categories && data.categories[key];
-      if (!item) return;
-      el.textContent = item.status === 'active'
-        ? item.videos + ' 部视频 · ' + item.concepts + ' 个概念'
-        : '筹备中';
-    });
+    function renderCounts() {
+      $$('[data-cat-count]').forEach(function (el) {
+        var key = el.getAttribute('data-cat-count');
+        var item = data.categories && data.categories[key];
+        if (!item) return;
+        el.textContent = item.status === 'active'
+          ? item.videos + ' ' + tr('部视频', 'бейне') + ' · ' + item.concepts + ' ' + tr('个概念', 'ұғым')
+          : tr('筹备中', 'Дайындалуда');
+      });
+    }
+    renderCounts();
+    window.addEventListener('langchange', renderCounts);
   }
 
   /* ---------- 复制 ---------- */
@@ -115,11 +124,11 @@
         var label = button.querySelector('[data-copy-label]');
         var original = label ? label.textContent : '';
         copyText(target.textContent).then(function () {
-          if (label) label.textContent = '已复制';
-          showToast('已复制到剪贴板');
+          if (label) label.textContent = tr('已复制', 'Көшірілді');
+          showToast(tr('已复制到剪贴板', 'Мәтін алмасу буферіне көшірілді'));
           window.setTimeout(function () { if (label) label.textContent = original; }, 1800);
         }).catch(function () {
-          showToast('复制失败，请手动选择文本');
+          showToast(tr('复制失败，请手动选择文本', 'Көшіру сәтсіз аяқталды, мәтінді өзіңіз таңдаңыз'));
         });
         return;
       }
@@ -128,9 +137,9 @@
       if (urlButton) {
         event.preventDefault();
         copyText(urlButton.getAttribute('data-copy-url') || window.location.href).then(function () {
-          showToast('链接已复制');
+          showToast(tr('链接已复制', 'Сілтеме көшірілді'));
         }).catch(function () {
-          showToast('复制失败，请从地址栏复制');
+          showToast(tr('复制失败，请从地址栏复制', 'Көшіру сәтсіз аяқталды, мекенжай жолынан көшіріңіз'));
         });
       }
     });
@@ -201,17 +210,23 @@
     function render(active) {
       button.classList.toggle('is-active', active);
       button.setAttribute('aria-pressed', active ? 'true' : 'false');
-      if (label) label.textContent = active ? '已收藏' : '收藏';
+      button.setAttribute('aria-label', active
+        ? tr('取消收藏本期视频', 'Бұл бейнені сақтаудан алу')
+        : tr('收藏本期视频', 'Бұл бейнені сақтау'));
+      if (label) label.textContent = active ? tr('已收藏', 'Сақталды') : tr('收藏', 'Сақтау');
     }
 
     render(stored.indexOf(id) !== -1);
+    window.addEventListener('langchange', function () {
+      render(button.classList.contains('is-active'));
+    });
     button.addEventListener('click', function () {
       var active = button.classList.contains('is-active');
       var next = active ? stored.filter(function (item) { return item !== id; }) : stored.concat(id);
       stored = next;
       try { window.localStorage.setItem(key, JSON.stringify(next)); } catch (error) { /* 隐私模式 */ }
       render(!active);
-      showToast(active ? '已取消收藏' : '已收藏本期视频');
+      showToast(active ? tr('已取消收藏', 'Сақтаудан алынды') : tr('已收藏本期视频', 'Бұл бейне сақталды'));
     });
   }
 

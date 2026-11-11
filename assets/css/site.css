@@ -125,12 +125,25 @@ button { font: inherit; color: inherit; }
   content: ""; position: absolute; left: 12px; right: 12px; bottom: 3px;
   height: 2px; border-radius: 2px; background: linear-gradient(90deg, var(--blue), var(--teal));
 }
-.lang-badge {
-  flex: 0 0 auto; padding: 5px 10px; border: 1px solid var(--line);
-  border-radius: 999px; color: var(--muted); background: #FBFDFE;
-  font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .1em;
-  white-space: nowrap;
+.lang-switch {
+  display: inline-flex; flex: 0 0 auto; gap: 2px;
+  padding: 3px; border: 1px solid var(--line-strong); border-radius: 999px;
+  background: #fff;
 }
+.lang-switch button {
+  min-height: 28px; padding: 0 10px; border: 0; border-radius: 999px;
+  background: none; color: var(--muted);
+  font-size: 11px; font-weight: 600; letter-spacing: .02em;
+  white-space: nowrap; cursor: pointer;
+  transition: background-color .18s var(--ease), color .18s var(--ease);
+}
+.lang-switch button:hover { color: var(--brand); background: #F1F7FB; }
+.lang-switch button.is-on { background: var(--brand); color: #fff; }
+.lang-switch button.is-on:hover { background: var(--brand); color: #fff; }
+.lang-switch button:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+html:not(.js) .lang-switch { display: none; }
+html:not(.lang-kk) .lang-switch button[data-lang="zh"],
+html.lang-kk .lang-switch button[data-lang="kk"] { background: var(--brand); color: #fff; }
 .nav-toggle {
   display: none; align-items: center; justify-content: center;
   width: 42px; height: 42px; margin-left: auto;
@@ -931,7 +944,7 @@ table.data td b { color: var(--ink); font-weight: 600; }
   .prompt-banner { grid-template-columns: minmax(0, 1fr); gap: 22px; }
   .prompt-banner-action .btn { width: 100%; }
 }
-@media (max-width: 860px) {
+@media (max-width: 900px) {
   :root { --header-h: 64px; }
   .site-header { position: sticky; }
   .header-inner { gap: 12px; }
@@ -944,8 +957,9 @@ table.data td b { color: var(--ink); font-weight: 600; }
   .site-nav.is-open { display: flex; }
   .nav-link { min-height: 44px; padding: 0 12px; font-size: 15px; border-radius: 8px; }
   .nav-link.is-active::after { left: 12px; right: auto; top: 11px; bottom: 11px; width: 3px; height: auto; background: var(--blue); }
-  .lang-badge { display: none; }
-  .nav-toggle { display: inline-flex; margin-left: auto; }
+  .lang-switch { margin-left: auto; }
+  .lang-switch button { min-height: 32px; padding: 0 9px; font-size: 10.5px; }
+  .nav-toggle { display: inline-flex; margin-left: 0; }
   .category-grid { grid-template-columns: minmax(0, 1fr); }
   .concept-grid { grid-template-columns: minmax(0, 1fr); }
   .concept-card { min-height: 0; }
@@ -1040,6 +1054,7 @@ table.data td b { color: var(--ink); font-weight: 600; }
 
 /* 27.5 Error page ------------------------------------------------------- */
 .anchor { display: block; height: 0; scroll-margin-top: 96px; }
+.nowrap { white-space: nowrap; }
 
 .error-page {
   display: grid; place-items: center; gap: 8px;
@@ -1059,6 +1074,131 @@ table.data td b { color: var(--ink); font-weight: 600; }
 .error-page p.error-desc { max-width: 34em; margin-top: 12px; color: var(--muted); font-size: 13.5px; line-height: 1.85; }
 .error-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 22px; }
 .error-actions .btn { min-height: 42px; padding: 0 18px; font-size: 13px; }
+
+/* 27.6 Қазақша interface mode -------------------------------------------- */
+/* 切换的是界面文案与阅读主次：正文仍保留中哈对照，不隐藏任一语言。 */
+html.lang-kk .hero h1 {
+  max-width: none; margin-bottom: 6px;
+  color: var(--muted); font-size: 15px; font-weight: 500;
+  line-height: 1.65; letter-spacing: 0;
+}
+html.lang-kk .hero h1 .accent { color: inherit; background: none; }
+html.lang-kk .hero-kk {
+  margin-bottom: 14px; color: var(--brand);
+  font-size: clamp(34px, 4.4vw, 52px); font-weight: 750;
+  line-height: 1.12; letter-spacing: -.03em;
+}
+html.lang-kk .hero-intro { max-width: 42em; color: var(--muted); font-size: 13px; }
+html.lang-kk .hero-intro-kk { max-width: 38em; margin-top: 6px; color: var(--ink-soft); font-size: 15.5px; }
+
+html.lang-kk .page-hero h1 {
+  max-width: none; margin-bottom: 4px;
+  color: var(--muted); font-size: 15px; font-weight: 500;
+  line-height: 1.65; letter-spacing: 0;
+}
+html.lang-kk .page-kk {
+  max-width: 24em; margin-bottom: 12px; color: var(--brand);
+  font-size: clamp(27px, 3.2vw, 38px); font-weight: 750;
+  line-height: 1.22; letter-spacing: -.02em;
+}
+
+html.lang-kk .section-title { color: var(--muted); font-size: 14px; font-weight: 500; letter-spacing: 0; line-height: 1.5; }
+html.lang-kk .section-kk { display: block; margin-top: 2px; color: var(--brand); font-size: clamp(24px, 2.6vw, 29px); font-weight: 720; line-height: 1.25; letter-spacing: -.02em; }
+
+html.lang-kk .band-title,
+html.lang-kk .principle-head h2,
+html.lang-kk .stages-head h2,
+html.lang-kk .boundaries-head h2,
+html.lang-kk .prompt-title-wrap h2,
+html.lang-kk .entry-head h2,
+html.lang-kk .prose h2 {
+  color: var(--muted); font-size: 14px; font-weight: 500;
+  letter-spacing: 0; line-height: 1.6;
+}
+html.lang-kk .band-title .kk,
+html.lang-kk .principle-head h2 .kk,
+html.lang-kk .stages-head > .kk,
+html.lang-kk .boundaries-head > .kk,
+html.lang-kk .prompt-title-wrap > .kk,
+html.lang-kk .entry-head > .kk,
+html.lang-kk .prose h2 .kk {
+  display: block; margin-top: 2px; color: var(--brand);
+  font-size: 21px; font-weight: 720; line-height: 1.32;
+  letter-spacing: -.01em;
+}
+html.lang-kk .entry-head { display: block; }
+html.lang-kk .entry-head > .kk { margin-left: 0; }
+
+html.lang-kk .category-card h3,
+html.lang-kk .feature h3,
+html.lang-kk .concept-card h3,
+html.lang-kk .stage-title h3 {
+  color: var(--muted); font-size: 14px; font-weight: 500;
+  letter-spacing: 0; line-height: 1.6;
+}
+html.lang-kk .category-kk,
+html.lang-kk .feature-kk,
+html.lang-kk .concept-kk,
+html.lang-kk .stage-title .kk {
+  display: block; margin-top: 3px; color: var(--brand);
+  font-size: 20px; font-weight: 700; line-height: 1.35; letter-spacing: -.01em;
+}
+html.lang-kk .category-desc { color: var(--muted-2); font-size: 12px; }
+html.lang-kk .category-desc-kk { color: var(--ink-soft); font-size: 14px; }
+html.lang-kk .concept-cn { color: var(--muted-2); font-size: 12px; }
+html.lang-kk .concept-kk-text { color: var(--ink-soft); font-size: 14px; }
+
+html.lang-kk .metric-label { display: none; }
+html.lang-kk .metric-kk { display: block; margin-top: 0; color: var(--ink-soft); font-size: 13px; font-weight: 600; line-height: 1.4; }
+
+html.lang-kk .side-title { color: var(--brand); font-size: 0; letter-spacing: 0; text-transform: none; }
+html.lang-kk .side-title .kk { display: block; margin-top: 0; color: var(--brand); font-size: 15px; font-weight: 650; line-height: 1.45; letter-spacing: 0; text-transform: none; }
+
+html.lang-kk .ch-title { display: none; }
+html.lang-kk .ch-kk { color: var(--brand); font-size: 14px; font-weight: 600; }
+html.lang-kk .page-lead { color: var(--muted); font-size: 12.5px; }
+html.lang-kk .chapter-title { color: var(--muted-2); font-size: 11px; }
+html.lang-kk .chapter-kk { color: var(--ink-soft); font-size: 13px; }
+
+/* 哈萨克语模式：双语两栏改为哈萨克语在左，阅读顺序优先 */
+html.lang-kk .definition-cols .lang-block:first-child,
+html.lang-kk .stage-body .lang-block:first-child,
+html.lang-kk .entry-cols .lang-block:first-child { order: 2; }
+html.lang-kk .definition-cols .lang-block:last-child,
+html.lang-kk .stage-body .lang-block:last-child,
+html.lang-kk .entry-cols .lang-block:last-child { order: 1; }
+html.lang-kk .definition-cols .lang-block:first-child { padding-left: 26px; border-left: 1px solid #D8E8F3; }
+html.lang-kk .definition-cols .lang-block:last-child { padding-left: 0; border-left: 0; }
+html.lang-kk .stage-body .lang-block:first-child { padding-left: 24px; border-left: 1px solid var(--line); }
+html.lang-kk .stage-body .lang-block:last-child { padding-left: 0; border-left: 0; }
+html.lang-kk .entry-cols .lang-block:first-child { padding-left: 30px; border-left: 1px solid var(--line); }
+html.lang-kk .entry-cols .lang-block:last-child { padding-left: 0; border-left: 0; }
+
+html.lang-kk .prompt-banner h2 { color: #9FBDD0; font-size: 14px; font-weight: 500; letter-spacing: 0; }
+html.lang-kk .prompt-banner-kk { margin-bottom: 8px; color: #fff; font-size: 20px; font-weight: 700; line-height: 1.35; letter-spacing: -.01em; }
+
+html.lang-kk .error-page h1 { color: var(--muted); font-size: 15px; font-weight: 500; }
+html.lang-kk .error-page .page-kk { margin-bottom: 4px; color: var(--brand); font-size: 28px; font-weight: 750; line-height: 1.25; }
+html.lang-kk .error-page .error-desc { margin-top: 8px; }
+
+@media (max-width: 720px) {
+  html.lang-kk .hero h1 { font-size: 13px; }
+  html.lang-kk .hero-kk { font-size: clamp(30px, 8vw, 36px); line-height: 1.16; }
+  html.lang-kk .page-hero h1 { font-size: 13px; }
+  html.lang-kk .page-kk { font-size: 25px; }
+  html.lang-kk .category-kk,
+  html.lang-kk .feature-kk,
+  html.lang-kk .concept-kk,
+  html.lang-kk .stage-title .kk { font-size: 18px; }
+  html.lang-kk .metric-kk { display: block; font-size: 11px; }
+  html.lang-kk .page-lead { font-size: 12px; }
+  html.lang-kk .definition-cols .lang-block:first-child { padding-left: 0; border-left: 0; padding-top: 14px; border-top: 1px solid #D8E8F3; }
+  html.lang-kk .definition-cols .lang-block:last-child { padding-top: 0; border-top: 0; }
+  html.lang-kk .stage-body .lang-block:first-child { padding-left: 0; border-left: 0; padding-top: 14px; border-top: 1px solid var(--line); }
+  html.lang-kk .stage-body .lang-block:last-child { padding-top: 0; border-top: 0; }
+  html.lang-kk .entry-cols .lang-block:first-child { padding-left: 0; border-left: 0; padding-top: 14px; border-top: 1px solid var(--line); }
+  html.lang-kk .entry-cols .lang-block:last-child { padding-top: 0; border-top: 0; }
+}
 
 /* 28. A11y / print ------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {

@@ -13,6 +13,16 @@
   <meta property="og:url" content="https://hawkplus.github.io/zhong-ha/" />
   <link rel="canonical" href="https://hawkplus.github.io/zhong-ha/" />
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+  <script>
+    document.documentElement.classList.add('js');
+    window.SITE_LANG = 'zh';
+    try {
+      if (localStorage.getItem('zhongha:lang') === 'kk') {
+        window.SITE_LANG = 'kk';
+        document.documentElement.classList.add('lang-kk');
+      }
+    } catch (e) {}
+  </script>
   <link rel="stylesheet" href="assets/css/site.css" />
 </head>
 <body>
@@ -41,7 +51,10 @@
         <a class="nav-link" href="about.html">关于项目</a>
       </nav>
 
-      <span class="lang-badge" aria-label="中文与哈萨克语">中文 · ҚАЗ</span>
+      <div class="lang-switch" role="group" aria-label="界面语言 / Интерфейс тілі" title="界面语言与阅读主次 / Интерфейс тілі">
+        <button type="button" data-lang="zh" aria-pressed="true">中文</button>
+        <button type="button" data-lang="kk" aria-pressed="false" lang="kk">ҚАЗ</button>
+      </div>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="打开菜单" data-nav-toggle>
         <span></span>
       </button>
@@ -57,7 +70,7 @@
           <div class="hero-copy">
             <p class="eyebrow">Bilingual Science Platform</p>
             <h1 id="hero-title" data-blur-text>把复杂的科学，<br />讲成 <span class="accent">88 秒</span>。</h1>
-            <p class="hero-kk" lang="kk">Күрделі ғылым — 88 секунд ішінде.</p>
+            <p class="hero-kk" lang="kk">Күрделі ғылым — <span class="nowrap">88 секунд</span> ішінде.</p>
             <p class="hero-intro">通过科学动画、中哈双语解释和互动学习，让复杂的专业知识更容易理解。</p>
             <p class="hero-intro-kk" lang="kk">Ғылыми анимациялар, қытай-қазақша түсіндірмелер және интерактивті оқыту арқылы күрделі кәсіби білімді түсінуді жеңілдетеміз.</p>
             <div class="hero-actions">
@@ -477,6 +490,7 @@
 
   <script src="assets/js/data.js"></script>
   <script src="assets/js/site.js"></script>
+  <script src="assets/js/lang.js"></script>
   <script src="assets/js/motion.js"></script>
 </body>
 </html>

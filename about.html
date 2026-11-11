@@ -13,6 +13,16 @@
   <meta property="og:url" content="https://hawkplus.github.io/zhong-ha/about.html" />
   <link rel="canonical" href="https://hawkplus.github.io/zhong-ha/about.html" />
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+  <script>
+    document.documentElement.classList.add('js');
+    window.SITE_LANG = 'zh';
+    try {
+      if (localStorage.getItem('zhongha:lang') === 'kk') {
+        window.SITE_LANG = 'kk';
+        document.documentElement.classList.add('lang-kk');
+      }
+    } catch (e) {}
+  </script>
   <link rel="stylesheet" href="assets/css/site.css" />
 </head>
 <body>
@@ -41,7 +51,10 @@
         <a class="nav-link is-active" href="about.html" aria-current="page">关于项目</a>
       </nav>
 
-      <span class="lang-badge" aria-label="中文与哈萨克语">中文 · ҚАЗ</span>
+      <div class="lang-switch" role="group" aria-label="界面语言 / Интерфейс тілі" title="界面语言与阅读主次 / Интерфейс тілі">
+        <button type="button" data-lang="zh" aria-pressed="true">中文</button>
+        <button type="button" data-lang="kk" aria-pressed="false" lang="kk">ҚАЗ</button>
+      </div>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="打开菜单" data-nav-toggle>
         <span></span>
       </button>
@@ -248,6 +261,7 @@ zhong-ha/
 
   <script src="assets/js/data.js"></script>
   <script src="assets/js/site.js"></script>
+  <script src="assets/js/lang.js"></script>
   <script src="assets/js/motion.js"></script>
 </body>
 </html>

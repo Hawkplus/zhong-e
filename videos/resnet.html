@@ -3,28 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>残差网络：为什么网络越深，反而更难训练？| 中俄科普</title>
-  <meta name="description" content="88 秒中英字幕短片 + 中俄双语概念解释：残差网络 ResNet 的退化现象、残差连接、梯度通路与科学边界。附完整生成提示词。" />
+  <title>残差网络：为什么网络越深，反而更难训练？| 中哈科普</title>
+  <meta name="description" content="88 秒中英字幕短片 + 中哈双语概念解释：残差网络 ResNet 的退化现象、残差连接、梯度通路与科学边界。附完整生成提示词。" />
   <meta name="theme-color" content="#0a1c2b" />
   <meta property="og:type" content="video.other" />
   <meta property="og:title" content="残差网络：为什么网络越深，反而更难训练？" />
-  <meta property="og:description" content="88 秒动画 + 中俄双语解释：z = x + F(x) 为什么让深层网络学得动。" />
-  <meta property="og:image" content="https://hawkplus.github.io/zhong-e/assets/img/og-cover.jpg" />
+  <meta property="og:description" content="88 秒动画 + 中哈双语解释：z = x + F(x) 为什么让深层网络学得动。" />
+  <meta property="og:image" content="https://hawkplus.github.io/zhong-ha/assets/img/og-cover.jpg" />
   <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="../assets/css/site.css" />
-  <link rel="canonical" href="https://hawkplus.github.io/zhong-e/videos/resnet.html" />
-  <meta property="og:url" content="https://hawkplus.github.io/zhong-e/videos/resnet.html" />
+  <link rel="canonical" href="https://hawkplus.github.io/zhong-ha/videos/resnet.html" />
+  <meta property="og:url" content="https://hawkplus.github.io/zhong-ha/videos/resnet.html" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">跳到主要内容</a>
 
   <header class="site-header">
     <div class="shell header-inner">
-      <a class="brand" href="../index.html" aria-label="中俄科普首页">
-        <span class="brand-mark" aria-hidden="true">中俄</span>
+      <a class="brand" href="../index.html" aria-label="中哈科普首页">
+        <span class="brand-mark" aria-hidden="true">中哈</span>
         <span class="brand-text">
-          <strong>中俄科普</strong>
-          <small>概念与提示词库 · Наука</small>
+          <strong>中哈科普</strong>
+          <small>概念与提示词库 · Ғылым</small>
         </span>
       </a>
 
@@ -59,9 +59,9 @@
 
         <p class="eyebrow">视频 01 · 人工智能系列</p>
         <h1>残差网络：为什么网络越深，反而更难训练？</h1>
-        <p class="page-ru" lang="ru">Остаточные сети: почему глубокие сети сложнее обучать?</p>
+        <p class="page-kk" lang="kk">Қалдық желілер: неге терең желілерді оқыту қиынырақ?</p>
         <p class="page-lead">
-          一条捷径改变网络的输出方式：z = x + F(x)。短片用 11 个章节讲清它为什么有效、边界在哪里；下面是完整的中俄双语解释。
+          一条捷径改变网络的输出方式：z = x + F(x)。短片用 11 个章节讲清它为什么有效、边界在哪里；下面是完整的中哈双语解释。
         </p>
 
         <div class="meta-bar">
@@ -93,7 +93,7 @@
 
         <!-- 章节 -->
         <section class="chapter-block" aria-labelledby="chapters-title">
-          <h2 id="chapters-title">章节 <span class="ru-mini" lang="ru">11 глав · нажмите, чтобы перейти</span></h2>
+          <h2 id="chapters-title">章节 <span class="kk-mini" lang="kk">11 тарау · өту үшін басыңыз</span></h2>
           <div class="chapter-grid">
             <button class="chapter" type="button" data-chapter="0">
               <img src="../assets/img/chapter-01.jpg" width="320" height="180" alt="" loading="lazy" />
@@ -156,7 +156,7 @@
         <!-- 文章 -->
         <div class="prose">
           <section id="definition">
-            <h2>它是什么<span class="ru-mini" lang="ru">Что это такое</span></h2>
+            <h2>它是什么<span class="kk-mini" lang="kk">Бұл деген не?</span></h2>
             <p>
               <strong>残差网络（ResNet）</strong>是一类深度神经网络结构。它把每个模块的输入 <b>x</b> 直接加到模块的输出上，得到
               <b>z = x + F(x)</b>。这里的 <b>F(x)</b> 是模块学到的修正量，也就是「残差」。网络不再直接学习完整的映射 H(x)，而是学习它相对输入的改动量：F(x) = H(x) − x。
@@ -165,28 +165,28 @@
               <span class="sym">z</span><span>=</span><span class="sym">x</span><span>+</span><span class="sym">F(x)</span>
             </div>
             <p class="formula-note">z：模块输出　·　x：模块输入　·　F(x)：残差分支学到的修正量；相加为逐元素相加。</p>
-            <div class="ru-box" lang="ru">
-              <span class="label">По-русски</span>
-              Остаточная сеть (ResNet) — архитектура глубокой нейронной сети, в которой вход блока x складывается с результатом преобразования: z = x + F(x). Величина F(x) — выученная поправка, или остаток. Сеть учит не полное отображение H(x), а разность F(x) = H(x) − x.
+            <div class="kk-box" lang="kk">
+              <span class="label">Қазақша</span>
+              Қалдық желі (ResNet) — терең нейрондық желінің архитектурасы; мұнда блок кірісі x түрлендіру нәтижесіне қосылады: z = x + F(x). F(x) шамасы — үйренілген түзету, яғни қалдық. Желі толық H(x) бейнелеуін емес, F(x) = H(x) − x айырмасын үйренеді.
             </div>
           </section>
 
           <section id="why">
-            <h2>为什么重要<span class="ru-mini" lang="ru">Почему это важно</span></h2>
+            <h2>为什么重要<span class="kk-mini" lang="kk">Неге бұл маңызды</span></h2>
             <p>
               在 2015 年之前，把网络简单加深并不会稳定变好。更深的普通网络常常出现<strong>退化</strong>：训练误差本身反而更高，说明问题不在拟合能力，而在优化。残差连接把学习目标改成「相对输入的修正量」，让接近恒等映射的情况变得容易表达——只要把 F(x) 压到接近零。
             </p>
             <p>
               这带来两个直接好处：一是深层网络可以被训练；二是梯度在反向传播时多了一条更短的路径，优化更稳定。ResNet 在 ImageNet 上的结果让「上百层」成为常规配置，也影响了后来大量的视觉与序列模型。
             </p>
-            <div class="ru-box" lang="ru">
-              <span class="label">По-русски</span>
-              До 2015 года простое увеличение глубины не давало устойчивого выигрыша: у более глубоких обычных сетей ошибка на обучающей выборке оказывалась выше. Это явление называют деградацией — проблема не в переобучении, а в оптимизации. Остаточное соединение меняет цель обучения: сети проще свести F(x) к нулю, чем заново выучить тождественное преобразование. Кроме того, обходной путь даёт градиенту более короткую дорогу, и в результате стали возможны сети в сотни слоёв.
+            <div class="kk-box" lang="kk">
+              <span class="label">Қазақша</span>
+              2015 жылға дейін тереңдікті жай ғана арттыру тұрақты пайда бермеді: тереңірек кәдімгі желілерде оқыту жиынындағы қате жоғарырақ болып шығатын. Бұл құбылыс деградация деп аталады — мәселе артық бейімделуде емес, оңтайландыруда. Қалдық байланыс оқыту мақсатын өзгертеді: желіге F(x)-ті нөлге жақындату тепе-тең түрлендіруді қайта үйренуден әлдеқайда оңай. Сонымен қатар айналма жол градиентке қысқарақ жол береді, нәтижесінде жүздеген қабаттан тұратын желілер мүмкін болды.
             </div>
           </section>
 
           <section id="principle">
-            <h2>它怎么工作<span class="ru-mini" lang="ru">Как это работает</span></h2>
+            <h2>它怎么工作<span class="kk-mini" lang="kk">Бұл қалай жұмыс істейді</span></h2>
             <p>
               一个残差块有两条路：一条是<strong>残差分支</strong>，通常是两层卷积加非线性，输出 F(x)；另一条是<strong>捷径</strong>（shortcut），把输入 x 原样送到相加节点。两条路在末尾逐元素相加，得到 z = x + F(x)。
             </p>
@@ -211,14 +211,14 @@
             <p>
               训练和推理时，两条路径都会计算。捷径不是推理阶段跳过某些层的开关——它始终参与前向计算，也把梯度带回前面的层。
             </p>
-            <div class="ru-box" lang="ru">
-              <span class="label">По-русски</span>
-              Блок содержит две ветви: основную, которая вычисляет F(x), и обходную, которая передаёт x напрямую к узлу сложения. Результат: z = x + F(x). Если размерности не совпадают, вход приводят к нужной форме проекцией, например свёрткой 1×1. Обе ветви работают и при обучении, и при выводе — это не переключатель «пропустить слои».
+            <div class="kk-box" lang="kk">
+              <span class="label">Қазақша</span>
+              Блокта екі тармақ бар: F(x)-ті есептейтін негізгі тармақ және x-ті қосу түйініне тікелей жеткізетін айналма тармақ. Нәтиже: z = x + F(x). Өлшемдер сәйкес келмесе, кіріс қажетті пішінге проекция арқылы келтіріледі, мысалы 1×1 конволюция. Екі тармақ та оқыту кезінде де, шығыс алу кезінде де жұмыс істейді — бұл «қабаттарды өткізіп жіберу» қосқышы емес.
             </div>
           </section>
 
           <section id="boundaries">
-            <h2>边界与常见误解<span class="ru-mini" lang="ru">Границы и заблуждения</span></h2>
+            <h2>边界与常见误解<span class="kk-mini" lang="kk">Шекаралар мен жиі қате түсініктер</span></h2>
             <div class="callout">
               <span class="callout-title">请先看这一节</span>
               短片里反复标注「示意」，因为这里的每一句结论都有边界。把下面几条记牢，比记住公式更有用。
@@ -231,13 +231,13 @@
               <li><strong>「梯度不会消失」是过度承诺。</strong>捷径提供更直接的通路、改善优化，但不保证任意深度都能训练。</li>
               <li><strong>示意图不是实验数据。</strong>短片中的仪表与曲线只用于说明趋势，不对应任何真实测量。</li>
             </ul>
-            <p lang="ru" style="margin-top:16px">
-              Глубина не гарантирует качество. Деградация — это рост ошибки на обучающей выборке, а не переобучение. F(x) ≈ 0 означает сохранение входа, а не «сеть ничего не выучила». Обходное соединение работает и при обучении, и при выводе.
+            <p lang="kk" style="margin-top:16px">
+              Тереңдік сапаға кепілдік бермейді. Деградация — оқыту жиынындағы қатенің өсуі, артық бейімделу емес. F(x) ≈ 0 кірістің сақталуын білдіреді, «желі ештеңе үйренбеді» дегенді емес. Айналма байланыс оқыту кезінде де, шығыс алу кезінде де жұмыс істейді.
             </p>
           </section>
 
           <section id="prompt">
-            <h2>生成它的提示词<span class="ru-mini" lang="ru">Промпт, по которому сделан фильм</span></h2>
+            <h2>生成它的提示词<span class="kk-mini" lang="kk">Фильм жасалған промпт</span></h2>
             <p>
               本片由一份结构化提示词生成：它锁定了 15 拍时间线、配色语义、科学护栏和编码参数，并要求执行方直接交付成片，而不是方案或分镜表。这份提示词本身也是一件可以复用的「科普生产工具」。
             </p>
@@ -252,7 +252,7 @@
           </section>
 
           <section id="credits">
-            <h2>制作与参考<span class="ru-mini" lang="ru">Источники</span></h2>
+            <h2>制作与参考<span class="kk-mini" lang="kk">Дереккөздер</span></h2>
             <p>
               视频、封面与插图由项目作者使用 AI 工具生成、剪辑与校对，封面与示意图取自动画关键帧。内容用于科普学习，不构成专业结论；涉及的数据与结论以原始论文和教材为准。
             </p>
@@ -270,7 +270,7 @@
 
       <aside class="article-aside" aria-label="页面信息">
         <section class="aside-card">
-          <h3>本片信息<span class="ru-mini" lang="ru">О фильме</span></h3>
+          <h3>本片信息<span class="kk-mini" lang="kk">Фильм туралы</span></h3>
           <ul class="info-list">
             <li><span class="k">时长</span><span class="v">88 秒</span></li>
             <li><span class="k">章节</span><span class="v">11</span></li>
@@ -283,7 +283,7 @@
         </section>
 
         <section class="aside-card">
-          <h3>本页目录<span class="ru-mini" lang="ru">Содержание</span></h3>
+          <h3>本页目录<span class="kk-mini" lang="kk">Мазмұны</span></h3>
           <ul class="toc">
             <li><a href="#definition" data-toc-link>它是什么</a></li>
             <li><a href="#why" data-toc-link>为什么重要</a></li>
@@ -295,7 +295,7 @@
         </section>
 
         <section class="aside-card">
-          <h3>相关概念<span class="ru-mini" lang="ru">Связанные понятия</span></h3>
+          <h3>相关概念<span class="kk-mini" lang="kk">Байланысты ұғымдар</span></h3>
           <div class="tag-cloud">
             <span>残差连接</span>
             <span>退化现象</span>
@@ -313,15 +313,15 @@
     <div class="shell footer-main">
       <div class="footer-brand">
         <a class="brand" href="../index.html">
-          <span class="brand-mark" aria-hidden="true">中俄</span>
+          <span class="brand-mark" aria-hidden="true">中哈</span>
           <span class="brand-text">
-            <strong>中俄科普</strong>
-            <small>概念与提示词库 · Наука</small>
+            <strong>中哈科普</strong>
+            <small>概念与提示词库 · Ғылым</small>
           </span>
         </a>
         <p>
           一个静态科普站：用短片讲概念，用双语文本拆概念，用提示词复现概念。
-          <span class="ru" lang="ru">Статический сайт о науке: фильм, объяснение и промпт — всё в одном месте.</span>
+          <span class="kk" lang="kk">Ғылым туралы статикалық сайт: фильм, түсіндірме және промпт — бәрі бір жерде.</span>
         </p>
       </div>
       <div class="footer-links">
@@ -338,13 +338,13 @@
           <ul>
             <li><a href="../assets/prompts/resnet-90s-prompt.md" download>提示词原文 .md</a></li>
             <li><a href="../assets/videos/resnet-88s.mp4" download>视频文件 .mp4</a></li>
-            <li><a href="https://github.com/Hawkplus/zhong-e" target="_blank" rel="noopener noreferrer">GitHub 仓库</a></li>
+            <li><a href="https://github.com/Hawkplus/zhong-ha" target="_blank" rel="noopener noreferrer">GitHub 仓库</a></li>
           </ul>
         </div>
       </div>
     </div>
     <div class="shell footer-bottom">
-      <span>© <span data-year>2026</span> 中俄科普 · 内容用于科普学习，不构成专业结论</span>
+      <span>© <span data-year>2026</span> 中哈科普 · 内容用于科普学习，不构成专业结论</span>
       <span>纯静态站点 · GitHub Pages</span>
     </div>
   </footer>

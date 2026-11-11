@@ -1,6 +1,6 @@
 /* ==========================================================================
-   中俄科普 · 静态科普视频库
-   设计系统：深空蓝 + 光谱色带，中文主排版，俄语次级排版
+   中哈科普 · 静态科普视频库
+   设计系统：深空蓝 + 光谱色带，中文主排版，哈萨克语次级排版
    纯静态，无外部字体/脚本依赖
    ========================================================================== */
 
@@ -99,8 +99,8 @@ button { font: inherit; color: inherit; }
 }
 .skip-link:focus { transform: translateY(0); }
 
-/* 语言排版：俄语次级行 */
-[lang="ru"] {
+/* 语言排版：哈萨克语次级行 */
+[lang="kk"] {
   hyphens: auto;
   overflow-wrap: break-word;
 }
@@ -333,7 +333,7 @@ button { font: inherit; color: inherit; }
   color: transparent;
 }
 
-.hero-ru {
+.hero-kk {
   margin-bottom: 18px;
   color: #b9d6e7;
   font-size: 19px;
@@ -347,7 +347,7 @@ button { font: inherit; color: inherit; }
   font-size: 15px;
   line-height: 1.9;
 }
-.hero-lead .ru { display: block; margin-top: 4px; color: #9dbccf; font-size: 13.5px; }
+.hero-lead .kk { display: block; margin-top: 4px; color: #9dbccf; font-size: 13.5px; }
 
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
 
@@ -526,7 +526,7 @@ button { font: inherit; color: inherit; }
   line-height: 1.25;
   letter-spacing: -.015em;
 }
-.section-head .ru-title {
+.section-head .kk-title {
   display: block;
   margin-top: 5px;
   color: var(--muted-2);
@@ -540,7 +540,7 @@ button { font: inherit; color: inherit; }
   line-height: 1.8;
   text-align: right;
 }
-.section-head-note .ru { display: block; color: var(--muted-2); font-size: 12.5px; }
+.section-head-note .kk { display: block; color: var(--muted-2); font-size: 12.5px; }
 
 .link-arrow {
   display: inline-flex;
@@ -617,7 +617,7 @@ button { font: inherit; color: inherit; }
   line-height: 1.32;
   letter-spacing: -.015em;
 }
-.feature .ru-title {
+.feature .kk-title {
   margin-bottom: 16px;
   color: var(--muted-2);
   font-size: 14.5px;
@@ -695,7 +695,7 @@ button { font: inherit; color: inherit; }
   font-weight: 650;
   line-height: 1.4;
 }
-.concept-card .ru-title {
+.concept-card .kk-title {
   display: block;
   margin-bottom: 12px;
   color: var(--muted-2);
@@ -706,7 +706,7 @@ button { font: inherit; color: inherit; }
   font-size: 13.5px;
   line-height: 1.85;
 }
-.concept-card p + p[lang="ru"] {
+.concept-card p + p[lang="kk"] {
   margin-top: 10px;
   padding-top: 10px;
   border-top: 1px dashed var(--line);
@@ -844,7 +844,7 @@ button { font: inherit; color: inherit; }
   letter-spacing: .06em;
 }
 .video-card h3 { margin-bottom: 2px; color: var(--ink); font-size: 18px; font-weight: 650; line-height: 1.45; }
-.video-card .ru-title { display: block; margin-bottom: 10px; color: var(--muted-2); font-size: 12.5px; line-height: 1.5; }
+.video-card .kk-title { display: block; margin-bottom: 10px; color: var(--muted-2); font-size: 12.5px; line-height: 1.5; }
 .video-card p { color: var(--muted); font-size: 13px; line-height: 1.75; }
 .video-card .card-foot {
   display: flex;
@@ -937,7 +937,7 @@ button { font: inherit; color: inherit; }
   font-size: 12px;
 }
 .upcoming-row h4 { color: var(--ink); font-size: 15px; font-weight: 600; line-height: 1.5; }
-.upcoming-row .ru { display: block; color: var(--muted-2); font-size: 12px; }
+.upcoming-row .kk { display: block; color: var(--muted-2); font-size: 12px; }
 .upcoming-row .status {
   padding: 3px 9px;
   border: 1px dashed #c9d8e2;
@@ -989,7 +989,7 @@ button { font: inherit; color: inherit; }
   letter-spacing: -.02em;
   text-wrap: balance;
 }
-.page-hero .page-ru {
+.page-hero .page-kk {
   max-width: 40em;
   margin-bottom: 18px;
   color: var(--muted-2);
@@ -1073,7 +1073,7 @@ button { font: inherit; color: inherit; }
   font-size: 19px;
   font-weight: 650;
 }
-.chapter-block h2 .ru-mini { color: var(--muted-2); font-size: 12px; font-weight: 400; }
+.chapter-block h2 .kk-mini { color: var(--muted-2); font-size: 12px; font-weight: 400; }
 
 .chapter-grid {
   display: grid;
@@ -1140,7 +1140,7 @@ button { font: inherit; color: inherit; }
   border-radius: 3px;
   background: var(--spectrum);
 }
-.prose h2 .ru-mini {
+.prose h2 .kk-mini {
   display: block;
   margin-top: 3px;
   color: var(--muted-2);
@@ -1165,7 +1165,7 @@ button { font: inherit; color: inherit; }
 .prose a { color: var(--blue-dark); text-decoration: underline; text-decoration-color: rgba(47, 127, 224, .35); text-underline-offset: 3px; }
 .prose a:hover { text-decoration-color: var(--blue); }
 
-.ru-box {
+.kk-box {
   margin: 16px 0;
   padding: 16px 20px;
   border-left: 3px solid var(--teal);
@@ -1175,7 +1175,7 @@ button { font: inherit; color: inherit; }
   font-size: 13.5px;
   line-height: 1.85;
 }
-.ru-box .label {
+.kk-box .label {
   display: block;
   margin-bottom: 4px;
   color: #0a8397;
@@ -1305,7 +1305,7 @@ button { font: inherit; color: inherit; }
   letter-spacing: .06em;
   text-transform: uppercase;
 }
-.aside-card h3 .ru-mini { display: block; margin-top: 3px; color: var(--muted-2); font-size: 10.5px; font-weight: 400; letter-spacing: .02em; text-transform: none; }
+.aside-card h3 .kk-mini { display: block; margin-top: 3px; color: var(--muted-2); font-size: 10.5px; font-weight: 400; letter-spacing: .02em; text-transform: none; }
 
 .info-list { list-style: none; font-size: 12.5px; }
 .info-list li {
@@ -1365,7 +1365,7 @@ button { font: inherit; color: inherit; }
   border-bottom: 1px solid var(--line-soft);
 }
 .prompt-card-head h3 { margin-bottom: 4px; color: var(--ink); font-size: 20px; font-weight: 650; line-height: 1.4; }
-.prompt-card-head .ru-title { color: var(--muted-2); font-size: 13px; }
+.prompt-card-head .kk-title { color: var(--muted-2); font-size: 13px; }
 .prompt-card-head .head-tools { display: flex; flex-wrap: wrap; gap: 8px; }
 
 .prompt-card-body { padding: 6px 26px 24px; }
@@ -1460,7 +1460,7 @@ details.prompt-details > summary:hover { color: var(--blue); }
   font-weight: 600;
 }
 .structure-item h4 { margin-bottom: 5px; color: var(--ink); font-size: 15px; font-weight: 650; line-height: 1.5; }
-.structure-item .ru { display: block; margin-bottom: 8px; color: var(--muted-2); font-size: 11.5px; }
+.structure-item .kk { display: block; margin-bottom: 8px; color: var(--muted-2); font-size: 11.5px; }
 .structure-item p { color: var(--muted); font-size: 12.5px; line-height: 1.8; }
 
 /* 11. 关于页 ------------------------------------------------------------- */
@@ -1569,7 +1569,7 @@ table.data td b { color: var(--ink); font-weight: 600; }
   font-size: 13px;
   line-height: 1.9;
 }
-.footer-brand p .ru { display: block; color: #7f9db1; font-size: 12px; }
+.footer-brand p .kk { display: block; color: #7f9db1; font-size: 12px; }
 
 .footer-links {
   display: grid;
@@ -1629,7 +1629,7 @@ table.data td b { color: var(--ink); font-weight: 600; }
 }
 .error-wrap h1 { margin-top: 10px; color: var(--ink); font-size: clamp(22px, 3vw, 30px); font-weight: 700; }
 .error-wrap p { max-width: 34em; color: var(--muted); font-size: 14px; line-height: 1.9; }
-.error-wrap .page-ru { color: var(--muted-2); font-size: 14px; }
+.error-wrap .page-kk { color: var(--muted-2); font-size: 14px; }
 .error-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 20px; }
 .error-actions .btn { min-height: 42px; padding: 0 18px; font-size: 13px; }
 
@@ -1693,7 +1693,7 @@ table.data td b { color: var(--ink); font-weight: 600; }
   .site-nav a.is-active::after { left: 12px; right: auto; width: 3px; top: 10px; bottom: 10px; height: auto; }
 
   .hero h1 { font-size: clamp(32px, 8.4vw, 44px); }
-  .hero-ru { font-size: 16px; }
+  .hero-kk { font-size: 16px; }
   .hero-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 0; }
   .stat:nth-child(3) { padding-left: 0; border-left: 0; }
   .stat:nth-child(n+3) { padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, .12); }
@@ -1708,7 +1708,7 @@ table.data td b { color: var(--ink); font-weight: 600; }
 
   .page-hero { padding: 38px 0 34px; }
   .page-hero h1 { font-size: 28px; }
-  .page-hero .page-ru { font-size: 15px; }
+  .page-hero .page-kk { font-size: 15px; }
 
   .prose h2 { font-size: 21px; }
   .prose p { font-size: 14.5px; }

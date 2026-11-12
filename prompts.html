@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>视频制作提示词库 · 中哈科普</title>
-  <meta name="description" content="中哈科普提示词库：收录《残差网络》90 秒无配音科普动画的完整提示词，以及 Kurzgesagt 风科普动画通用模板。支持一键复制与 Markdown 下载。" />
+  <title>视频制作提示词库 · 中俄科普</title>
+  <meta name="description" content="中俄科普提示词库：收录《残差网络》90 秒无配音科普动画的完整提示词，以及 Kurzgesagt 风科普动画通用模板。支持一键复制与 Markdown 下载。" />
   <meta name="theme-color" content="#153B59" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="视频制作提示词库 · 中哈科普" />
+  <meta property="og:title" content="视频制作提示词库 · 中俄科普" />
   <meta property="og:description" content="探索每部科学动画背后的完整制作逻辑、视觉规范与生成指令。" />
   <meta property="og:image" content="https://hawkplus.github.io/zhong-ha/assets/img/og-cover.jpg" />
   <meta property="og:url" content="https://hawkplus.github.io/zhong-ha/prompts.html" />
@@ -17,9 +17,9 @@
     document.documentElement.classList.add('js');
     window.SITE_LANG = 'zh';
     try {
-      if (localStorage.getItem('zhongha:lang') === 'kk') {
-        window.SITE_LANG = 'kk';
-        document.documentElement.classList.add('lang-kk');
+      if (['ru', 'kk'].indexOf(localStorage.getItem('zhongha:lang')) !== -1) {
+        window.SITE_LANG = 'ru';
+        document.documentElement.classList.add('lang-ru');
       }
     } catch (e) {}
   </script>
@@ -30,7 +30,7 @@
 
   <header class="site-header">
     <div class="shell header-inner">
-      <a class="brand" href="index.html" aria-label="中哈科普首页">
+      <a class="brand" href="index.html" aria-label="中俄科普首页">
         <span class="brand-mark" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none">
             <path d="M12 5.5v13M7.5 8.5h9v7h-9z" stroke="#fff" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
@@ -38,8 +38,8 @@
           </svg>
         </span>
         <span class="brand-copy">
-          <strong>中哈科普</strong>
-          <small lang="kk">Ғылым туралы білім</small>
+          <strong>中俄科普</strong>
+          <small lang="ru">Научные знания</small>
         </span>
       </a>
 
@@ -51,9 +51,9 @@
         <a class="nav-link" href="about.html">关于项目</a>
       </nav>
 
-      <div class="lang-switch" role="group" aria-label="界面语言 / Интерфейс тілі" title="界面语言与阅读主次 / Интерфейс тілі">
+      <div class="lang-switch" role="group" aria-label="界面语言 / Язык интерфейса" title="界面语言与阅读主次 / Язык интерфейса">
         <button type="button" data-lang="zh" aria-pressed="true">中文</button>
-        <button type="button" data-lang="kk" aria-pressed="false" lang="kk">ҚАЗ</button>
+        <button type="button" data-lang="ru" aria-pressed="false" lang="ru">РУС</button>
       </div>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="打开菜单" data-nav-toggle>
         <span></span>
@@ -71,7 +71,7 @@
         </nav>
         <p class="page-kicker">Prompt Library · 创作资源</p>
         <h1 data-blur-text>视频制作提示词库</h1>
-        <p class="page-kk" lang="kk">Бейне жасауға арналған промпттар кітапханасы</p>
+        <p class="page-ru" lang="ru">Библиотека промптов для создания видео</p>
         <p class="page-lead">探索每部科学动画背后的完整制作逻辑、视觉规范与生成指令。提示词不是文案，而是一份可复现的制作说明：时长、分镜、配色语义、科学护栏、编码参数与验收清单。</p>
       </div>
     </section>
@@ -89,7 +89,7 @@
           <span class="prompt-number">01</span>
           <div class="prompt-title-wrap">
             <h2>《残差网络》90 秒无配音科普动画</h2>
-            <p class="kk" lang="kk">Қалдық желілер туралы 90 секундтық анимация промпты</p>
+            <p class="ru" lang="ru">Промпт для 90-секундной анимации об остаточных сетях</p>
           </div>
           <div class="prompt-badges">
             <span class="badge">实例</span>
@@ -277,7 +277,7 @@
           <span class="prompt-number">02</span>
           <div class="prompt-title-wrap">
             <h2>Kurzgesagt 风科普动画 · 通用提示词</h2>
-            <p class="kk" lang="kk">Kurzgesagt стиліндегі ғылыми анимацияның әмбебап үлгісі</p>
+            <p class="ru" lang="ru">Универсальный шаблон научной анимации в стиле Kurzgesagt</p>
           </div>
           <div class="prompt-badges">
             <span class="badge">模板</span>
@@ -455,7 +455,7 @@ keyframes/            片头、关键节点、收尾的静帧
   <footer class="site-footer">
     <div class="shell footer-main">
       <div class="footer-brand">
-        <a class="brand brand--footer" href="index.html" aria-label="中哈科普首页">
+        <a class="brand brand--footer" href="index.html" aria-label="中俄科普首页">
           <span class="brand-mark" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none">
               <path d="M12 5.5v13M7.5 8.5h9v7h-9z" stroke="#fff" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
@@ -463,12 +463,12 @@ keyframes/            片头、关键节点、收尾的静帧
             </svg>
           </span>
           <span class="brand-copy">
-            <strong>中哈科普</strong>
-            <small lang="kk">Ғылым туралы білім</small>
+            <strong>中俄科普</strong>
+            <small lang="ru">Научные знания</small>
           </span>
         </a>
-        <p>科学与语言并行的科普档案。每一部短片，都配中文与哈萨克语解释，以及可复现的制作提示词。
-          <span class="kk" lang="kk">Ғылым мен тіл қатар жүретін ғылыми мұрағат.</span>
+        <p>科学与语言并行的科普档案。每一部短片，都配中文与俄语解释，以及可复现的制作提示词。
+          <span class="ru" lang="ru">Научные материалы для изучения науки и языков.</span>
         </p>
       </div>
       <div class="footer-cols">
@@ -500,8 +500,8 @@ keyframes/            片头、关键节点、收尾的静帧
       </div>
     </div>
     <div class="shell footer-bottom">
-      <span>© <span data-year>2026</span> 中哈科普 · 内容用于科普学习，不构成专业结论</span>
-      <span class="mono">STATIC · GITHUB PAGES · 中文 / ҚАЗАҚША</span>
+      <span>© <span data-year>2026</span> 中俄科普 · 内容用于科普学习，不构成专业结论</span>
+      <span class="mono">STATIC · GITHUB PAGES · 中文 / РУССКИЙ</span>
     </div>
   </footer>
 

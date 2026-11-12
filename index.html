@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>中哈科普 · 现代科学知识与双语学习平台</title>
-  <meta name="description" content="通过科学动画、中哈双语解释和互动学习，让复杂的专业知识更容易理解。首期：残差网络 ResNet，88 秒动画 + 中文/哈萨克语概念解释 + 可复现的制作提示词。" />
+  <title>中俄科普 · 现代科学知识与双语学习平台</title>
+  <meta name="description" content="通过科学动画、中俄双语解释和互动学习，让复杂的专业知识更容易理解。首期：残差网络 ResNet，88 秒动画 + 中文/俄语概念解释 + 可复现的制作提示词。" />
   <meta name="theme-color" content="#153B59" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="中哈科普 · 把复杂的科学，讲成 88 秒" />
-  <meta property="og:description" content="中哈双语科学知识平台：科学动画、概念解释与创作提示词。" />
+  <meta property="og:title" content="中俄科普 · 把复杂的科学，讲成 88 秒" />
+  <meta property="og:description" content="中俄双语科学知识平台：科学动画、概念解释与创作提示词。" />
   <meta property="og:image" content="https://hawkplus.github.io/zhong-ha/assets/img/og-cover.jpg" />
   <meta property="og:url" content="https://hawkplus.github.io/zhong-ha/" />
   <link rel="canonical" href="https://hawkplus.github.io/zhong-ha/" />
@@ -17,9 +17,9 @@
     document.documentElement.classList.add('js');
     window.SITE_LANG = 'zh';
     try {
-      if (localStorage.getItem('zhongha:lang') === 'kk') {
-        window.SITE_LANG = 'kk';
-        document.documentElement.classList.add('lang-kk');
+      if (['ru', 'kk'].indexOf(localStorage.getItem('zhongha:lang')) !== -1) {
+        window.SITE_LANG = 'ru';
+        document.documentElement.classList.add('lang-ru');
       }
     } catch (e) {}
   </script>
@@ -30,7 +30,7 @@
 
   <header class="site-header">
     <div class="shell header-inner">
-      <a class="brand" href="index.html" aria-label="中哈科普首页">
+      <a class="brand" href="index.html" aria-label="中俄科普首页">
         <span class="brand-mark" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none">
             <path d="M12 5.5v13M7.5 8.5h9v7h-9z" stroke="#fff" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
@@ -38,8 +38,8 @@
           </svg>
         </span>
         <span class="brand-copy">
-          <strong>中哈科普</strong>
-          <small lang="kk">Ғылым туралы білім</small>
+          <strong>中俄科普</strong>
+          <small lang="ru">Научные знания</small>
         </span>
       </a>
 
@@ -51,9 +51,9 @@
         <a class="nav-link" href="about.html">关于项目</a>
       </nav>
 
-      <div class="lang-switch" role="group" aria-label="界面语言 / Интерфейс тілі" title="界面语言与阅读主次 / Интерфейс тілі">
+      <div class="lang-switch" role="group" aria-label="界面语言 / Язык интерфейса" title="界面语言与阅读主次 / Язык интерфейса">
         <button type="button" data-lang="zh" aria-pressed="true">中文</button>
-        <button type="button" data-lang="kk" aria-pressed="false" lang="kk">ҚАЗ</button>
+        <button type="button" data-lang="ru" aria-pressed="false" lang="ru">РУС</button>
       </div>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="打开菜单" data-nav-toggle>
         <span></span>
@@ -70,9 +70,9 @@
           <div class="hero-copy">
             <p class="eyebrow">Bilingual Science Platform</p>
             <h1 id="hero-title" data-blur-text>把复杂的科学，<br />讲成 <span class="accent">88 秒</span>。</h1>
-            <p class="hero-kk" lang="kk">Күрделі ғылым — <span class="nowrap">88 секунд</span> ішінде.</p>
-            <p class="hero-intro">通过科学动画、中哈双语解释和互动学习，让复杂的专业知识更容易理解。</p>
-            <p class="hero-intro-kk" lang="kk">Ғылыми анимациялар, қытай-қазақша түсіндірмелер және интерактивті оқыту арқылы күрделі кәсіби білімді түсінуді жеңілдетеміз.</p>
+            <p class="hero-ru" lang="ru">Сложная наука за <span class="nowrap">88 секунд</span>.</p>
+            <p class="hero-intro">通过科学动画、中俄双语解释和互动学习，让复杂的专业知识更容易理解。</p>
+            <p class="hero-intro-ru" lang="ru">Научные анимации, пояснения на китайском и русском языках и интерактивные задания помогают понять сложные профессиональные темы.</p>
             <div class="hero-actions">
               <a class="btn btn-primary" href="videos/resnet.html" data-spark>
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5-11-6.5z" fill="currentColor"/></svg>
@@ -82,7 +82,7 @@
                 浏览专业知识
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </a>
-              <a class="btn btn-secondary" href="concepts.html#practice">开始自测 <span lang="kk">· Тест</span></a>
+              <a class="btn btn-secondary" href="concepts.html#practice">开始自测 <span lang="ru">· Тест</span></a>
             </div>
             <p class="hero-foot"><span class="pulse-dot" aria-hidden="true"></span>首期上线 · 残差网络 <span class="sep">/</span> 88 秒 · 11 章节</p>
           </div>
@@ -165,7 +165,7 @@
               </svg>
               <div class="stage-bottom">
                 <span><strong>z = x + F(x)</strong><span class="mono">SHORTCUT · 88 SEC</span></span>
-                <span class="mono" lang="kk">ҚАЗАҚША · 中文</span>
+                <span class="mono" lang="ru">РУССКИЙ · 中文</span>
               </div>
             </div>
           </div>
@@ -175,17 +175,17 @@
           <div class="metric">
             <span class="metric-num" data-stat="videos">1</span>
             <span class="metric-label">已上线视频</span>
-            <span class="metric-kk" lang="kk">Жарияланған бейнелер</span>
+            <span class="metric-ru" lang="ru">Опубликованные видео</span>
           </div>
           <div class="metric">
             <span class="metric-num" data-stat="concepts">3</span>
             <span class="metric-label">专业知识主题</span>
-            <span class="metric-kk" lang="kk">Кәсіби тақырыптар</span>
+            <span class="metric-ru" lang="ru">Научные темы</span>
           </div>
           <div class="metric">
             <span class="metric-num" data-stat="languages">2</span>
             <span class="metric-label">双语支持</span>
-            <span class="metric-kk" lang="kk">Екі тілде</span>
+            <span class="metric-ru" lang="ru">Два языка</span>
           </div>
         </div>
       </div>
@@ -197,7 +197,7 @@
         <header class="section-head" data-reveal>
           <div class="section-head-main">
             <h2 class="section-title" id="categories-title">专业分类</h2>
-            <span class="section-kk" lang="kk">Ғылым салалары</span>
+            <span class="section-ru" lang="ru">Области науки</span>
           </div>
           <a class="text-link section-link" href="concepts.html">浏览概念库
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -216,9 +216,9 @@
               <span class="count-pill" data-cat-count="ai">1 部视频 · 3 个概念</span>
             </div>
             <h3>人工智能与计算机科学</h3>
-            <p class="category-kk" lang="kk">Жасанды интеллект және информатика</p>
+            <p class="category-ru" lang="ru">Искусственный интеллект и информатика</p>
             <p class="category-desc">神经网络、机器学习与视觉模型。</p>
-            <p class="category-desc-kk" lang="kk">Нейрондық желілер, машиналық оқыту және көру модельдері.</p>
+            <p class="category-desc-ru" lang="ru">Нейронные сети, машинное обучение и модели компьютерного зрения.</p>
             <div class="category-foot">
               <span class="category-link">进入分类
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -237,9 +237,9 @@
               <span class="status-pill">筹备中</span>
             </div>
             <h3>生物医学与生命科学</h3>
-            <p class="category-kk" lang="kk">Биомедицина және өмір туралы ғылым</p>
+            <p class="category-ru" lang="ru">Биомедицина и науки о жизни</p>
             <p class="category-desc">细胞、分子与生命系统。</p>
-            <p class="category-desc-kk" lang="kk">Жасушалар, молекулалар және тірі жүйелер.</p>
+            <p class="category-desc-ru" lang="ru">Клетки, молекулы и живые системы.</p>
             <div class="category-foot"><span class="category-soon">即将上线</span></div>
           </article>
 
@@ -254,9 +254,9 @@
               <span class="status-pill">筹备中</span>
             </div>
             <h3>医学工程与检测技术</h3>
-            <p class="category-kk" lang="kk">Медициналық инженерия және диагностика</p>
+            <p class="category-ru" lang="ru">Медицинская инженерия и диагностика</p>
             <p class="category-desc">光谱、成像与微流控检测。</p>
-            <p class="category-desc-kk" lang="kk">Спектроскопия, бейнелеу және микрофлюидика.</p>
+            <p class="category-desc-ru" lang="ru">Спектроскопия, визуализация и микрофлюидика.</p>
             <div class="category-foot"><span class="category-soon">即将上线</span></div>
           </article>
 
@@ -272,9 +272,9 @@
               <span class="status-pill">筹备中</span>
             </div>
             <h3>物理与材料科学</h3>
-            <p class="category-kk" lang="kk">Физика және материалтану</p>
+            <p class="category-ru" lang="ru">Физика и материаловедение</p>
             <p class="category-desc">光、物质与新型材料。</p>
-            <p class="category-desc-kk" lang="kk">Жарық, зат және жаңа материалдар.</p>
+            <p class="category-desc-ru" lang="ru">Свет, вещество и новые материалы.</p>
             <div class="category-foot"><span class="category-soon">即将上线</span></div>
           </article>
         </div>
@@ -282,25 +282,25 @@
         <div class="roadmap" data-reveal>
           <div class="roadmap-head">
             <span>后续选题 · 筹备中</span>
-            <span lang="kk">КЕЛЕСІ ТАҚЫРЫПТАР</span>
+            <span lang="ru">Следующие темы</span>
           </div>
           <div class="roadmap-list">
             <div class="roadmap-item">
               <span class="n">02</span>
               <h3>卷积神经网络：计算机如何识别图像</h3>
-              <p class="kk" lang="kk">Конволюциялық нейрондық желілер: компьютер суреттерді қалай көреді</p>
+              <p class="ru" lang="ru">Свёрточные нейронные сети: как компьютер распознаёт изображения</p>
               <span class="status">筹备中</span>
             </div>
             <div class="roadmap-item">
               <span class="n">03</span>
               <h3>泛化能力：模型为什么会「背题」</h3>
-              <p class="kk" lang="kk">Жалпылау қабілеті: модель неге түсінбей, жаттап алады</p>
+              <p class="ru" lang="ru">Обобщающая способность: почему модель запоминает примеры</p>
               <span class="status">筹备中</span>
             </div>
             <div class="roadmap-item">
               <span class="n">04</span>
               <h3>拉曼光谱：用光读出分子的指纹</h3>
-              <p class="kk" lang="kk">Раман спектроскопиясы: жарықтағы молекуланың «ізі»</p>
+              <p class="ru" lang="ru">Рамановская спектроскопия: молекулярный отпечаток в свете</p>
               <span class="status">筹备中</span>
             </div>
           </div>
@@ -314,7 +314,7 @@
         <header class="section-head" data-reveal>
           <div class="section-head-main">
             <h2 class="section-title" id="library-title">最新视频</h2>
-            <span class="section-kk" lang="kk">Соңғы бейне</span>
+            <span class="section-ru" lang="ru">Новое видео</span>
           </div>
           <a class="text-link section-link" href="videos/resnet.html">视频详情
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -332,10 +332,10 @@
           <div class="feature-body">
             <p class="feature-kicker">人工智能与计算机科学</p>
             <h3>残差网络：<br />为什么网络越深，反而更难训练？</h3>
-            <p class="feature-kk" lang="kk">Қалдық желілер: неге терең желілерді оқыту қиынырақ?</p>
-            <p class="feature-desc">理解残差连接如何通过学习修正量，改善深层神经网络的优化过程。88 秒动画，11 个时间章节，配中文与哈萨克语解释。</p>
+            <p class="feature-ru" lang="ru">Остаточные сети: почему глубокие сети труднее обучать?</p>
+            <p class="feature-desc">理解残差连接如何通过学习修正量，改善深层神经网络的优化过程。88 秒动画，11 个时间章节，配中文与俄语解释。</p>
             <div class="feature-meta">
-              <span>88 秒</span><span>11 章节</span><span>2026.11</span><span>中文 / Қазақша</span>
+              <span>88 秒</span><span>11 章节</span><span>2026.11</span><span>中文 / Русский</span>
             </div>
             <div class="feature-actions">
               <a class="btn btn-primary" href="videos/resnet.html" data-spark>
@@ -357,7 +357,7 @@
         <header class="section-head" data-reveal>
           <div class="section-head-main">
             <h2 class="section-title" id="concepts-title">精选概念</h2>
-            <span class="section-kk" lang="kk">Таңдаулы ұғымдар</span>
+            <span class="section-ru" lang="ru">Избранные понятия</span>
           </div>
           <a class="text-link section-link" href="concepts.html">查看全部概念
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -368,9 +368,9 @@
           <a class="concept-card" data-reveal data-spotlight href="concepts.html#degradation">
             <span class="concept-index">01 / DEGRADATION</span>
             <h3>退化现象</h3>
-            <span class="concept-kk" lang="kk">Деградация</span>
+            <span class="concept-ru" lang="ru">Деградация</span>
             <p class="concept-cn">更深的普通网络，训练误差反而可能更高。这不是过拟合，而是优化变难。</p>
-            <p class="concept-kk-text" lang="kk">Тереңірек кәдімгі желілерде оқыту қателігі кейде жоғарырақ болады. Бұл артық бейімделу емес, оңтайландырудың қиындығы.</p>
+            <p class="concept-ru-text" lang="ru">У более глубокой обычной сети ошибка обучения иногда выше из-за трудностей оптимизации.</p>
             <span class="concept-link">查看详情
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
@@ -379,9 +379,9 @@
           <a class="concept-card" data-reveal data-spotlight href="concepts.html#residual">
             <span class="concept-index">02 / RESIDUAL</span>
             <h3>残差连接</h3>
-            <span class="concept-kk" lang="kk">Қалдық байланыс</span>
+            <span class="concept-ru" lang="ru">Остаточная связь</span>
             <p class="concept-cn">输入 x 直接送到输出端，网络只学修正量 F(x)：z = x + F(x)。</p>
-            <p class="concept-kk-text" lang="kk">x кірісі қабаттарды айналып өтеді, ал желі тек F(x) түзетуін үйренеді: z = x + F(x).</p>
+            <p class="concept-ru-text" lang="ru">Вход x проходит по обходному пути, а сеть обучается поправке F(x): z = x + F(x).</p>
             <span class="concept-link">查看详情
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
@@ -390,9 +390,9 @@
           <a class="concept-card" data-reveal data-spotlight href="concepts.html#gradient">
             <span class="concept-index">03 / GRADIENT</span>
             <h3>梯度通路</h3>
-            <span class="concept-kk" lang="kk">Градиент жолы</span>
+            <span class="concept-ru" lang="ru">Путь градиента</span>
             <p class="concept-cn">反向传播时，捷径给梯度一条更短的路，深层网络更容易训练。</p>
-            <p class="concept-kk-text" lang="kk">Кері таралу кезінде айналма байланыс градиентке қысқарақ жол береді, сондықтан терең желіні оқыту жеңілдейді.</p>
+            <p class="concept-ru-text" lang="ru">Обходная связь создаёт более короткий путь для градиента и облегчает обучение глубокой сети.</p>
             <span class="concept-link">查看详情
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
@@ -415,7 +415,7 @@
             <div>
               <p class="prompt-banner-kicker">PROMPT LIBRARY / 04</p>
               <h2 id="prompts-title">视频制作提示词库</h2>
-              <p class="prompt-banner-kk" lang="kk">Бейне жасауға арналған промпттар кітапханасы</p>
+              <p class="prompt-banner-ru" lang="ru">Библиотека промптов для создания видео</p>
               <p class="prompt-banner-desc">探索每部科学动画背后的完整制作逻辑、视觉规范与生成指令。</p>
               <div class="prompt-tags">
                 <span>2 份提示词</span><span>Markdown</span><span>可复制</span><span>可下载</span>
@@ -436,7 +436,7 @@
   <footer class="site-footer">
     <div class="shell footer-main">
       <div class="footer-brand">
-        <a class="brand brand--footer" href="index.html" aria-label="中哈科普首页">
+        <a class="brand brand--footer" href="index.html" aria-label="中俄科普首页">
           <span class="brand-mark" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none">
               <path d="M12 5.5v13M7.5 8.5h9v7h-9z" stroke="#fff" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
@@ -444,12 +444,12 @@
             </svg>
           </span>
           <span class="brand-copy">
-            <strong>中哈科普</strong>
-            <small lang="kk">Ғылым туралы білім</small>
+            <strong>中俄科普</strong>
+            <small lang="ru">Научные знания</small>
           </span>
         </a>
-        <p>科学与语言并行的科普档案。每一部短片，都配中文与哈萨克语解释，以及可复现的制作提示词。
-          <span class="kk" lang="kk">Ғылым мен тіл қатар жүретін ғылыми мұрағат.</span>
+        <p>科学与语言并行的科普档案。每一部短片，都配中文与俄语解释，以及可复现的制作提示词。
+          <span class="ru" lang="ru">Научные материалы для изучения науки и языков.</span>
         </p>
       </div>
       <div class="footer-cols">
@@ -481,8 +481,8 @@
       </div>
     </div>
     <div class="shell footer-bottom">
-      <span>© <span data-year>2026</span> 中哈科普 · 内容用于科普学习，不构成专业结论</span>
-      <span class="mono">STATIC · GITHUB PAGES · 中文 / ҚАЗАҚША</span>
+      <span>© <span data-year>2026</span> 中俄科普 · 内容用于科普学习，不构成专业结论</span>
+      <span class="mono">STATIC · GITHUB PAGES · 中文 / РУССКИЙ</span>
     </div>
   </footer>
 

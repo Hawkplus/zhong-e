@@ -1,4 +1,4 @@
-/* 中哈科普 · 编辑式动效层
+/* 中俄科普 · 编辑式动效层
    参考 React Bits 的交互思路，用零依赖原生 JS 重写：
    BlurText / CountUp / AnimatedContent / SpotlightCard / DotGrid /
    DecryptedText / ClickSpark / 阅读进度 / 回到顶部。

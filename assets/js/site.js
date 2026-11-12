@@ -1,4 +1,4 @@
-/* 中哈科普 · 站点交互
+/* 中俄科普 · 站点交互
    - 移动端导航 / 吸顶状态
    - 数据驱动的统计与分类数量
    - 复制、收藏、章节跳转、Toast
@@ -12,8 +12,8 @@
   var toastEl = null;
 
   /* 界面语言（由 lang.js / 内联脚本维护） */
-  function tr(zh, kk) {
-    return window.SITE_LANG === 'kk' ? kk : zh;
+  function tr(zh, ru) {
+    return window.SITE_LANG === 'ru' ? ru : zh;
   }
 
   /* ---------- 基础工具 ---------- */
@@ -105,8 +105,8 @@
         var item = data.categories && data.categories[key];
         if (!item) return;
         el.textContent = item.status === 'active'
-          ? item.videos + ' ' + tr('部视频', 'бейне') + ' · ' + item.concepts + ' ' + tr('个概念', 'ұғым')
-          : tr('筹备中', 'Дайындалуда');
+          ? item.videos + ' ' + tr('部视频', 'видео') + ' · ' + item.concepts + ' ' + tr('个概念', 'понятий')
+          : tr('筹备中', 'В разработке');
       });
     }
     renderCounts();
@@ -124,11 +124,11 @@
         var label = button.querySelector('[data-copy-label]');
         var original = label ? label.textContent : '';
         copyText(target.textContent).then(function () {
-          if (label) label.textContent = tr('已复制', 'Көшірілді');
-          showToast(tr('已复制到剪贴板', 'Мәтін алмасу буферіне көшірілді'));
+          if (label) label.textContent = tr('已复制', 'Скопировано');
+          showToast(tr('已复制到剪贴板', 'Текст скопирован в буфер обмена'));
           window.setTimeout(function () { if (label) label.textContent = original; }, 1800);
         }).catch(function () {
-          showToast(tr('复制失败，请手动选择文本', 'Көшіру сәтсіз аяқталды, мәтінді өзіңіз таңдаңыз'));
+          showToast(tr('复制失败，请手动选择文本', 'Не удалось скопировать. Выделите текст вручную.'));
         });
         return;
       }
@@ -137,9 +137,9 @@
       if (urlButton) {
         event.preventDefault();
         copyText(urlButton.getAttribute('data-copy-url') || window.location.href).then(function () {
-          showToast(tr('链接已复制', 'Сілтеме көшірілді'));
+          showToast(tr('链接已复制', 'Ссылка скопирована'));
         }).catch(function () {
-          showToast(tr('复制失败，请从地址栏复制', 'Көшіру сәтсіз аяқталды, мекенжай жолынан көшіріңіз'));
+          showToast(tr('复制失败，请从地址栏复制', 'Не удалось скопировать. Скопируйте ссылку из адресной строки.'));
         });
       }
     });
@@ -211,9 +211,9 @@
       button.classList.toggle('is-active', active);
       button.setAttribute('aria-pressed', active ? 'true' : 'false');
       button.setAttribute('aria-label', active
-        ? tr('取消收藏本期视频', 'Бұл бейнені сақтаудан алу')
-        : tr('收藏本期视频', 'Бұл бейнені сақтау'));
-      if (label) label.textContent = active ? tr('已收藏', 'Сақталды') : tr('收藏', 'Сақтау');
+        ? tr('取消收藏本期视频', 'Удалить видео из избранного')
+        : tr('收藏本期视频', 'Добавить видео в избранное'));
+      if (label) label.textContent = active ? tr('已收藏', 'В избранном') : tr('收藏', 'В избранное');
     }
 
     render(stored.indexOf(id) !== -1);
@@ -226,7 +226,7 @@
       stored = next;
       try { window.localStorage.setItem(key, JSON.stringify(next)); } catch (error) { /* 隐私模式 */ }
       render(!active);
-      showToast(active ? tr('已取消收藏', 'Сақтаудан алынды') : tr('已收藏本期视频', 'Бұл бейне сақталды'));
+      showToast(active ? tr('已取消收藏', 'Удалено из избранного') : tr('已收藏本期视频', 'Видео добавлено в избранное'));
     });
   }
 
@@ -252,24 +252,24 @@
   function initPractice(list, tr) {
     var questions = [
       {
-        prompt: ['更深的普通网络出现退化时，哪项指标可能反而升高？', 'Терең кәдімгі желіде деградация болса, қай көрсеткіш артуы мүмкін?'],
+        prompt: ['更深的普通网络出现退化时，哪项指标可能反而升高？', 'Какой показатель может вырасти при деградации более глубокой обычной сети?'],
         answer: 'degradation',
-        explanation: ['训练误差可能升高，因为更深的网络更难优化。', 'Терең желіні оңтайландыру қиындағандықтан, оқыту қатесі артуы мүмкін.'],
-        options: [['验证集准确率', 'Тексеру жиынындағы дәлдік'], ['训练误差', 'Оқыту қатесі'], ['输入分辨率', 'Кіріс ажыратымдылығы']],
+        explanation: ['训练误差可能升高，因为更深的网络更难优化。', 'Ошибка обучения может возрасти, поскольку более глубокую сеть сложнее оптимизировать.'],
+        options: [['验证集准确率', 'Точность на проверочной выборке'], ['训练误差', 'Ошибка обучения'], ['输入分辨率', 'Разрешение входного изображения']],
         correct: 1
       },
       {
-        prompt: ['残差块如何组合输入 x 和修正量 F(x)？', 'Қалдық блок x кірісі мен F(x) түзетуін қалай біріктіреді?'],
+        prompt: ['残差块如何组合输入 x 和修正量 F(x)？', 'Как остаточный блок объединяет вход x и поправку F(x)?'],
         answer: 'residual',
-        explanation: ['捷径保留 x，残差分支提供 F(x)，两个分支相加。', 'Айналма жол x мәнін сақтайды, ал қалдық тармақ F(x) мәнін береді. Екеуі қосылады.'],
+        explanation: ['捷径保留 x，残差分支提供 F(x)，两个分支相加。', 'Обходной путь сохраняет x, а остаточная ветвь вычисляет F(x). Результаты складываются.'],
         options: [['x × F(x)', 'x × F(x)'], ['F(x) − x', 'F(x) − x'], ['x + F(x)', 'x + F(x)']],
         correct: 2
       },
       {
-        prompt: ['反向传播时，捷径为梯度提供了什么？', 'Кері таралу кезінде айналма байланыс градиентке не береді?'],
+        prompt: ['反向传播时，捷径为梯度提供了什么？', 'Что даёт обходная связь градиенту при обратном распространении?'],
         answer: 'gradient',
-        explanation: ['梯度可以通过捷径传回较早的层。', 'Градиент айналма жол арқылы алдыңғы қабаттарға өте алады.'],
-        options: [['更直接的传播路径', 'Тікелей таралу жолы'], ['更多训练样本', 'Көбірек оқыту үлгісі'], ['更大的输入图片', 'Үлкенірек кіріс суреті']],
+        explanation: ['梯度可以通过捷径传回较早的层。', 'По обходному пути градиент может распространяться к более ранним слоям.'],
+        options: [['更直接的传播路径', 'Более прямой путь распространения'], ['更多训练样本', 'Больше обучающих примеров'], ['更大的输入图片', 'Более крупное входное изображение']],
         correct: 0
       }
     ];
@@ -307,12 +307,12 @@
     function render() {
       var question = questions[position];
       summary.hidden = best === null;
-      summary.textContent = tr('本机最佳成绩 ', 'Осы құрылғыдағы үздік нәтиже ') + best + ' / ' + questions.length;
+      summary.textContent = tr('本机最佳成绩 ', 'Лучший результат на этом устройстве ') + best + ' / ' + questions.length;
       results.replaceChildren();
-      title.textContent = tr('残差网络小测', 'Қалдық желілер бойынша тест');
+      title.textContent = tr('残差网络小测', 'Тест по остаточным сетям');
       section.querySelector('.practice-step').textContent = question
-        ? tr('第 ' + (position + 1) + ' 题，共 3 题', (position + 1) + ' / 3 сұрақ')
-        : tr('答对 ' + score + ' / 3 题', score + ' / 3 дұрыс жауап');
+        ? tr('第 ' + (position + 1) + ' 题，共 3 题', (position + 1) + ' / 3 вопросов')
+        : tr('答对 ' + score + ' / 3 题', score + ' / 3 верных ответов');
       section.querySelector('progress').value = position + Number(choice !== null);
       field.hidden = !question;
       review.hidden = choice === null;
@@ -320,8 +320,8 @@
       feedback.textContent = '';
       if (!question) {
         feedback.textContent = mistakes.length
-          ? tr('回顾下面的错题，再试一次。', 'Қате жауаптарды қайталап, қайта көріңіз.')
-          : tr('全部答对！你已完成本轮练习。', 'Барлығы дұрыс! Жаттығу аяқталды.');
+          ? tr('回顾下面的错题，再试一次。', 'Повторите вопросы, в которых ошиблись, и попробуйте снова.')
+          : tr('全部答对！你已完成本轮练习。', 'Всё верно! Вы завершили упражнение.');
         mistakes.forEach(function (missed) {
           var item = document.createElement('a');
           item.href = '#' + missed.answer;
@@ -332,7 +332,7 @@
           item.append(heading, explanation);
           results.append(item);
         });
-        next.textContent = tr('再练一次', 'Қайталау');
+        next.textContent = tr('再练一次', 'Повторить');
         return;
       }
       legend.textContent = tr.apply(null, question.prompt);
@@ -355,10 +355,10 @@
         options.append(button);
       });
       if (choice !== null) {
-        feedback.textContent = (choice === question.correct ? tr('答对了。', 'Дұрыс. ') : tr('再看看这个概念。', 'Осы ұғымды қайталаңыз. ')) + tr.apply(null, question.explanation);
+        feedback.textContent = (choice === question.correct ? tr('答对了。', 'Верно. ') : tr('再看看这个概念。', 'Повторите это понятие. ')) + tr.apply(null, question.explanation);
         review.href = '#' + question.answer;
-        review.textContent = tr('回看概念', 'Ұғымды қайталау');
-        next.textContent = position === questions.length - 1 ? tr('查看成绩', 'Нәтижені көру') : tr('下一题', 'Келесі сұрақ');
+        review.textContent = tr('回看概念', 'Повторить понятие');
+        next.textContent = position === questions.length - 1 ? tr('查看成绩', 'Посмотреть результат') : tr('下一题', 'Следующий вопрос');
       }
     }
 
@@ -388,7 +388,7 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    function tr(zh, kk) { return window.SITE_LANG === 'kk' ? kk : zh; }
+    function tr(zh, ru) { return window.SITE_LANG === 'ru' ? ru : zh; }
     var list = document.querySelector('.concept-list');
     if (list) {
       var form = document.createElement('div');
@@ -412,9 +412,9 @@
           entry.hidden = !entry.textContent.toLocaleLowerCase().includes(query);
           if (!entry.hidden) count++;
         });
-        label.textContent = tr('搜索概念', 'Ұғымдарды іздеу');
-        input.placeholder = tr('输入中文、哈萨克语或英文关键词', 'Қазақша, қытайша немесе ағылшынша іздеу');
-        status.textContent = count ? tr('找到 ' + count + ' 个概念', count + ' ұғым табылды') : tr('没有匹配的概念，请更换关键词。', 'Ұғым табылмады. Басқа сөзді қолданыңыз.');
+        label.textContent = tr('搜索概念', 'Поиск понятий');
+        input.placeholder = tr('输入中文、俄语或英文关键词', 'Поиск на русском, китайском или английском');
+        status.textContent = count ? tr('找到 ' + count + ' 个概念', count + ' понятий найдено') : tr('没有匹配的概念，请更换关键词。', 'Ничего не найдено. Попробуйте другое слово.');
       }
       input.addEventListener('input', filter);
       window.addEventListener('langchange', filter);
@@ -433,7 +433,7 @@
     button.hidden = true;
     video.after(button);
     function renderResume() {
-      button.textContent = tr('继续上次观看 · ', 'Көруді жалғастыру · ') + Math.floor(saved) + 's';
+      button.textContent = tr('继续上次观看 · ', 'Продолжить просмотр · ') + Math.floor(saved) + 's';
       button.hidden = !(Number.isFinite(saved) && saved > 2 && Number.isFinite(video.duration) && saved < video.duration - 2);
     }
     video.addEventListener('loadedmetadata', renderResume);

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>页面不存在 · 中哈科普</title>
+  <title>页面不存在 · 中俄科普</title>
   <meta name="robots" content="noindex" />
   <meta name="theme-color" content="#153B59" />
   <!-- GitHub Pages 项目站点根路径 -->
@@ -12,9 +12,9 @@
     document.documentElement.classList.add('js');
     window.SITE_LANG = 'zh';
     try {
-      if (localStorage.getItem('zhongha:lang') === 'kk') {
-        window.SITE_LANG = 'kk';
-        document.documentElement.classList.add('lang-kk');
+      if (['ru', 'kk'].indexOf(localStorage.getItem('zhongha:lang')) !== -1) {
+        window.SITE_LANG = 'ru';
+        document.documentElement.classList.add('lang-ru');
       }
     } catch (e) {}
   </script>
@@ -23,7 +23,7 @@
 <body>
   <header class="site-header">
     <div class="shell header-inner">
-      <a class="brand" href="/zhong-ha/" aria-label="中哈科普首页">
+      <a class="brand" href="/zhong-ha/" aria-label="中俄科普首页">
         <span class="brand-mark" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none">
             <path d="M12 5.5v13M7.5 8.5h9v7h-9z" stroke="#fff" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
@@ -31,8 +31,8 @@
           </svg>
         </span>
         <span class="brand-copy">
-          <strong>中哈科普</strong>
-          <small lang="kk">Ғылым туралы білім</small>
+          <strong>中俄科普</strong>
+          <small lang="ru">Научные знания</small>
         </span>
       </a>
       <nav class="site-nav" id="site-nav" aria-label="主导航">
@@ -43,9 +43,9 @@
         <a class="nav-link" href="/zhong-ha/about.html">关于项目</a>
       </nav>
 
-      <div class="lang-switch" role="group" aria-label="界面语言 / Интерфейс тілі" title="界面语言与阅读主次 / Интерфейс тілі">
+      <div class="lang-switch" role="group" aria-label="界面语言 / Язык интерфейса" title="界面语言与阅读主次 / Язык интерфейса">
         <button type="button" data-lang="zh" aria-pressed="true">中文</button>
-        <button type="button" data-lang="kk" aria-pressed="false" lang="kk">ҚАЗ</button>
+        <button type="button" data-lang="ru" aria-pressed="false" lang="ru">РУС</button>
       </div>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="打开菜单" data-nav-toggle>
         <span></span>
@@ -58,7 +58,7 @@
       <span class="error-code">404</span>
       <span class="error-kicker">NOT FOUND · PAGE MISSING</span>
       <h1 data-blur-text>这一页还没被画出来。</h1>
-      <p class="page-kk" lang="kk">Бұл бет әзірге жоқ.</p>
+      <p class="page-ru" lang="ru">Эта страница пока недоступна.</p>
       <p class="error-desc">链接可能已经移动，或者地址拼错了。先回到首页，或者直接看本期《残差网络》。</p>
       <div class="error-actions">
         <a class="btn btn-primary" href="/zhong-ha/" data-spark>返回首页</a>
@@ -70,8 +70,8 @@
 
   <footer class="site-footer">
     <div class="shell footer-bottom">
-      <span>© <span data-year>2026</span> 中哈科普 · 内容用于科普学习</span>
-      <span class="mono">STATIC · GITHUB PAGES · 中文 / ҚАЗАҚША</span>
+      <span>© <span data-year>2026</span> 中俄科普 · 内容用于科普学习</span>
+      <span class="mono">STATIC · GITHUB PAGES · 中文 / РУССКИЙ</span>
     </div>
   </footer>
 

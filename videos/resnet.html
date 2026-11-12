@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>残差网络：为什么网络越深，反而更难训练？| 中哈科普</title>
-  <meta name="description" content="88 秒动画 + 中文/哈萨克语深度解释：残差网络 ResNet 的退化现象、残差连接、梯度通路与科学边界。含 11 个时间章节、原理示意图与制作提示词。" />
+  <title>残差网络：为什么网络越深，反而更难训练？| 中俄科普</title>
+  <meta name="description" content="88 秒动画 + 中文/俄语深度解释：残差网络 ResNet 的退化现象、残差连接、梯度通路与科学边界。含 11 个时间章节、原理示意图与制作提示词。" />
   <meta name="theme-color" content="#153B59" />
   <meta property="og:type" content="video.other" />
   <meta property="og:title" content="残差网络：为什么网络越深，反而更难训练？" />
@@ -17,9 +17,9 @@
     document.documentElement.classList.add('js');
     window.SITE_LANG = 'zh';
     try {
-      if (localStorage.getItem('zhongha:lang') === 'kk') {
-        window.SITE_LANG = 'kk';
-        document.documentElement.classList.add('lang-kk');
+      if (['ru', 'kk'].indexOf(localStorage.getItem('zhongha:lang')) !== -1) {
+        window.SITE_LANG = 'ru';
+        document.documentElement.classList.add('lang-ru');
       }
     } catch (e) {}
   </script>
@@ -30,7 +30,7 @@
 
   <header class="site-header">
     <div class="shell header-inner">
-      <a class="brand" href="../index.html" aria-label="中哈科普首页">
+      <a class="brand" href="../index.html" aria-label="中俄科普首页">
         <span class="brand-mark" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none">
             <path d="M12 5.5v13M7.5 8.5h9v7h-9z" stroke="#fff" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
@@ -38,8 +38,8 @@
           </svg>
         </span>
         <span class="brand-copy">
-          <strong>中哈科普</strong>
-          <small lang="kk">Ғылым туралы білім</small>
+          <strong>中俄科普</strong>
+          <small lang="ru">Научные знания</small>
         </span>
       </a>
 
@@ -51,9 +51,9 @@
         <a class="nav-link" href="../about.html">关于项目</a>
       </nav>
 
-      <div class="lang-switch" role="group" aria-label="界面语言 / Интерфейс тілі" title="界面语言与阅读主次 / Интерфейс тілі">
+      <div class="lang-switch" role="group" aria-label="界面语言 / Язык интерфейса" title="界面语言与阅读主次 / Язык интерфейса">
         <button type="button" data-lang="zh" aria-pressed="true">中文</button>
-        <button type="button" data-lang="kk" aria-pressed="false" lang="kk">ҚАЗ</button>
+        <button type="button" data-lang="ru" aria-pressed="false" lang="ru">РУС</button>
       </div>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="打开菜单" data-nav-toggle>
         <span></span>
@@ -74,7 +74,7 @@
 
         <p class="page-kicker">人工智能与计算机科学 · 深度学习</p>
         <h1 data-blur-text>残差网络：为什么网络越深，反而更难训练？</h1>
-        <p class="page-kk" lang="kk">Қалдық желілер: неге терең желілерді оқыту қиынырақ?</p>
+        <p class="page-ru" lang="ru">Остаточные сети: почему глубокие сети труднее обучать?</p>
         <p class="page-lead">理解残差连接如何通过学习修正量，改善深层神经网络的优化过程。</p>
 
         <div class="page-meta">
@@ -119,7 +119,7 @@
         <!-- 核心定义 -->
         <section class="definition-band" data-reveal id="definition" aria-labelledby="definition-title">
           <div class="band-head">
-            <h2 class="band-title" id="definition-title">核心定义<span class="kk" lang="kk">Негізгі анықтама</span></h2>
+            <h2 class="band-title" id="definition-title">核心定义<span class="ru" lang="ru">Определение</span></h2>
             <span class="formula-pill" aria-label="z 等于 x 加 F(x)">z = x + F(x)</span>
           </div>
           <div class="definition-cols">
@@ -128,8 +128,8 @@
               <p><strong>残差网络（ResNet）</strong>是一类深度神经网络结构。它把每个模块的输入 x 直接加到模块的输出上，得到 z = x + F(x)。F(x) 是模块学到的修正量，也就是「残差」。网络不再直接学习完整映射 H(x)，而是学习相对输入的改动量：F(x) = H(x) − x。</p>
             </div>
             <div class="lang-block">
-              <span class="lang-label">Қазақша</span>
-              <p lang="kk">Қалдық желі (ResNet) — терең нейрондық желінің архитектурасы; мұнда блок кірісі x түрлендіру нәтижесіне қосылады: z = x + F(x). F(x) шамасы — үйренілген түзету, яғни қалдық. Желі толық H(x) бейнелеуін емес, F(x) = H(x) − x айырмасын үйренеді.</p>
+              <span class="lang-label">Русский</span>
+              <p lang="ru">ResNet — архитектура глубокой нейронной сети, в которой вход блока x складывается с результатом преобразования: z = x + F(x). Величина F(x) — обучаемая поправка, или остаток. Сеть изучает разность F(x) = H(x) − x.</p>
             </div>
           </div>
         </section>
@@ -137,7 +137,7 @@
         <!-- 原理 -->
         <section class="principle-card" data-reveal data-spotlight id="principle" aria-labelledby="principle-title">
           <div class="principle-head">
-            <h2 id="principle-title">一张图看懂残差块<span class="kk" lang="kk">Қалдық блокты бір сұлбамен түсіну</span></h2>
+            <h2 id="principle-title">一张图看懂残差块<span class="ru" lang="ru">Остаточный блок на одной схеме</span></h2>
             <span class="formula-pill">z = x + F(x)</span>
           </div>
 
@@ -165,7 +165,7 @@
                 <rect x="69" y="166" width="9" height="9" rx="2"/><rect x="82" y="166" width="9" height="9" rx="2"/><rect x="95" y="166" width="9" height="9" rx="2"/><rect x="108" y="166" width="9" height="9" rx="2"/>
               </g>
               <text x="92" y="204" fill="#2A6A72" font-family="Inter, monospace" font-size="16" text-anchor="middle">x</text>
-              <text x="92" y="220" fill="#6C8F99" font-family="Inter, monospace" font-size="10" text-anchor="middle" letter-spacing="1">输入 · КІРІС</text>
+              <text x="92" y="220" fill="#6C8F99" font-family="Inter, monospace" font-size="10" text-anchor="middle" letter-spacing="1">输入 · Вход</text>
 
               <!-- flow -->
               <path d="M124 150 H 186" fill="none" stroke="#2878C8" stroke-width="1.8" marker-end="url(#arrow-blue)"/>
@@ -182,7 +182,7 @@
               <text x="425" y="204" fill="#4A7FA8" font-family="Inter, monospace" font-size="9" text-anchor="middle" letter-spacing="1">TRANSFORM</text>
 
               <text x="425" y="238" fill="#2878C8" font-family="Inter, monospace" font-size="18" text-anchor="middle">F(x)</text>
-              <text x="425" y="254" fill="#6C8F99" font-family="Inter, monospace" font-size="10" text-anchor="middle" letter-spacing="1">残差分支 · ҚАЛДЫҚ ТАРМАҚ</text>
+              <text x="425" y="254" fill="#6C8F99" font-family="Inter, monospace" font-size="10" text-anchor="middle" letter-spacing="1">残差分支 · Остаточная ветвь</text>
 
               <!-- add -->
               <circle cx="596" cy="150" r="28" fill="#E8F7F6" stroke="#28B6B0" stroke-width="1.8"/>
@@ -192,26 +192,26 @@
               <!-- output -->
               <path d="M624 150 H 704" fill="none" stroke="#28B6B0" stroke-width="1.8" marker-end="url(#arrow-teal)"/>
               <text x="728" y="155" fill="#153B59" font-family="Inter, monospace" font-size="18" text-anchor="middle">z</text>
-              <text x="728" y="171" fill="#6C8F99" font-family="Inter, monospace" font-size="10" text-anchor="middle" letter-spacing="1">输出 · ШЫҒЫС</text>
+              <text x="728" y="171" fill="#6C8F99" font-family="Inter, monospace" font-size="10" text-anchor="middle" letter-spacing="1">输出 · Выход</text>
 
               <!-- annotation -->
               <rect x="764" y="96" width="196" height="104" rx="12" fill="#F2F9FE" stroke="#D5E6F3"/>
               <text x="788" y="120" fill="#7A96A5" font-family="Inter, monospace" font-size="9" letter-spacing="1.5">BOUNDARY CASE</text>
               <text x="788" y="149" fill="#28B6B0" font-family="Inter, monospace" font-size="17">F(x) ≈ 0</text>
               <text x="788" y="172" fill="#153B59" font-family="Inter, monospace" font-size="17">z ≈ x</text>
-              <text x="788" y="190" fill="#6C8F99" font-family="Inter, sans-serif" font-size="10">保留输入 · Кірісті сақтау</text>
+              <text x="788" y="190" fill="#6C8F99" font-family="Inter, sans-serif" font-size="10">保留输入 · Сохранение входа</text>
             </svg>
           </figure>
 
           <div class="principle-legend" aria-label="图例">
-            <span><i style="--c:#28B6B0"></i>输入 x · Кіріс</span>
-            <span><i style="--c:#2878C8"></i>残差分支 F(x) · Қалдық тармақ</span>
-            <span><i style="--c:#28B6B0"></i>捷径 Shortcut · Айналма жол</span>
-            <span><i style="--c:#153B59"></i>相加 · Қосу</span>
-            <span><i style="--c:#153B59"></i>输出 z · Шығыс</span>
+            <span><i style="--c:#28B6B0"></i>输入 x · Вход</span>
+            <span><i style="--c:#2878C8"></i>残差分支 F(x) · Остаточная ветвь</span>
+            <span><i style="--c:#28B6B0"></i>捷径 Shortcut · Обходной путь</span>
+            <span><i style="--c:#153B59"></i>相加 · Сложение</span>
+            <span><i style="--c:#153B59"></i>输出 z · Выход</span>
           </div>
           <p class="principle-note">两路特征形状不一致时，先用投影（例如 1×1 卷积）匹配形状，再逐元素相加。训练和推理时两条路径都会参与计算——捷径不是「跳过层」的开关。
-            <span lang="kk">Пішіндер сәйкес келмесе, алдымен проекция (мысалы, 1×1 конволюция) қолданып, содан кейін элементтер бойынша қосады. Оқыту мен шығыс алу кезінде екі тармақ та қатысады — бұл «қабаттарды өткізіп жіберу» қосқышы емес.</span>
+            <span lang="ru">Если размерности различаются, перед поэлементным сложением используют проекцию, например свёртку 1×1. Обе ветви участвуют и в обучении, и в инференсе; обходная связь не служит переключателем пропуска слоёв.</span>
           </p>
         </section>
 
@@ -220,7 +220,7 @@
           <span id="why" class="anchor" aria-hidden="true"></span>
           <header class="stages-head">
             <h2 id="stages-title">四个知识阶段</h2>
-            <span class="kk" lang="kk">Білімнің төрт кезеңі</span>
+            <span class="ru" lang="ru">Четыре этапа изучения</span>
           </header>
 
           <div class="stage-list">
@@ -229,7 +229,7 @@
                 <span class="stage-num">01</span>
                 <div class="stage-title">
                   <h3>为什么需要残差网络？</h3>
-                  <span class="kk" lang="kk">Неге қалдық желі қажет?</span>
+                  <span class="ru" lang="ru">Зачем нужны остаточные сети?</span>
                 </div>
               </div>
               <div class="stage-body">
@@ -238,13 +238,13 @@
                   <p>网络越深，表达能力越强，但优化也会变难。更深的普通网络有时训练误差反而更高——这被称为<strong>退化</strong>，它不是过拟合，而是优化本身出了问题。</p>
                 </div>
                 <div class="lang-block">
-                  <span class="lang-label">Қазақша</span>
-                  <p lang="kk">Желі тереңдеген сайын мүмкіндігі артады, бірақ оңтайландыру қиындайды. Тереңірек кәдімгі желілерде оқыту қателігі кейде жоғарырақ болады — бұл деградация деп аталады. Ол артық бейімделу емес, оңтайландырудың өзіндегі мәселе.</p>
+                  <span class="lang-label">Русский</span>
+                  <p lang="ru">При увеличении глубины выразительность сети растёт, но оптимизация усложняется. У более глубокой обычной сети ошибка обучения иногда оказывается выше. Это называют деградацией: проблема связана с оптимизацией, а не с переобучением.</p>
                 </div>
               </div>
               <div class="stage-conclusion">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-                <span><b>核心结论：</b>加深不是免费的；问题往往出在优化，而不是容量。<span lang="kk"> Тереңдету тегін емес; мәселе көбіне сыйымдылықта емес, оңтайландыруда.</span></span>
+                <span><b>核心结论：</b>加深不是免费的；问题往往出在优化，而不是容量。<span lang="ru"> Увеличение глубины имеет цену: трудности часто связаны с оптимизацией.</span></span>
               </div>
             </article>
 
@@ -253,7 +253,7 @@
                 <span class="stage-num">02</span>
                 <div class="stage-title">
                   <h3>残差连接的核心机制</h3>
-                  <span class="kk" lang="kk">Қалдық байланыстың негізгі механизмі</span>
+                  <span class="ru" lang="ru">Основной механизм остаточной связи</span>
                 </div>
               </div>
               <div class="stage-body">
@@ -262,13 +262,13 @@
                   <p>残差块把输入 x 直接送到输出端，让网络只学修正量 F(x)，输出 z = x + F(x)。如果最优映射接近恒等映射，网络只需把 F(x) 压到接近零，而不必重新学习一个恒等变换。</p>
                 </div>
                 <div class="lang-block">
-                  <span class="lang-label">Қазақша</span>
-                  <p lang="kk">Қалдық блок кіріс x-ті шығысқа тікелей жеткізіп, желіге тек F(x) түзетуін үйренеді: z = x + F(x). Егер оңтайлы бейнелеу тепе-теңдікке жақын болса, желіге F(x)-ті нөлге жақындату жеткілікті, тепе-тең түрлендіруді қайта үйренудің қажеті жоқ.</p>
+                  <span class="lang-label">Русский</span>
+                  <p lang="ru">Остаточный блок передаёт вход x к выходу и обучается поправке F(x): z = x + F(x). Если оптимальное отображение близко к тождественному, достаточно приблизить F(x) к нулю.</p>
                 </div>
               </div>
               <div class="stage-conclusion">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-                <span><b>核心结论：</b>学习「改动量」比学习「完整映射」更容易。<span lang="kk"> «Түзетуді» үйрену «толық бейнелеуді» үйренуден оңай.</span></span>
+                <span><b>核心结论：</b>学习「改动量」比学习「完整映射」更容易。<span lang="ru"> Обучиться поправке может быть проще, чем полному отображению.</span></span>
               </div>
             </article>
 
@@ -277,7 +277,7 @@
                 <span class="stage-num">03</span>
                 <div class="stage-title">
                   <h3>残差网络如何改善训练？</h3>
-                  <span class="kk" lang="kk">Қалдық желі оқытуды қалай жақсартады?</span>
+                  <span class="ru" lang="ru">Как остаточные сети улучшают обучение?</span>
                 </div>
               </div>
               <div class="stage-body">
@@ -286,13 +286,13 @@
                   <p>反向传播时，捷径为梯度提供一条更短的通路；当某些层的最优变换接近恒等映射时，F(x) 接近 0 即可。把残差块堆叠起来，就能训练很深的网络。</p>
                 </div>
                 <div class="lang-block">
-                  <span class="lang-label">Қазақша</span>
-                  <p lang="kk">Кері таралу кезінде айналма жол градиентке қысқарақ жол береді; кейбір қабаттардың оңтайлы түрлендіруі тепе-теңдікке жақын болса, F(x)-ті нөлге жақындату жеткілікті. Қалдық блоктарды қабаттап, өте терең желілерді оқытуға болады.</p>
+                  <span class="lang-label">Русский</span>
+                  <p lang="ru">Обходной путь облегчает передачу градиента. Если оптимальное преобразование близко к тождественному, достаточно приблизить F(x) к нулю. Последовательное соединение остаточных блоков позволяет обучать очень глубокие сети.</p>
                 </div>
               </div>
               <div class="stage-conclusion">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-                <span><b>核心结论：</b>改善的是可优化性，不是无条件提升精度。<span lang="kk"> Жақсаратыны — оңтайландыру мүмкіндігі, ал дәлдіктің шартсыз өсуі емес.</span></span>
+                <span><b>核心结论：</b>改善的是可优化性，不是无条件提升精度。<span lang="ru"> Остаточные связи облегчают оптимизацию, но не гарантируют повышение точности.</span></span>
               </div>
             </article>
 
@@ -301,7 +301,7 @@
                 <span class="stage-num">04</span>
                 <div class="stage-title">
                   <h3>实际应用与局限</h3>
-                  <span class="kk" lang="kk">Нақты қолданылуы мен шектеулері</span>
+                  <span class="ru" lang="ru">Применение и ограничения</span>
                 </div>
               </div>
               <div class="stage-body">
@@ -310,13 +310,13 @@
                   <p>残差结构广泛用于图像分类、检测与分割，也影响了后来的网络设计。但效果仍取决于数据、设计与训练；形状不匹配时需要投影，捷径在训练和推理时都始终参与计算。</p>
                 </div>
                 <div class="lang-block">
-                  <span class="lang-label">Қазақша</span>
-                  <p lang="kk">Қалдық құрылымдар суретті жіктеу, анықтау және сегментациялауда кең қолданылады және кейінгі архитектураларға әсер етті. Бірақ нәтиже деректерге, дизайнға және оқытуға байланысты; пішіндер сәйкес келмесе, проекция қажет, ал айналма жол оқытуда да, шығыс алуда да әрқашан қатысады.</p>
+                  <span class="lang-label">Русский</span>
+                  <p lang="ru">Остаточные структуры широко применяются в классификации, детектировании и сегментации изображений. Результат зависит от данных, архитектуры и обучения. При несовпадении размерностей нужна проекция; обходная ветвь участвует и в обучении, и в инференсе.</p>
                 </div>
               </div>
               <div class="stage-conclusion">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-                <span><b>核心结论：</b>更深不等于更好；它只是把「能不能训练」这道门槛降低了。<span lang="kk"> Тереңірек — әрдайым жақсы деген сөз емес; ол тек «оқытыла ала ма» деген кедергіні төмендетеді.</span></span>
+                <span><b>核心结论：</b>更深不等于更好；它只是把「能不能训练」这道门槛降低了。<span lang="ru"> Увеличение глубины не всегда улучшает результат; остаточные связи облегчают обучение.</span></span>
               </div>
             </article>
           </div>
@@ -326,7 +326,7 @@
         <section class="boundaries" data-reveal id="boundaries" aria-labelledby="boundaries-title">
           <div class="boundaries-head">
             <h2 id="boundaries-title">边界与常见误解</h2>
-            <span class="kk" lang="kk">Шекаралар мен жиі қате түсініктер</span>
+            <span class="ru" lang="ru">Ограничения и частые заблуждения</span>
           </div>
           <p class="boundary-intro">短片里反复标注「示意」，因为这里的每一句结论都有边界。以下几条比记住公式更重要。</p>
           <ul class="boundary-list">
@@ -337,30 +337,30 @@
             <li><b>「梯度不会消失」是过度承诺。</b>捷径改善优化，但不保证任意深度都能训练。</li>
             <li><b>示意图不是实验数据。</b>短片中的仪表与曲线只用于说明趋势，不对应真实测量。</li>
           </ul>
-          <p class="boundary-kk" lang="kk">Тереңдік сапаға кепілдік бермейді. Деградация — оқыту жиынындағы қатенің өсуі, артық бейімделу емес. F(x) ≈ 0 кірістің сақталуын білдіреді, «желі ештеңе үйренбеді» дегенді емес. Айналма байланыс оқыту кезінде де, шығыс алу кезінде де жұмыс істейді.</p>
+          <p class="boundary-ru" lang="ru">Глубина сама по себе не гарантирует качество. При деградации растёт ошибка на обучающей выборке. F(x) ≈ 0 означает сохранение входа. Обходная связь работает и при обучении, и при инференсе.</p>
         </section>
 
         <!-- 章节 -->
         <details class="chapters" data-reveal id="chapters">
           <summary>
             <span class="ch-title" id="chapters-title">11 个时间章节</span>
-            <span class="ch-kk" lang="kk">11 тарау</span>
+            <span class="ch-ru" lang="ru">11 глав</span>
             <span class="ch-action">展开时间线
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </span>
           </summary>
           <div class="chapter-list">
-            <button class="chapter-item" type="button" data-chapter="0"><span class="chapter-time">0:00</span><span class="chapter-text"><span class="chapter-title">开场 · 残差网络</span><span class="chapter-kk" lang="kk">Кіріспе · Қалдық желілер</span></span><span class="chapter-arrow" aria-hidden="true">▶</span></button>
-            <button class="chapter-item" type="button" data-chapter="8"><span class="chapter-time">0:08</span><span class="chapter-text"><span class="chapter-title">深度的收益 · 复杂特征</span><span class="chapter-kk" lang="kk">Тереңдіктің пайдасы · Күрделі белгілер</span></span><span class="chapter-arrow" aria-hidden="true">▶</span></button>
-            <button class="chapter-item" type="button" data-chapter="16"><span class="chapter-time">0:16</span><span class="chapter-text"><span class="chapter-title">代价 · 训练变难</span><span class="chapter-kk" lang="kk">Бағасы · Оқыту қиындайды</span></span><span class="chapter-arrow" aria-hidden="true">▶</span></button>
-            <button class="chapter-item" type="button" data-chapter="24"><span class="chapter-time">0:24</span><span class="chapter-text"><span class="chapter-title">捷径 · 保留输入</span><span class="chapter-kk" lang="kk">Айналма жол · Кірісті сақтау</span></span><span class="chapter-arrow" aria-hidden="true">▶</span></button>
-            <button class="chapter-item" type="button" data-chapter="32"><span class="chapter-time">0:32</span><span class="chapter-text"><span class="chapter-title">残差块 · 输入 + 修正</span><span class="chapter-kk" lang="kk">Қалдық блок · Кіріс + түзету</span></span><span class="chapter-arrow" aria-hidden="true">▶</span></button>
-            <button class="chapter-item" type="button" data-chapter="40"><span class="chapter-time">0:40</span><span class="chapter-text"><span class="chapter-title">什么是「残差」</span><span class="chapter-kk" lang="kk">«Қалдық» деген не?</span></span><span class="chapter-arrow" aria-hidden="true">▶</span></button>
-            <button class="chapter-item" type="button" data-chapter="48"><span class="chapter-time">0:48</span><span class="chapter-text"><span class="chapter-title">堆叠 · 构成残差网络</span><span class="chapter-kk" lang="kk">Қабаттау · Қалдық желіні құру</span></span><span class="chapter-arrow" aria-hidden="true">▶</span></button>
-            <button class="chapter-item" type="button" data-chapter="56"><span class="chapter-time">0:56</span><span class="chapter-text"><span class="chapter-title">反向传播 · 更直接的梯度</span><span class="chapter-kk" lang="kk">Кері таралу · Тікелейірек градиент</span></span><span class="chapter-arrow" aria-hidden="true">▶</span></button>
-            <button class="chapter-item" type="button" data-chapter="64"><span class="chapter-time">1:04</span><span class="chapter-text"><span class="chapter-title">优化 · 从缠结到协调</span><span class="chapter-kk" lang="kk">Оңтайландыру · Шым-шытырықтан үйлесімге</span></span><span class="chapter-arrow" aria-hidden="true">▶</span></button>
-            <button class="chapter-item" type="button" data-chapter="72"><span class="chapter-time">1:12</span><span class="chapter-text"><span class="chapter-title">应用与边界 · 视觉任务</span><span class="chapter-kk" lang="kk">Қолданылуы мен шекарасы · Көру тапсырмалары</span></span><span class="chapter-arrow" aria-hidden="true">▶</span></button>
-            <button class="chapter-item" type="button" data-chapter="80"><span class="chapter-time">1:20</span><span class="chapter-text"><span class="chapter-title">收束 · 保留再改变</span><span class="chapter-kk" lang="kk">Қорытынды · Сақтап, өзгерту</span></span><span class="chapter-arrow" aria-hidden="true">▶</span></button>
+            <button class="chapter-item" type="button" data-chapter="0"><span class="chapter-time">0:00</span><span class="chapter-text"><span class="chapter-title">开场 · 残差网络</span><span class="chapter-ru" lang="ru">Введение · Остаточные сети</span></span><span class="chapter-arrow" aria-hidden="true">▶</span></button>
+            <button class="chapter-item" type="button" data-chapter="8"><span class="chapter-time">0:08</span><span class="chapter-text"><span class="chapter-title">深度的收益 · 复杂特征</span><span class="chapter-ru" lang="ru">Польза глубины · Сложные признаки</span></span><span class="chapter-arrow" aria-hidden="true">▶</span></button>
+            <button class="chapter-item" type="button" data-chapter="16"><span class="chapter-time">0:16</span><span class="chapter-text"><span class="chapter-title">代价 · 训练变难</span><span class="chapter-ru" lang="ru">Цена глубины · Обучение усложняется</span></span><span class="chapter-arrow" aria-hidden="true">▶</span></button>
+            <button class="chapter-item" type="button" data-chapter="24"><span class="chapter-time">0:24</span><span class="chapter-text"><span class="chapter-title">捷径 · 保留输入</span><span class="chapter-ru" lang="ru">Обходной путь · Сохранение входа</span></span><span class="chapter-arrow" aria-hidden="true">▶</span></button>
+            <button class="chapter-item" type="button" data-chapter="32"><span class="chapter-time">0:32</span><span class="chapter-text"><span class="chapter-title">残差块 · 输入 + 修正</span><span class="chapter-ru" lang="ru">Остаточный блок · Вход + поправка</span></span><span class="chapter-arrow" aria-hidden="true">▶</span></button>
+            <button class="chapter-item" type="button" data-chapter="40"><span class="chapter-time">0:40</span><span class="chapter-text"><span class="chapter-title">什么是「残差」</span><span class="chapter-ru" lang="ru">Что такое остаток?</span></span><span class="chapter-arrow" aria-hidden="true">▶</span></button>
+            <button class="chapter-item" type="button" data-chapter="48"><span class="chapter-time">0:48</span><span class="chapter-text"><span class="chapter-title">堆叠 · 构成残差网络</span><span class="chapter-ru" lang="ru">Соединение блоков · Построение остаточной сети</span></span><span class="chapter-arrow" aria-hidden="true">▶</span></button>
+            <button class="chapter-item" type="button" data-chapter="56"><span class="chapter-time">0:56</span><span class="chapter-text"><span class="chapter-title">反向传播 · 更直接的梯度</span><span class="chapter-ru" lang="ru">Обратное распространение · Прямой путь градиента</span></span><span class="chapter-arrow" aria-hidden="true">▶</span></button>
+            <button class="chapter-item" type="button" data-chapter="64"><span class="chapter-time">1:04</span><span class="chapter-text"><span class="chapter-title">优化 · 从缠结到协调</span><span class="chapter-ru" lang="ru">Оптимизация · От хаоса к согласованности</span></span><span class="chapter-arrow" aria-hidden="true">▶</span></button>
+            <button class="chapter-item" type="button" data-chapter="72"><span class="chapter-time">1:12</span><span class="chapter-text"><span class="chapter-title">应用与边界 · 视觉任务</span><span class="chapter-ru" lang="ru">Применение и ограничения · Компьютерное зрение</span></span><span class="chapter-arrow" aria-hidden="true">▶</span></button>
+            <button class="chapter-item" type="button" data-chapter="80"><span class="chapter-time">1:20</span><span class="chapter-text"><span class="chapter-title">收束 · 保留再改变</span><span class="chapter-ru" lang="ru">Итог · Сохранить и уточнить</span></span><span class="chapter-arrow" aria-hidden="true">▶</span></button>
           </div>
           <p class="chapter-hint">展开后点击任意章节，视频会跳到对应时间点播放。</p>
         </details>
@@ -384,17 +384,17 @@
         <section class="boundaries" data-reveal id="credits" style="margin-top:24px" aria-labelledby="credits-title">
           <div class="boundaries-head">
             <h2 id="credits-title">制作与参考</h2>
-            <span class="kk" lang="kk">Дереккөздер</span>
+            <span class="ru" lang="ru">Источники</span>
           </div>
           <p class="boundary-intro">视频、封面与插图由项目作者使用 AI 工具生成、剪辑与校对，封面与示意图取自动画关键帧。内容用于科普学习，不构成专业结论；涉及的数据与结论以原始论文和教材为准。</p>
-          <p class="boundary-kk" style="border-top:0;padding-top:0;margin-top:6px;color:#64788A">He, Zhang, Ren, Sun. <em>Deep Residual Learning for Image Recognition</em>. arXiv:1512.03385, 2015.</p>
+          <p class="boundary-ru" style="border-top:0;padding-top:0;margin-top:6px;color:#64788A">He, Zhang, Ren, Sun. <em>Deep Residual Learning for Image Recognition</em>. arXiv:1512.03385, 2015.</p>
         </section>
       </div>
 
       <!-- 侧栏 -->
       <aside class="watch-aside" aria-label="视频信息与学习路径">
         <section class="side-card" data-reveal data-spotlight>
-          <h2 class="side-title">本片信息<span class="kk" lang="kk">Фильм туралы</span></h2>
+          <h2 class="side-title">本片信息<span class="ru" lang="ru">О фильме</span></h2>
           <ul class="info-list">
             <li><span class="k">时长</span><span class="v">88 秒</span></li>
             <li><span class="k">章节</span><span class="v">11</span></li>
@@ -407,7 +407,7 @@
         </section>
 
         <section class="side-card" data-reveal data-spotlight>
-          <h2 class="side-title">学习路径<span class="kk" lang="kk">Оқу жолы</span></h2>
+          <h2 class="side-title">学习路径<span class="ru" lang="ru">Путь изучения</span></h2>
           <ul class="path-list">
             <li><a href="#stage-1"><span class="path-num">01</span>为什么需要残差网络？</a></li>
             <li><a href="#stage-2"><span class="path-num">02</span>残差连接的核心机制</a></li>
@@ -417,7 +417,7 @@
         </section>
 
         <section class="side-card" data-reveal data-spotlight>
-          <h2 class="side-title">相关概念<span class="kk" lang="kk">Байланысты ұғымдар</span></h2>
+          <h2 class="side-title">相关概念<span class="ru" lang="ru">Связанные понятия</span></h2>
           <div class="tag-cloud">
             <a href="../concepts.html#degradation">退化现象</a>
             <a href="../concepts.html#residual">残差连接</a>
@@ -438,7 +438,7 @@
   <footer class="site-footer">
     <div class="shell footer-main">
       <div class="footer-brand">
-        <a class="brand brand--footer" href="../index.html" aria-label="中哈科普首页">
+        <a class="brand brand--footer" href="../index.html" aria-label="中俄科普首页">
           <span class="brand-mark" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none">
               <path d="M12 5.5v13M7.5 8.5h9v7h-9z" stroke="#fff" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
@@ -446,12 +446,12 @@
             </svg>
           </span>
           <span class="brand-copy">
-            <strong>中哈科普</strong>
-            <small lang="kk">Ғылым туралы білім</small>
+            <strong>中俄科普</strong>
+            <small lang="ru">Научные знания</small>
           </span>
         </a>
-        <p>科学与语言并行的科普档案。每一部短片，都配中文与哈萨克语解释，以及可复现的制作提示词。
-          <span class="kk" lang="kk">Ғылым мен тіл қатар жүретін ғылыми мұрағат.</span>
+        <p>科学与语言并行的科普档案。每一部短片，都配中文与俄语解释，以及可复现的制作提示词。
+          <span class="ru" lang="ru">Научные материалы для изучения науки и языков.</span>
         </p>
       </div>
       <div class="footer-cols">
@@ -483,8 +483,8 @@
       </div>
     </div>
     <div class="shell footer-bottom">
-      <span>© <span data-year>2026</span> 中哈科普 · 内容用于科普学习，不构成专业结论</span>
-      <span class="mono">STATIC · GITHUB PAGES · 中文 / ҚАЗАҚША</span>
+      <span>© <span data-year>2026</span> 中俄科普 · 内容用于科普学习，不构成专业结论</span>
+      <span class="mono">STATIC · GITHUB PAGES · 中文 / РУССКИЙ</span>
     </div>
   </footer>
 

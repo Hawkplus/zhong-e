@@ -2,14 +2,14 @@
 
 一个**纯静态**的中俄双语科普站：每部短片配一段中文 / 俄语概念解释，以及一份可以复现它的生成提示词。视觉定位为 **Modern Scientific Editorial Platform**——用编辑设计、清晰的信息层级与克制的动效，把科学内容做得专业、耐读、可反复使用。
 
-> 站点语言为中文和俄文。现有发布地址使用历史仓库名 `zhong-ha`。
+> 站点语言为中文和俄文。仓库和发布路径均为 `zhong-e`。
 
 首期内容：《残差网络：为什么网络越深，反而更难训练？》——88 秒中英字幕动画 + 中文/俄语概念页 + 90 秒版完整制作提示词。
 
 ## 在线访问
 
-- 站点：`https://hawkplus.github.io/zhong-ha/`
-- 仓库：`https://github.com/Hawkplus/zhong-ha`
+- 站点：`https://hawkplus.github.io/zhong-e/`
+- 仓库：`https://github.com/Hawkplus/zhong-e`
 
 ## 页面
 
@@ -17,6 +17,7 @@
 | --- | --- |
 | `index.html` | 首页：品牌 Hero、真实数据、四个专业分类、最新视频、精选概念、提示词入口 |
 | `videos/resnet.html` | 残差网络视频页：播放器、四阶段知识结构、原理 SVG、11 个时间章节、双语解释 |
+| `practice.html` | 九道双语题目，支持练习、测验、答题导航、进度保存、结果分析与错题重练 |
 | `concepts.html` | 概念库：退化现象、残差连接、梯度通路——中文 / 俄语对照 |
 | `prompts.html` | 提示词库：两份完整提示词，支持一键复制与 Markdown 下载 |
 | `about.html` | 项目说明、双语说明、四步新增视频方法、技术说明 |
